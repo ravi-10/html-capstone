@@ -48,7 +48,7 @@
         if(empty($_POST['postal_code'])) {
             $errors['postal_code'] = 'postal code is a required field';
         } elseif(strlen($_POST['postal_code']) != 6) {
-            $errors['city'] = 'postal code must be of 6 characters';
+            $errors['postal_code'] = 'postal code must be of 6 characters';
         }
 
         // validating province
@@ -117,7 +117,7 @@
         <form id="registration" name="registration" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>
           <p>
             <label for="first_name">First Name</label>
-            <input type="text" id="first_name" class="form_control" name="first_name" placeholder="Enter your first name" />
+            <input type="text" id="first_name" class="form_control" name="first_name" placeholder="Enter your first name" value="<?=clean('first_name')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['first_name'])) : ?>
               <span class="error"><?=esc($errors['first_name'])?></span>
@@ -126,7 +126,7 @@
 
           <p>
             <label for="last_name">Last Name</label>
-            <input type="text" id="last_name" class="form_control" name="last_name" placeholder="Enter your last name" />
+            <input type="text" id="last_name" class="form_control" name="last_name" placeholder="Enter your last name" value="<?=clean('last_name')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['last_name'])) : ?>
               <span class="error"><?=esc($errors['last_name'])?></span>
@@ -135,7 +135,7 @@
 
           <p>
             <label for="street">Street</label>
-            <input type="text" id="street" class="form_control" name="street" placeholder="Enter your street" />
+            <input type="text" id="street" class="form_control" name="street" placeholder="Enter your street" value="<?=clean('street')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['street'])) : ?>
               <span class="error"><?=esc($errors['street'])?></span>
@@ -144,7 +144,7 @@
 
           <p>
             <label for="city">City</label>
-            <input type="text" id="city" class="form_control" name="city" placeholder="Enter your city" />
+            <input type="text" id="city" class="form_control" name="city" placeholder="Enter your city" value="<?=clean('city')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['city'])) : ?>
               <span class="error"><?=esc($errors['city'])?></span>
@@ -153,7 +153,7 @@
 
           <p>
             <label for="postal_code">Postal Code</label>
-            <input type="text" id="postal_code" class="form_control" name="postal_code" placeholder="Enter your postal code" />
+            <input type="text" id="postal_code" class="form_control" name="postal_code" placeholder="Enter your postal code" value="<?=clean('postal_code')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['postal_code'])) : ?>
               <span class="error"><?=esc($errors['postal_code'])?></span>
@@ -162,7 +162,7 @@
 
           <p>
             <label for="province">Province</label>
-            <input type="text" id="province" class="form_control" name="province" placeholder="Enter your province" />
+            <input type="text" id="province" class="form_control" name="province" placeholder="Enter your province" value="<?=clean('province')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['province'])) : ?>
               <span class="error"><?=esc($errors['province'])?></span>
@@ -171,7 +171,7 @@
 
           <p>
             <label for="country">Country</label>
-            <input type="text" id="country" class="form_control" name="country" placeholder="Enter your country" />
+            <input type="text" id="country" class="form_control" name="country" placeholder="Enter your country" value="<?=clean('country')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['country'])) : ?>
               <span class="error"><?=esc($errors['country'])?></span>
@@ -180,7 +180,7 @@
 
           <p>
             <label for="phone">Phone</label>
-            <input type="text" id="phone" class="form_control" name="phone" placeholder="Enter your phone" />
+            <input type="text" id="phone" class="form_control" name="phone" placeholder="Enter your phone" value="<?=clean('phone')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['phone'])) : ?>
               <span class="error"><?=esc($errors['phone'])?></span>
@@ -189,7 +189,7 @@
           
           <p>
             <label for="email">Email</label>
-            <input type="email" id="email" class="form_control" name="email" placeholder="Enter your email" />
+            <input type="email" id="email" class="form_control" name="email" placeholder="Enter your email" value="<?=clean('email')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['email'])) : ?>
               <span class="error"><?=esc($errors['email'])?></span>
