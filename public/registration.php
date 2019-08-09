@@ -1,7 +1,7 @@
 <?php
     /**
      * Registration Page 
-     * last_update: 2019-08-08
+     * last_update: 2019-08-09
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
     
@@ -96,6 +96,52 @@
         } elseif($_POST['password'] != $_POST['confirm_password']) {
             $errors['confirm_password'] = 'password and confirm password does not match';
         }
+
+        // checking if there is no errors before inserting a record
+        if(empty($errors)) {
+
+            // create the query
+            $query = 'INSERT INTO
+                        users
+                        (first_name, last_name, street, city, postal_code, province,
+                        country, phone, email, password)
+                        VALUES
+                        (:first_name, :last_name, :street, :city, :postal_code, :province,
+                        :country, :phone, :email, :password)';
+
+            // prepare the query
+            $stmt = $dbh->prepare($query);
+
+            // parameters array for placeholders
+            $params = array(
+                ':first_name' => $_POST['first_name'],
+                ':last_name' => $_POST['last_name'],
+                ':street' => $_POST['street'],
+                ':city' => $_POST['city'],
+                ':postal_code' => $_POST['postal_code'],
+                ':province' => $_POST['province'],
+                ':country' => $_POST['country'],
+                ':phone' => $_POST['phone'],
+                ':email' => $_POST['email'],
+                ':password' => $_POST['password']
+            );
+
+            // execute the query
+            $stmt->execute($params);
+
+            // get the ID of the record we just inserted
+            $id = $dbh->lastInsertId();
+
+            // if insert is successful
+            if($id) {
+                // redirect to new page (PRG: Post Redirect Get)
+                header('Location: registration_success.php?user_id=' . $id);
+                exit;
+            } else {
+                $errors[] = "There was a problem adding the record";
+            }
+
+        } // endif
 
     } // end of POST
 
