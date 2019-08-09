@@ -1,0 +1,493 @@
+header,
+footer,
+nav,
+main,
+section,
+article,
+aside {
+  display: block; /* making html 5 element IE compatible */
+}
+
+body{
+  margin: 0;
+  background-color: #d4effb;
+  font-size: 16px;
+  font-family: 'Raleway', Tahoma, sans-serif;
+}
+
+div#wrapper{
+  width: 960px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* header starts */
+header{
+  background: #fff;
+}
+
+header div#utility_nav{
+  padding: 10px 20px;
+  position: relative;
+}
+
+header div#utility_nav div#socials,
+header div#utility_nav div#top_links{
+  display: inline-block;
+}
+
+header div#utility_nav div#socials img{
+  border: none;
+}
+
+header div#utility_nav a{
+  padding-right: 10px;
+}
+
+header div#utility_nav #top_links a:last-child{
+  padding-right: 0;
+  padding-left: 10px;
+}
+
+header div#utility_nav div#top_links{
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+
+header div#utility_nav div#top_links a{
+  text-decoration: none;
+  color: #3290c1;
+}
+
+header div#main_nav{
+  background-color: rgb(32,45,66);
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  z-index: 99;
+  font-family: 'Roboto', Verdana, sans-serif;
+}
+
+header div#main_nav img{
+  padding: 5px 20px;
+}
+
+header div#main_nav nav{
+  display: inline-block;
+  float: right;
+}
+
+header div#main_nav nav a#menu-toggle{
+  display: none;
+}
+
+header div#main_nav nav ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+header div#main_nav nav ul li{
+  display: inline-block;
+}
+
+header div#main_nav nav ul li a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2em;
+  line-height: 71px;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+header div#main_nav nav ul li a:hover{
+  background-color: #df7900;
+}
+
+header div#main_nav nav ul li a.current{
+  background-color: #df7900;
+}
+/* header ends */
+
+/* main starts */
+main{
+  background-color: #fff;
+}
+
+main div#hero{
+  position: relative;
+}
+
+main div#hero img{
+  width: 960px;
+  height: 393px;
+  display: inline-block;
+}
+
+main div#hero div#cta{
+  position: absolute;
+  top: 110px;
+  right: 20px;
+  width: 450px;
+  background-color: rgb(39,142,189);
+  text-align: center;
+  color: #fff;
+}
+
+main div#hero div#cta h1{
+  font-weight: 400;
+}
+
+main div#hero div#cta p{
+  padding: 0 30px;
+  text-align: justify;
+  font-size: 1.1em;
+}
+
+main div#hero div#cta a{
+  background-color: #df7900;
+  color: #fff;
+  text-decoration: none;
+  font-size: 2em;
+  padding: 10px 30px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+main div#hero div#cta a:hover{
+  background-color: rgb(255,255,255);
+  color: #df7900;
+  animation: ctascale .5s;
+}
+
+@keyframes ctascale{
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.1);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+main div#upcoming_tours h2{
+  text-align: center;
+  color: #df7900;
+  font-weight: 400;
+  position: relative;
+}
+
+main div#upcoming_tours h2::before{
+  content: '';
+  background-color: #df7900;
+  position: absolute;
+  height: 5px;
+  width: 35%;
+  top: 12px;
+  left: 21px;
+}
+
+main div#upcoming_tours h2::after{
+  content: '';
+  background-color: #df7900;
+  position: absolute;
+  height: 5px;
+  width: 35%;
+  top: 12px;
+  right: 21px;
+}
+
+main div#upcoming_tours div.tour{
+  width: 290px;
+  display: inline-block;
+  margin-left: 21px;
+  box-shadow: 2px 3px 3px 1px rgba(0,0,0,.35);
+}
+
+main div#upcoming_tours div.tour .tour_image img{
+  width: 290px;
+  height: 193px;
+  display: inline-block;
+}
+
+main div#upcoming_tours div.tour .title{
+  background-color: #df7900;
+  color: #fff;
+  text-align: center;
+  padding: 7px 0;
+}
+
+main div#upcoming_tours div.tour .title h3{
+  margin: 0;
+  font-weight: 400;
+  font-size: 1.3em;
+}
+
+main div#upcoming_tours div.tour .title span{
+  font-size: .9em;
+}
+
+main div#upcoming_tours div.tour .description{
+  text-align: center;
+  border: 1px solid #df7900;
+  margin-top: -5px;
+}
+
+main div#upcoming_tours div.tour .description p{
+  margin: 0;
+  padding: 10px 20px;
+  line-height: 20px;
+  text-align: left;
+}
+
+main div#upcoming_tours div.tour .description a{
+  background-color: #df7900;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  padding: 2px 30px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: .9em;
+  border: 1px solid #df7900;
+}
+
+main div#upcoming_tours div.tour .description a:hover{
+  color: #df7900;
+  background-color: #fff;
+  border: 1px solid #df7900;
+  font-weight: 700;
+}
+
+main div#recent_blogs{
+  padding-bottom: 30px;
+}
+
+main div#recent_blogs h2{
+  text-align: center;
+  color: #1387bd;
+  font-weight: 400;
+  position: relative;
+}
+
+main div#recent_blogs h2::before{
+  content: '';
+  background-color: #1387bd;
+  position: absolute;
+  height: 5px;
+  width: 35%;
+  top: 12px;
+  left: 21px;
+}
+
+main div#recent_blogs h2::after{
+  content: '';
+  background-color: #1387bd;
+  position: absolute;
+  height: 5px;
+  width: 35%;
+  top: 12px;
+  right: 21px;
+}
+
+main div#recent_blogs div.blog{
+  width: 290px;
+  height: 195px;
+  display: inline-block;
+  margin-left: 21px;
+  position: relative;
+}
+
+main div#recent_blogs div.blog img{
+  width: 290px;
+  height: 195px;
+  display: inline-block;
+}
+
+main div#recent_blogs div.blog div.overlay{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(51,132,179);
+}
+
+main div#recent_blogs div.blog div.overlay:hover{
+  background-color: rgb(255,255,255);
+  border: 1px solid rgb(51,132,179);
+}
+
+main div#recent_blogs div#blog_read_more div.overlay:last-child:hover{
+  background-color: rgba(255,255,255,1);
+  border: 1px solid rgb(51,132,179);
+}
+
+main div#recent_blogs div.blog div.overlay:hover a{
+  color: rgb(51,132,179);
+  font-weight: 700;
+  text-shadow: 1px 2px 2px rgba(0,0,0,0.3);
+}
+
+main div#recent_blogs div.blog div.overlay a{
+  color: #fff;
+  font-size: 2em;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 0 60px;
+  padding-top: 60px;
+}
+
+main div#recent_blogs div#blog_read_more{
+  background-color: rgb(51,132,179);
+}
+
+main div#recent_blogs div#blog_read_more a{
+  padding-top: 0;
+  line-height: 195px;
+}
+/* main ends */
+
+/* footer starts */
+footer{
+  background-color: #222f43;
+  padding: 10px 0;
+  font-size: .8em;
+}
+
+footer #footer_utility_links{
+  text-align: center;
+}
+
+footer #footer_utility_links ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+footer #footer_utility_links ul li{
+  display: inline-block;
+}
+
+footer #footer_utility_links ul li a{
+  color: #afc4cf;
+  padding: 0 7px;
+}
+
+footer #copyright{
+  color: #afc4cf;
+  text-align: center;
+}
+
+footer #copyright p{
+  margin: 0;
+  padding-top: 10px;
+}
+/* footer ends */
+
+/* media query starts */
+@media screen and (min-width: 769px) and (max-width: 980px){
+  div#wrapper{
+    width: 100%;
+  }
+  
+  header div#main_nav img{
+    padding-right: 0;
+  }
+  
+  header div#main_nav nav ul li a{
+    padding: 0 9px;
+  }
+  
+  header div#main_nav nav ul li:last-child a{
+    padding-right: 20px;
+  }
+  
+  main div#hero img{
+    max-width: 100%;
+    height: auto;
+    min-height: 300px;
+  }
+  
+  main div#hero div#cta{
+    position: absolute;
+    top: 70px;
+    background-color: rgba(39,142,189,.9);
+    text-align: center;
+    color: #fff;
+    right: 20px;
+    top: 30%;
+    min-height: 192px;
+  }
+  
+  main div#hero div#cta h1{
+    font-weight: 400;
+    font-size: 1.6em;
+  }
+
+  main div#hero div#cta p{
+    padding: 0 30px;
+    text-align: justify;
+    font-size: 1em;
+  }
+
+  main div#hero div#cta a{
+    background-color: #df7900;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.6em;
+    padding: 5px 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+  
+  main div#upcoming_tours div.tour{
+    width: 44%;
+    border: 1px solid #df7900;
+    margin-bottom: 20px;
+    margin-right: 2%;
+    margin-left: 3%;
+  }
+    
+  main div#upcoming_tours div.tour:last-child{
+    margin: 0 auto;
+    display: block;
+  }
+  
+  main div#upcoming_tours div.tour .tour_image{
+    text-align: center;
+  }
+  
+  main div#upcoming_tours div.tour .description{
+    border: none;
+    text-align: center;
+  }
+  
+  main div#recent_blogs div.blog {
+    width: 585px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  
+  main div#recent_blogs div.blog div.overlay {
+    left: unset;
+    width: 295px;
+    background-color: rgba(51,132,179,1);
+  }
+  
+  main div#recent_blogs div.blog:last-child div.overlay {
+    width: 100%;
+  }
+  
+  main div#recent_blogs div.blog div.overlay:hover{
+    background-color: rgba(255,255,255,1);
+  }
+  
+}
+/* media query starts */

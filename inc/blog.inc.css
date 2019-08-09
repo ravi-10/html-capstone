@@ -1,0 +1,124 @@
+<style>
+  main{
+    float: left;
+  }
+  
+  main div#hero img{
+    width: 960px;
+    height: 393px;
+    display: inline-block;
+  }
+  
+  main div#hero div{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 4px;
+    left: 0;
+    background-color: rgba(223,121,0,0.52);
+  }
+  
+  main div#hero div h1{
+    margin: 0;
+    text-align: center;
+    margin-top: 22%;
+    color: #fff;
+    text-shadow: 1px 2px 2px rgba(255,255,255,0.3);
+  }
+  
+  main div.post{
+    width: 96%;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 20px 2%;
+    float: left;
+    box-shadow: 1px 2px 4px 2px rgba(51,132,179,.5);
+  }
+  
+  main div.post:last-child{
+    margin-bottom: 40px;
+  }
+  
+  main div.post img{
+    float: left;
+    padding-right: 20px;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+  }
+  
+  main div.post h2{
+    margin: 0;
+    color: #df7900;
+    padding: 5px 0;
+  }
+  
+  main div.post span{
+    font-size: .9em;
+  }
+  
+  main div.post p{
+    margin: 0;
+    padding: 7px 0;
+    line-height: 24px;
+    text-align: justify;
+  }
+  
+  main div.post a{
+    background-color: rgb(51,132,179);
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    float: right;
+    border: 1px solid rgb(51,132,179);
+  }
+  
+  main div.post a:hover{
+    color: rgb(51,132,179);
+    background-color: #fff;
+    font-weight: 700;
+  }
+  
+  main a#older_posts{
+    background-color: #df7900;
+    color: #fff;
+    display: block;
+    clear: both;
+    margin: 30px auto;
+    height: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: center;
+    width: 70%;
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,.5);
+  }
+  
+  main a#older_posts:hover{
+    color: #df7900;
+    background-color: #fff;
+    font-weight: 700;
+    box-shadow: 1px 1px 3px 1px rgba(223,121,0,.5);
+  }
+  
+  footer{
+    clear: both;
+  }
+  
+  @media screen and (max-width: 768px){
+    main div#hero img {
+      max-width: 100%;
+      height: auto;
+      min-height: auto;
+    }
+  }
+  
+  @media screen and (max-width: 500px){
+    main div.post img {
+      display: block;
+      float: none;
+      margin: 0 auto;
+    }
+  }
+</style>
