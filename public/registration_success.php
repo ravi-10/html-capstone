@@ -52,7 +52,10 @@
 
         <ul>
         	<?php foreach ($result as $key => $value) : ?>
-        		<li><span class="key"><?=ucwords(str_replace('_', ' ', $key))?> :</span><span class="value"><?=$value?></span></li>
+        		<li>
+        			<span class="key"><?=ucwords(str_replace('_', ' ', $key))?> :</span>
+        			<span class="value"><?=$value?></span>
+        		</li>
         	<?php endforeach; ?>
         </ul>
     </main>
