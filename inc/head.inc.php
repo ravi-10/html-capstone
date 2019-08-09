@@ -60,6 +60,8 @@
             require 'testimonials.inc.css';
         } elseif($title == 'ATG - Tours') {
             require 'tours.inc.css';
+        } elseif($title == 'ATG - Registration') {
+            require 'registration.inc.css';
         }
         
     ?>

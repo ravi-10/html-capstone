@@ -33,7 +33,6 @@ header div#utility_nav a{
 
 header div#utility_nav #top_links a:last-child{
   padding-right: 0;
-  padding-left: 10px;
 }
 
 header div#utility_nav div#socials img{
@@ -49,6 +48,11 @@ header div#utility_nav div#top_links{
 header div#utility_nav div#top_links a{
   text-decoration: none;
   color: #3290c1;
+}
+
+header div#utility_nav div#top_links a:hover,
+header div#utility_nav div#top_links a:active{
+  color: #df7900;
 }
 
 header div#main_nav{

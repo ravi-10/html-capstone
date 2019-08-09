@@ -16,6 +16,7 @@
     </div>
     <div id="top_links">
       <a href="#">Login</a>
+      <a href="../public/registration.php">Register</a>
       <a href="#">FAQs</a>
     </div>
   </div>
