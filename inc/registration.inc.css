@@ -60,6 +60,17 @@
     color: #f00;
     font-size: 1.9em;
   }
+
+  main form#registration span.error{
+    width: 390px;
+    background: #c00;
+    color: #fff;
+    padding: 2px 7px;
+    margin-top: 4px;
+    display: block;
+    margin-left: 174px;
+    font-size: .85em;
+  }
   
   main form#registration p#form_buttons{
     text-align: center;
@@ -106,6 +117,11 @@
     main form#registration select.form_control,
     main form#registration textarea.form_control{
       width: 93%;
+    }
+
+    main form#registration span.error{
+      width: 91%;
+      margin-left: 0;
     }
     
   }
