@@ -93,6 +93,36 @@
     cursor: pointer;
     font-weight: 700;
   }
+
+  main p.reg_success{
+    text-align: center;
+    background-color: rgba(0, 85, 0, .9);
+    color: #fff;
+    padding: 5px 0;
+  }
+
+  main ul{
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+  main ul li{
+    margin: 10px 0;
+  }
+
+  main ul li span.key{
+    display: inline-block;
+    width: 130px;
+  }
+
+  main ul li span.value{
+    display: inline-block;
+    width: 260px;
+    font-weight: 700;
+    background-color: #efefef;
+    padding: 2px 5px;
+  }
   
   footer{
     clear: both;
