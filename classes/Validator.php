@@ -44,6 +44,21 @@ class Validator
 	}
 
 	/**
+	 * FUnction to validate legal characters
+	 * @param  String $field   A form field
+	 * @param  Sting $pattern  Pattern to validate legal characters
+	 * @return void
+	 */
+	public function stringValidator($field)
+	{
+		$pattern = '/^([a-zA-Z\s\'])+$/';
+
+		if(preg_match($pattern, $this->post[$field]) !== 1) {
+			$this->setError($field, "Only alphabets, apostrophe and space allowed for {$this->label($field)}");
+		}	
+	}
+
+	/**
 	 * Get validation errors
 	 * @return Array
 	 */
@@ -69,7 +84,7 @@ class Validator
 	 * @param  String $string field name
 	 * @return String         Formatted field name
 	 */
-	protected function label($string) 
+	public function label($string) 
 	{
 		return ucwords(str_replace('_', ' ', $string));
 	}

@@ -22,7 +22,13 @@
 
         foreach ($_POST as $key => $value) {
             $v->required($key);
+
+            if ($key == 'first_name' || $key == 'last_name' || $key == 'city' || 
+              $key == 'province' || $key == 'country') {
+                $v->stringValidator($key);
+            }
         }
+        
 
         $errors = $v->getErrors();
 
