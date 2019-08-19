@@ -84,6 +84,20 @@ class Validator
 	}
 
 	/**
+	 * Function to validate phone
+	 * @param  String $field A form field
+	 * @return void
+	 */
+	public function phone($field)
+	{
+		$pattern = '/^([0-9]{3})-?([0-9]{3})-?([0-9]{4})$/';
+
+		if(preg_match($pattern, $this->post[$field]) !== 1) {
+			$this->setError($field, 'Please enter a valid phone number');
+		}
+	}
+
+	/**
 	 * Function to validate email
 	 * @param  String $field A form field
 	 * @return void
@@ -95,6 +109,25 @@ class Validator
 		} elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 			$this->setError($field, 'Please provide a valid email address');
 		}
+	}
+
+	/**
+	 * Function to validate password
+	 * @param  String $field A form field
+	 * @return void
+	 */
+	public function passwordValidator($field1, $field2)
+	{
+		$pattern = '/(?=.*[A-Z]+)(?=.*[a-z]+)(?=.*[0-9]+)(?=.*[\!\@\#\$\%\^\&\*\(\)]+).{6,}/';
+		
+		if(strlen($this->post[$field1]) < 6 || strlen($this->post[$field1]) > 20) {
+			$this->setError($field1, "{$this->label($field1)} must be of minimum 6 characters or maximum of 20 characters");
+		} elseif(preg_match($pattern, $this->post[$field1]) !== 1){
+			$this->setError($field1, "Please enter valid {$this->label($field1)}. It must consist of an uppercase letter, a lower case letter, a digit, a special character, and must be atleast 6 characters long.");
+		} elseif($this->post[$field1] != $this->post[$field2]){
+			$this->setError($field2, "{$this->label($field1)} and {$this->label($field2)} does not match");
+		}
+
 	}
 
 	/**
