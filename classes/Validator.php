@@ -70,13 +70,29 @@ class Validator
 	}
 
 	/**
+	 * Function to validate street
+	 * @param  String $field A form field
+	 * @return void
+	 */
+	public function street($field)
+	{
+		$pattern = '/^([a-zA-Z0-9\s\'\-\_\&\\\(\)])+$/';
+
+		if(strlen($this->post[$field]) < 2 || strlen($this->post[$field]) > 100) {
+			$this->setError($field, "{$this->label($field)} must be of minimum 2 characters or maximum of 100 characters");
+		} elseif(preg_match($pattern, $this->post[$field]) !== 1) {
+			$this->setError($field, "Only alphabets, digits, apostrophe, space, and character like (-_&\) are allowed for {$this->label($field)}");
+		}
+	}
+
+	/**
 	 * Function to validate postal code
 	 * @param  String $field A form field
 	 * @return void
 	 */
 	public function postalCode($field)
 	{
-		$pattern = '/^[A-Z]\d[A-Z]\d[A-Z]\d$/i';
+		$pattern = '/^[A-Z]\d[A-Z]\s?\d[A-Z]\d$/i';
 
 		if(preg_match($pattern, $this->post[$field]) !== 1) {
 			$this->setError($field, "Please enter valid {$this->label($field)} eg:E8K2H7");

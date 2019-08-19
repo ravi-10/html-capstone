@@ -30,6 +30,7 @@
             }
         }
         
+        $v->street('street');
         $v->postalCode('postal_code');
         $v->phone('phone');
         $v->email('email');
@@ -41,7 +42,7 @@
         if(empty($errors)) {
 
             // create the query
-            /*$query = 'INSERT INTO
+            $query = 'INSERT INTO
                         users
                         (first_name, last_name, street, city, postal_code, province,
                         country, phone, email, password)
@@ -79,7 +80,7 @@
                 exit;
             } else {
                 $errors[] = "There was a problem adding the record";
-            }*/
+            }
 
         } // endif
 
