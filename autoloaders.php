@@ -1,11 +1,9 @@
 <?php
-
-// sql_autoload_register(function($class){
-// code to locate and require the class file
-// });
-
-// \App\Validator
-// __DIR__ . '/ravi/' . $class . '.php'
+/**
+ * Autoloaders Page 
+ * last_update: 2019-08-19
+ * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
+ */
 
 /**
  * Accept class name, convert to file path, require file
@@ -36,16 +34,6 @@ $autoload = function ($class){
 		require $file;
 	}
 
-	//echo $file;
-	//echo '<br />Done';
-
 };
 
 spl_autoload_register($autoload);
-
-// test function
-/*autoload1('App\\Validator');
-
-$v = new App\Validator();
-
-var_dump($v);*/

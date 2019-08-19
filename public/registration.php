@@ -7,6 +7,8 @@
     
     require __DIR__ . '/../app/atg_config.php';
 
+    use App\Validator;
+
     $title = 'ATG - Registration';
     $heading = 'Registration';
 
@@ -16,92 +18,19 @@
     // checking if form has submitted with POST request
     if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
-        // validating first name
-        if(empty($_POST['first_name'])) {
-            $errors['first_name'] = 'first name is a required field';
-        } elseif(strlen($_POST['first_name']) < 3 || strlen($_POST['first_name']) > 50) {
-            $errors['first_name'] = 'first name must be of minimum 3 characters or maximum of 50 characters';
+        $v = new Validator;
+
+        foreach ($_POST as $key => $value) {
+            $v->required($key);
         }
 
-        // validating last name
-        if(empty($_POST['last_name'])) {
-            $errors['last_name'] = 'last name is a required field';
-        } elseif(strlen($_POST['last_name']) < 3 || strlen($_POST['last_name']) > 50) {
-            $errors['last_name'] = 'last name must be of minimum 3 characters or maximum of 50 characters';
-        }
-
-        // validating street
-        if(empty($_POST['street'])) {
-            $errors['street'] = 'street is a required field';
-        } elseif(strlen($_POST['street']) < 3 || strlen($_POST['street']) > 100) {
-            $errors['street'] = 'street must be of minimum 3 characters or maximum of 100 characters';
-        }
-
-        // validating city
-        if(empty($_POST['city'])) {
-            $errors['city'] = 'city is a required field';
-        } elseif(strlen($_POST['city']) < 3 || strlen($_POST['city']) > 50) {
-            $errors['city'] = 'city must be of minimum 3 characters or maximum of 50 characters';
-        }
-
-        // validating postal code
-        if(empty($_POST['postal_code'])) {
-            $errors['postal_code'] = 'postal code is a required field';
-        } elseif(strlen($_POST['postal_code']) != 6) {
-            $errors['postal_code'] = 'postal code must be of 6 characters';
-        }
-
-        // validating province
-        if(empty($_POST['province'])) {
-            $errors['province'] = 'province is a required field';
-        } elseif(strlen($_POST['province']) < 2 || strlen($_POST['province']) > 50) {
-            $errors['province'] = 'province must be of minimum 2 characters or maximum of 50 characters';
-        }
-
-        // validating country
-        if(empty($_POST['country'])) {
-            $errors['country'] = 'country is a required field';
-        } elseif(strlen($_POST['country']) < 3 || strlen($_POST['country']) > 50) {
-            $errors['country'] = 'country must be of minimum 3 characters or maximum of 50 characters';
-        }
-
-        // validating phone
-        if(empty($_POST['phone'])) {
-            $errors['phone'] = 'phone is a required field';
-        } elseif(!filter_var($_POST['phone'], FILTER_VALIDATE_INT)) {
-            $errors['phone'] = 'phone must be in digits';
-        } elseif(strlen($_POST['phone']) != 10) {
-            $errors['phone'] = 'phone must be of 10 characters';
-        }
-
-        // validating email
-        if(empty($_POST['email'])) {
-            $errors['email'] = 'email is a required field';
-        } elseif(strlen($_POST['email']) < 8 || strlen($_POST['email']) > 100) {
-            $errors['email'] = 'email must be of minimum 8 characters or maximum of 100 characters';
-        } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $errors['email'] = 'please enter a valid email';
-        }
-
-        // validating password
-        if(empty($_POST['password'])) {
-            $errors['password'] = 'password is a required field';
-        } elseif(strlen($_POST['password']) < 8 || strlen($_POST['password']) > 20) {
-            $errors['password'] = 'password must be of minimum 8 characters or maximum of 20 characters';
-        }
-
-        // validating confirm password
-        if(empty($_POST['confirm_password'])) {
-            $errors['confirm_password'] = 'confirm password is a required field';
-        } elseif($_POST['password'] != $_POST['confirm_password']) {
-            $errors['confirm_password'] = 'password and confirm password does not match';
-        }
+        $errors = $v->getErrors();
 
         // checking if there is no errors before inserting a record
         if(empty($errors)) {
 
             // create the query
-            $query = 'INSERT INTO
+            /*$query = 'INSERT INTO
                         users
                         (first_name, last_name, street, city, postal_code, province,
                         country, phone, email, password)
@@ -139,7 +68,7 @@
                 exit;
             } else {
                 $errors[] = "There was a problem adding the record";
-            }
+            }*/
 
         } // endif
 
