@@ -30,6 +30,8 @@
             }
         }
         
+        $v->postalCode('postal_code');
+        $v->email('email');
 
         $errors = $v->getErrors();
 

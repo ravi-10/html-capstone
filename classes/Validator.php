@@ -54,7 +54,7 @@ class Validator
 
 		if(preg_match($pattern, $this->post[$field]) !== 1) {
 			$this->setError($field, "Only alphabets, apostrophe and space allowed for {$this->label($field)}");
-		}	
+		}
 	}
 
 	/**
@@ -66,6 +66,34 @@ class Validator
 	{
 		if(strlen($this->post[$field]) < 2 || strlen($this->post[$field]) > 50) {
 			$this->setError($field, "{$this->label($field)} must be of minimum 2 characters or maximum of 50 characters");
+		}
+	}
+
+	/**
+	 * Function to validate postal code
+	 * @param  String $field A form field
+	 * @return void
+	 */
+	public function postalCode($field)
+	{
+		$pattern = '/^[A-Z]\d[A-Z]\d[A-Z]\d$/i';
+
+		if(preg_match($pattern, $this->post[$field]) !== 1) {
+			$this->setError($field, "Please enter valid {$this->label($field)} eg:E8K2H7");
+		}
+	}
+
+	/**
+	 * Function to validate email
+	 * @param  String $field A form field
+	 * @return void
+	 */
+	public function email($field)
+	{
+		if(strlen($this->post[$field]) > 100) {
+			$this->setError($field, "{$this->label($field)} must be of maximum 100 characters");
+		} elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+			$this->setError($field, 'Please provide a valid email address');
 		}
 	}
 
