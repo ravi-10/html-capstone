@@ -1,7 +1,7 @@
 <?php
     /**
      * Head Include Page 
-     * last_update: 2019-08-08
+     * last_update: 2019-08-19
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
 ?><!DOCTYPE html>
@@ -38,30 +38,30 @@
     -->
     
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700%7cRoboto:400" rel="stylesheet"> <!-- including google fonts -->
-    <link rel="stylesheet" href="../public/css/style.css" type="text/css" media="screen and (min-width: 769px)" /> <!-- desktop css -->
-    <link rel="stylesheet" href="../public/css/mobile.css" type="text/css" media="screen and (max-width: 768px)" /> <!-- mobile css -->
-    <link rel="stylesheet" href="../public/css/print.css" type="text/css" media="print" /> <!-- print css -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen and (min-width: 769px)" /> <!-- desktop css -->
+    <link rel="stylesheet" href="css/mobile.css" type="text/css" media="screen and (max-width: 768px)" /> <!-- mobile css -->
+    <link rel="stylesheet" href="css/print.css" type="text/css" media="print" /> <!-- print css -->
     
-    <link rel="icon" href="../public/images/favicon.ico" /> <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="57x57" href="../public/images/apple-icon-57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="../public/images/apple-icon-72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="../public/images/apple-icon-114.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="../public/images/apple-icon-144.png" />
+    <link rel="icon" href="images/favicon.ico" /> <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144.png" />
     
     <?php
         // including unique style block for specific pages
         if($title == 'ATG - About') {
-            require 'about.inc.css';
+            require '../inc/about.inc.css';
         } elseif($title == 'ATG - Blog') {
-            require 'blog.inc.css';
+            require '../inc/blog.inc.css';
         } elseif($title == 'ATG - Contact') {
-            require 'contact.inc.css';
+            require '../inc/contact.inc.css';
         } elseif($title == 'ATG - Testimonials') {
-            require 'testimonials.inc.css';
+            require '../inc/testimonials.inc.css';
         } elseif($title == 'ATG - Tours') {
-            require 'tours.inc.css';
+            require '../inc/tours.inc.css';
         } elseif(($title == 'ATG - Registration') || ($title == 'ATG - Registration Success')) {
-            require 'registration.inc.css';
+            require '../inc/registration.inc.css';
         }
         
     ?>
@@ -78,7 +78,7 @@
         document.createElement('aside');
       </script>
       
-      <link rel="stylesheet" href="../public/css/ie.css" type="text/css" />
+      <link rel="stylesheet" href="css/ie.css" type="text/css" />
     <![endif]-->
   </head> <!-- head ends -->
 

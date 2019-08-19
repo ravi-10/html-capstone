@@ -1,9 +1,11 @@
 <?php
 	/**
      * Configuration File 
-     * last_update: 2019-08-08
+     * last_update: 2019-08-19
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
+	 
+	require __DIR__ . '/../autoloaders.php';
 
 	// Setting error display and reporting level
 	ini_set('display_errors', 1);
