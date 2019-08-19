@@ -1,12 +1,13 @@
 <?php
     /**
      * Registration Page 
-     * last_update: 2019-08-09
+     * last_update: 2019-08-19
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
     
     require __DIR__ . '/../app/atg_config.php';
 
+    // Listing class dependency with USE statements
     use App\Validator;
 
     $title = 'ATG - Registration';
@@ -18,11 +19,14 @@
     // checking if form has submitted with POST request
     if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
+        // Instantiating object of Validator class
         $v = new Validator;
 
         foreach ($_POST as $key => $value) {
+            // calling required function for all fields
             $v->required($key);
 
+            // calling general functions for specific fields
             if ($key == 'first_name' || $key == 'last_name' || $key == 'city' || 
               $key == 'province' || $key == 'country') {
                 $v->generalStringValidator($key);

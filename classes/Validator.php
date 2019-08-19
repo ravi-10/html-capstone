@@ -5,6 +5,7 @@
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */
 
+// Base namespace
 namespace App;
 
 class Validator
