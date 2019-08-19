@@ -25,7 +25,8 @@
 
             if ($key == 'first_name' || $key == 'last_name' || $key == 'city' || 
               $key == 'province' || $key == 'country') {
-                $v->stringValidator($key);
+                $v->generalStringValidator($key);
+                $v->generalLengthValidator($key);
             }
         }
         

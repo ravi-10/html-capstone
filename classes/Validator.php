@@ -44,18 +44,29 @@ class Validator
 	}
 
 	/**
-	 * FUnction to validate legal characters
+	 * Function to validate general legal characters
 	 * @param  String $field   A form field
-	 * @param  Sting $pattern  Pattern to validate legal characters
 	 * @return void
 	 */
-	public function stringValidator($field)
+	public function generalStringValidator($field)
 	{
 		$pattern = '/^([a-zA-Z\s\'])+$/';
 
 		if(preg_match($pattern, $this->post[$field]) !== 1) {
 			$this->setError($field, "Only alphabets, apostrophe and space allowed for {$this->label($field)}");
 		}	
+	}
+
+	/**
+	 * Function to validate general length
+	 * @param  String $field A form field
+	 * @return void
+	 */
+	public function generalLengthValidator($field)
+	{
+		if(strlen($this->post[$field]) < 2 || strlen($this->post[$field]) > 50) {
+			$this->setError($field, "{$this->label($field)} must be of minimum 2 characters or maximum of 50 characters");
+		}
 	}
 
 	/**
