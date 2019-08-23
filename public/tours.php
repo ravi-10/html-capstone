@@ -1,7 +1,7 @@
 <?php
     /**
      * Tours Page 
-     * last_update: 2019-08-08
+     * last_update: 2019-08-23
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
     

@@ -4,6 +4,12 @@
      * last_update: 2019-08-19
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
+    
+    // enabling php session
+    session_start();
+
+    // enabling output buffering
+    ob_start();
 	 
 	require __DIR__ . '/../autoloaders.php';
 
