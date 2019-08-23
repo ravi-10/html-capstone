@@ -15,9 +15,14 @@
       <a href="#"><img src="images/facebook-32.png" alt="facebook"></a>
     </div>
     <div id="top_links">
-      <a href="login.php">Login</a>
-      <a href="registration.php">Register</a>
       <a href="#">FAQs</a>
+      <?php if($_SESSION['logged_in']) : ?>
+        <a href="profile.php">Profile</a>
+        <a href="login.php?logout=1">Logout</a>
+      <?php else : ?>
+        <a href="login.php">Login</a>
+        <a href="registration.php">Register</a>
+      <?php endif; ?>
     </div>
   </div>
   

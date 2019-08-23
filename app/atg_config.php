@@ -10,6 +10,11 @@
 
     // enabling output buffering
     ob_start();
+
+    // if SESSION is not set, setting 'logged_in' as false by default to utilize it further
+    if(!isset($_SESSION['logged_in'])){
+    	$_SESSION['logged_in'] = false;
+    }
 	 
 	require __DIR__ . '/../autoloaders.php';
 
