@@ -13,6 +13,13 @@
     $title = 'ATG - Registration';
     $heading = 'Registration';
 
+    if($_SESSION['logged_in']) {
+        $_SESSION['flash'] = 'You are already logged in!';
+        $_SESSION['flash_class'] = 'flash-info';
+        header('Location: profile.php');
+        exit;
+    }
+
     // declaring empty array for errors
     $errors = [];
 
