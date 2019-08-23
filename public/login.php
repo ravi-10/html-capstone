@@ -13,6 +13,10 @@
     $title = 'ATG - Login';
     $heading = 'Login';
 
+    if(!empty($_GET['logout'])) {
+        logout();
+    }
+
     // declaring empty array for errors
     $errors = [];
 
@@ -81,6 +85,10 @@
           <div>
             <h1><?=esc($heading)?></h1>
           </div>
+        </div>
+
+        <div class="flash-success">
+            <?php require __DIR__ . '/../inc/flash.inc.php'; ?>
         </div>
         
         <form id="login" name="login" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>

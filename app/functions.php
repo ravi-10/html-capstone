@@ -50,3 +50,16 @@
 			return '';
 		}
 	}
+
+	/**
+	 * Function to perform logout
+	 * @return void
+	 */
+	function logout()
+	{
+		session_regenerate_id();
+        unset($_SESSION['logged_in']);
+        $_SESSION['flash'] = 'You have been successfully logged out.';
+        header('Location: login.php');
+        die;
+	}
