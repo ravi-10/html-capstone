@@ -34,8 +34,36 @@
         // checking if there is no errors before login
         if(empty($errors)) {
 
-            // login
+            $query = 'SELECT user_id, first_name, password FROM users WHERE email = :email';
 
+            $stmt = $dbh->prepare($query);
+
+            $params = array(
+                ':email' => $_POST['email']
+            );
+
+            $stmt->execute($params);
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if($user) {
+
+              if(password_verify($_POST['password'], $user['password'])) {
+                  $_SESSION['logged_in'] = true;
+                  $_SESSION['user_id'] = $user['user_id'];
+                  $_SESSION['flash'] = "Welcome Back, {$user['first_name']}! You have successfully logged in.";
+                  session_regenerate_id(true);
+                  header('Location: profile.php');
+                  die;
+              } else {
+                  unset($_SESSION['logged_in']);
+                  $errors['credentials'] = "Login credentials do not match";
+              }
+              
+            } else {
+                unset($_SESSION['logged_in']);
+                $errors['credentials'] = "Login credentials do not match";
+            }
         } // endif
 
     } // end of POST
@@ -56,6 +84,12 @@
         </div>
         
         <form id="login" name="login" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>
+          <p>
+            <?php if(!empty($errors['credentials'])) : ?>
+              <span class="error"><?=esc($errors['credentials'])?></span>
+            <?php endif; ?>
+          </p>
+
           <p>
             <label for="email">Email</label>
             <input type="email" id="email" class="form_control" name="email" placeholder="Enter your email" value="<?=clean('email')?>" />

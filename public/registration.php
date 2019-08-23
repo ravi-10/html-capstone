@@ -38,6 +38,7 @@
         $v->postalCode('postal_code');
         $v->phone('phone');
         $v->email('email');
+        $v->isEmailUnique('email');
         $v->passwordValidator('password', 'confirm_password');
 
         $errors = $v->getErrors();

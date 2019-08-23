@@ -374,6 +374,13 @@ main div#recent_blogs div#blog_read_more a{
   padding-top: 0;
   line-height: 195px;
 }
+
+main div.flash-success p{
+  text-align: center;
+  background-color: rgba(0, 85, 0, .9);
+  color: #fff;
+  padding: 5px 0;
+}
 /* main ends */
 
 /* footer starts */

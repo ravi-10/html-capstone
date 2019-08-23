@@ -125,27 +125,35 @@ class Validator
 			$this->setError($field, "{$this->label($field)} must be of maximum 100 characters");
 		} elseif(!filter_var($this->post[$field], FILTER_VALIDATE_EMAIL)) {
 			$this->setError($field, 'Please provide a valid email address');
-		} else {
-			// checking for unique email for registration
-			// using global keyword to access db handle inside a function
-			global $dbh;
+		}
+	}
 
-			$query = 'SELECT email FROM users WHERE email = :email';
+	/**
+	 * Function to validate email for being unique
+	 * @param  String  $field A form field
+	 * @return void
+	 */
+	public function isEmailUnique($field)
+	{
+		// checking for unique email for registration
+		// using global keyword to access db handle inside a function
+		global $dbh;
 
-			$stmt = $dbh->prepare($query);
+		$query = 'SELECT email FROM users WHERE email = :email';
 
-			$params = array(
-				':email' => $this->post[$field]
-			);
+		$stmt = $dbh->prepare($query);
 
-			$stmt->execute($params);
+		$params = array(
+			':email' => $this->post[$field]
+		);
 
-			$resultCount = $stmt->rowCount();
+		$stmt->execute($params);
 
-			if($resultCount > 0) {
-				// Email already exists in database
-				$this->setError($field, 'Email already exists. Please try different email.');
-			}
+		$resultCount = $stmt->rowCount();
+
+		if($resultCount > 0) {
+			// Email already exists in database
+			$this->setError($field, 'Email already exists. Please try different email.');
 		}
 	}
 
