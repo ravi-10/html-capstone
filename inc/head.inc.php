@@ -1,7 +1,7 @@
 <?php
     /**
      * Head Include Page 
-     * last_update: 2019-08-19
+     * last_update: 2019-08-23
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
 ?><!DOCTYPE html>
@@ -62,6 +62,8 @@
             require '../inc/tours.inc.css';
         } elseif(($title == 'ATG - Registration') || ($title == 'ATG - Registration Success')) {
             require '../inc/registration.inc.css';
+        } elseif(($title == 'ATG - Login')) {
+            require '../inc/login.inc.css';
         }
         
     ?>

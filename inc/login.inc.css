@@ -26,7 +26,7 @@
     text-shadow: 1px 2px 2px rgba(255,255,255,0.3);
   }
   
-  main form#registration{
+  main form#login{
     width: 650px;
     margin: 30px auto;
     box-sizing: border-box;
@@ -34,34 +34,25 @@
     box-shadow: 1px 2px 4px 2px rgba(0,0,0,.5);
   }
   
-  main form#registration label{
+  main form#login label{
     width: 170px;
     display: inline-block;
     line-height: 30px;
   }
   
-  main form#registration .form_control{
+  main form#login .form_control{
     width: 390px;
     height: 30px;
     padding: 2px 5px;
     font-family: inherit;
   }
   
-  main form#registration select.form_control{
-    width: 405px;
-    height: 40px;
-  }
-  
-  main form#registration textarea.form_control{
-    height: 70px;
-  }
-  
-  main form#registration span.required{
+  main form#login span.required{
     color: #f00;
     font-size: 1.9em;
   }
 
-  main form#registration span.error{
+  main form#login span.error{
     width: 390px;
     background: #c00;
     color: #fff;
@@ -72,11 +63,11 @@
     font-size: .85em;
   }
   
-  main form#registration p#form_buttons{
+  main form#login p#form_buttons{
     text-align: center;
   }
   
-  main form#registration p#form_buttons .button{
+  main form#login p#form_buttons .button{
     background-color: #df7900;
     color: #fff;
     border: none;
@@ -87,52 +78,22 @@
     border: 1px solid #df7900;
   }
   
-  main form#registration p#form_buttons .button:hover{
+  main form#login p#form_buttons .button:hover{
     background-color: #fff;
     color: #df7900;
     cursor: pointer;
     font-weight: 700;
   }
 
-  main form#registration p.center{
+  main form#login p.center{
     text-align: center;
   }
 
-  main form#registration p.center a,
-  main form#registration p.center a:hover,
-  main form#registration p.center a:visited,
-  main form#registration p.center a:active{
+  main form#login p.center a,
+  main form#login p.center a:hover,
+  main form#login p.center a:visited,
+  main form#login p.center a:active{
     color: #df7900;
-  }
-
-  main p.reg_success{
-    text-align: center;
-    background-color: rgba(0, 85, 0, .9);
-    color: #fff;
-    padding: 5px 0;
-  }
-
-  main ul{
-    width: 400px;
-    margin: 0 auto;
-    margin-bottom: 30px;
-  }
-
-  main ul li{
-    margin: 10px 0;
-  }
-
-  main ul li span.key{
-    display: inline-block;
-    width: 130px;
-  }
-
-  main ul li span.value{
-    display: inline-block;
-    width: 250px;
-    font-weight: 700;
-    background-color: #efefef;
-    padding: 2px 5px;
   }
   
   footer{
@@ -146,21 +107,16 @@
       min-height: auto;
     }
     
-    main form#registration{
+    main form#login{
       width: 90%;
       margin: 20px auto;   
     }
     
-    main form#registration .form_control{
+    main form#login .form_control{
       width: 91%;
     }
-    
-    main form#registration select.form_control,
-    main form#registration textarea.form_control{
-      width: 93%;
-    }
 
-    main form#registration span.error{
+    main form#login span.error{
       width: 91%;
       margin-left: 0;
     }

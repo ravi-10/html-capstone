@@ -1,7 +1,7 @@
 <?php
     /**
      * Registration Page 
-     * last_update: 2019-08-19
+     * last_update: 2019-08-23
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
     
@@ -208,6 +208,10 @@
           <p id="form_buttons">
             <input type="submit" class="button" value="Register" />
             <input type="reset" class="button" />
+          </p>
+
+          <p class="center">
+            Already have an account? <a href="login.php">Login Now!</a>
           </p>
         </form>
         

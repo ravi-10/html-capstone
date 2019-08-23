@@ -1,7 +1,7 @@
 <?php
     /**
      * Header Include Page 
-     * last_update: 2019-08-19
+     * last_update: 2019-08-23
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
 ?>
@@ -15,7 +15,7 @@
       <a href="#"><img src="images/facebook-32.png" alt="facebook"></a>
     </div>
     <div id="top_links">
-      <a href="#">Login</a>
+      <a href="login.php">Login</a>
       <a href="registration.php">Register</a>
       <a href="#">FAQs</a>
     </div>
