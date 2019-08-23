@@ -56,6 +56,7 @@
                   $_SESSION['logged_in'] = true;
                   $_SESSION['user_id'] = $user['user_id'];
                   $_SESSION['flash'] = "Welcome Back, {$user['first_name']}! You have successfully logged in.";
+                  $_SESSION['flash_class'] = 'flash-success';
                   session_regenerate_id(true);
                   header('Location: profile.php');
                   die;
@@ -87,7 +88,7 @@
           </div>
         </div>
 
-        <div class="flash-success">
+        <div class="flash <?=$_SESSION['flash_class']?>">
             <?php require __DIR__ . '/../inc/flash.inc.php'; ?>
         </div>
         

@@ -392,11 +392,26 @@ main div#recent_blogs div#blog_read_more a{
   line-height: 195px;
 }
 
-main div.flash-success p{
+main div.flash p{
   text-align: center;
-  background-color: rgba(0, 85, 0, .9);
   color: #fff;
   padding: 5px 0;
+}
+
+main div.flash-success p{
+  background-color: rgba(0, 85, 0, .9);
+}
+
+main div.flash-danger p{
+  background-color: rgba(204, 0, 0, .9);
+}
+
+main div.flash-info p{
+  background-color: rgba(49, 112, 143, .9);
+}
+
+main div.flash-alert p{
+  background-color: rgba(223, 121, 0, .9);
 }
 /* main ends */
 

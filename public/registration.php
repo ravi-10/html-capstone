@@ -81,7 +81,12 @@
             // if insert is successful
             if($id) {
                 // redirect to new page (PRG: Post Redirect Get)
-                header('Location: registration_success.php?user_id=' . $id);
+                $_SESSION['logged_in'] = true;
+                $_SESSION['user_id'] = $id;
+                $_SESSION['flash'] = "Welcome, {$_POST['first_name']}! Thank you for registering.";
+                $_SESSION['flash_class'] = 'flash-success';
+                session_regenerate_id(true);
+                header('Location: profile.php');
                 exit;
             } else {
                 $errors[] = "There was a problem adding the record";

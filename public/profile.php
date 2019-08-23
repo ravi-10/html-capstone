@@ -28,6 +28,8 @@
         // fetch the result
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     } else {
+        $_SESSION['flash'] = 'You must be logged in to view profile page.';
+        $_SESSION['flash_class'] = 'flash-info';
         header('Location: login.php');
         exit;
     }
@@ -48,7 +50,7 @@
           </div>
         </div>
 
-        <div class="flash-success">
+        <div class="flash <?=$_SESSION['flash_class']?>">
             <?php require __DIR__ . '/../inc/flash.inc.php'; ?>
         </div>
 
