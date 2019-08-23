@@ -1,7 +1,7 @@
 <?php
 /**
  * Validator Class Page 
- * last_update: 2019-08-19
+ * last_update: 2019-08-23
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */
 
@@ -123,8 +123,29 @@ class Validator
 	{
 		if(strlen($this->post[$field]) > 100) {
 			$this->setError($field, "{$this->label($field)} must be of maximum 100 characters");
-		} elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+		} elseif(!filter_var($this->post[$field], FILTER_VALIDATE_EMAIL)) {
 			$this->setError($field, 'Please provide a valid email address');
+		} else {
+			// checking for unique email for registration
+			// using global keyword to access db handle inside a function
+			global $dbh;
+
+			$query = 'SELECT email FROM users WHERE email = :email';
+
+			$stmt = $dbh->prepare($query);
+
+			$params = array(
+				':email' => $this->post[$field]
+			);
+
+			$stmt->execute($params);
+
+			$resultCount = $stmt->rowCount();
+
+			if($resultCount > 0) {
+				// Email already exists in database
+				$this->setError($field, 'Email already exists. Please try different email.');
+			}
 		}
 	}
 
