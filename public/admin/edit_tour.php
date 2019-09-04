@@ -21,6 +21,14 @@
 
     $categories = $obj_category->all();
 
+    if('POST' == $_SERVER['REQUEST_METHOD']) {
+        $affected_rows = $obj_tour->update($_POST);
+        if($affected_rows>0) {
+            header('Location: tours.php');
+            die;
+        }
+    }
+
     // including head file
     require '../../inc/admin_head.inc.php';
 ?>
@@ -37,7 +45,7 @@
                         <div class="spur-card-title"> Tour Form </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="post" action="" novalidate>
                             <div class="form-group">
                                 <input type="hidden" class="form-control" id="tour_id" name="tour_id" value="<?=esc_attr($tour['tour_id'])?>">
                             </div>
@@ -67,6 +75,10 @@
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea class="form-control" id="description" name="description" rows="3"><?=esc($tour['description'])?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" class="form-control" id="country" name="country" placeholder="Country" value="<?=esc_attr($tour['country'])?>">
                             </div>
                             <div class="form-group">
                                 <label for="from_date">From Date</label>
