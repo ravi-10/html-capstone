@@ -71,7 +71,7 @@
                                             <span class="badge badge-dark"><?=esc($tour['max_allowed_bookings'])?></span>
                                         </td>
                                         <td>
-                                            <?php if($tour['is_published'] = true): ?>
+                                            <?php if($tour['is_published'] == true): ?>
                                                 <span class="badge badge-success">Published</span>
                                             <?php else: ?>
                                                 <span class="badge badge-warning">Not Published</span>
