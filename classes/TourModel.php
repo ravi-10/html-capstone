@@ -1,4 +1,9 @@
 <?php
+/**
+ * Tour Model Class Page 
+ * last_update: 2019-09-04
+ * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
+ */
 
 namespace App;
 
@@ -17,7 +22,34 @@ class TourModel extends Model
 	 */
 	protected $key = 'tour_id';
 
+	/**
+	 * Return all tours from tours table
+	 * @return Mixed array
+	 */
+	public function all()
+	{
+		$query = "SELECT
+					tours.*,
+					categories.name as category
+					FROM
+					{$this->table}
+					JOIN
+					categories USING(category_id)
+					ORDER BY
+					title";
 
+		$stmt = static::$dbh->prepare($query);
+
+		$stmt->execute();
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	/**
+	 * Save a tour in database table and returns inserted id
+	 * @param  Array $tour_array form fields
+	 * @return Integer             inserted id
+	 */
 	public function saveTour($tour_array)
 	{
 		$dbh = static::$dbh;

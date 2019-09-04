@@ -5,6 +5,8 @@
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
     
+    use App\Model;
+    
     // enabling php session
     session_start();
 
@@ -32,6 +34,9 @@
 	$dbh = new PDO(DB_DSN, DB_USER, DB_PASS);
 	// Setting the $dbh to display errors if there are any
 	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	// Setting dbh to model via init method of function
+	Model::init($dbh);
 
 	// including functions file
 	require 'functions.php';
