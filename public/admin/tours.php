@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col">
                 <div class="card spur-card">
-                    <div class="card-header">
+                    <div class="card-header bg-secondary text-white">
                         <div class="spur-card-icon">
                             <i class="fas fa-table"></i>
                         </div>
