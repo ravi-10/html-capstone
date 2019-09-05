@@ -92,7 +92,7 @@
                                             <a href="edit_tour.php?tour_id=<?=esc_attr($tour['tour_id'])?>">
                                                 <button type="button" class="btn btn-primary btn-sm mb-1">Edit</button>
                                             </a>
-                                            <a href="tours.php?delete_tour=<?=esc_attr($tour['tour_id'])?>">
+                                            <a href="#">
                                                 <button type="button" class="btn btn-danger btn-sm mb-1">Delete</button>
                                             </a>
                                         </td>

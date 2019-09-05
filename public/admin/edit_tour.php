@@ -11,6 +11,13 @@
     use App\CategoryModel;
     use App\Validator;
 
+    if(!isset($_GET['tour_id']) || empty($_GET['tour_id'])){
+        $_SESSION['flash'] = "Please select a tour to edit";
+        $_SESSION['flash_class'] = 'alert-info';
+        header('Location: tours.php');
+        die;
+    }
+
     $title = 'ATG - Admin Edit Tour';
     $heading = 'Edit Tour';
 

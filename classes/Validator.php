@@ -1,7 +1,7 @@
 <?php
 /**
  * Validator Class Page 
- * last_update: 2019-08-23
+ * last_update: 2019-09-04
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */
 
