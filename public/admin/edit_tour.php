@@ -53,6 +53,8 @@
         if(empty($errors)) {
             $affected_rows = $obj_tour->update($_POST);
             if($affected_rows>0) {
+                $_SESSION['flash'] = "Tour updated successfully";
+                $_SESSION['flash_class'] = 'alert-success';
                 header('Location: tours.php');
                 die;
             }

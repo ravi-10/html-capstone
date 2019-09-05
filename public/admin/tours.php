@@ -17,13 +17,19 @@
 
     if('POST' == $_SERVER['REQUEST_METHOD']){
         $tours = $obj_tour->search($_POST['search']);
-
+        if(count($tours)>0){
+            $_SESSION['flash'] = count($tours) . " Tour(s) Found";
+            $_SESSION['flash_class'] = 'alert-success';
+        } else {
+            $_SESSION['flash'] = "No Tour(s) Found";
+            $_SESSION['flash_class'] = 'alert-info';
+        }
     }
 
     // including head file
     require '../../inc/admin_head.inc.php';
 ?>
-
+        <?php require __DIR__ . '/../../inc/admin_flash.inc.php'; ?>
         <h1 class="dash-title"><?=esc($heading)?></h1>
 
         <div class="row">
