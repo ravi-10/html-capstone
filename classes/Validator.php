@@ -177,6 +177,96 @@ class Validator
 	}
 
 	/**
+	 * Function to valid date format
+	 * @param  String $field date
+	 * @return void
+	 */
+	public function dateFormat($field)
+	{
+		// checks for YYYY-mm-dd format
+		// first capture group: ([12]\d{3})
+		// 		checks if year start with 1 or 2 and check for 3 more digits after to 			make a 4 digit year
+		// second capture group: (0[1-9]|1[0-2])
+		// 		checks if month start with 0 or 1 and allows values between 01 to 12
+		// third capture group: (0[1-9]|[12]\d|3[01])
+		// 		checks if date starts with 0,1,2 or 3 and allows values between 01 to 31
+		$pattern = '/^(([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/';
+
+		if(preg_match($pattern, $this->post[$field]) !== 1) {
+			$this->setError($field, 'Please enter a valid date in following structure eg: 2019-09-04');
+		}
+	}
+
+	/**
+	 * Function to validate that date is not from past
+	 * @param  String $field date
+	 * @return void
+	 */
+	public function dateNotFromPast($field)
+	{
+		// strtotime() converts date into the number of seconds since January 1 1970
+		// time() returns the current time in the number of seconds since January 1 1970
+		$entered_date = strtotime($this->post[$field]);
+		$current_date = time();
+		if ($entered_date < $current_date) {
+		    $this->setError($field, 'Date should not be from past');
+		}
+	}
+
+	/**
+	 * Function to validate that to date is not less than from date
+	 * @param  String $from from date
+	 * @param  String $to   to date
+	 * @return void
+	 */
+	public function toDateNotLessThanFromDate($from, $to)
+	{
+		$from_date = strtotime($this->post[$from]);
+		$to_date = strtotime($this->post[$to]);
+		if ($to_date < $from_date) {
+		    $this->setError($to, 'To date should not be less than from date');
+		}
+	}
+
+	/**
+	 * Function to validate tour price
+	 * @param  String $field price field
+	 * @return void
+	 */
+	public function price($field)
+	{
+		$pattern = '/^((\d{1,3})(\.\d{1,2})?)$/';
+
+		if(preg_match($pattern, $this->post[$field]) !== 1) {
+			$this->setError($field, 'Price should be in following format eg: 149 or 149.99 and not more than total of 5 digits');
+		}
+	}
+
+	/**
+	 * Function to validate country length
+	 * @param  String $field A form field
+	 * @return void
+	 */
+	public function countryLength($field)
+	{
+		if(strlen($this->post[$field]) < 2 || strlen($this->post[$field]) > 20) {
+			$this->setError($field, "{$this->label($field)} must be of minimum 2 characters or maximum of 20 characters");
+		}
+	}
+
+	/**
+	 * Function to validate fields which has varchar 255
+	 * @param  String $field A form field
+	 * @return void
+	 */
+	public function lengthForFullVarchar($field)
+	{
+		if(strlen($this->post[$field]) < 2 || strlen($this->post[$field]) > 255) {
+			$this->setError($field, "{$this->label($field)} must be of minimum 2 characters or maximum of 255 characters");
+		}
+	}
+
+	/**
 	 * Get validation errors
 	 * @return Array
 	 */
