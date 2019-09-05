@@ -15,6 +15,11 @@
     $obj_tour = new TourModel;
     $tours = $obj_tour->all();
 
+    if('POST' == $_SERVER['REQUEST_METHOD']){
+        $tours = $obj_tour->search($_POST['search']);
+
+    }
+
     // including head file
     require '../../inc/admin_head.inc.php';
 ?>

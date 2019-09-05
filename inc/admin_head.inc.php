@@ -61,10 +61,12 @@
                     <a href="#" class="menu-toggle">
                         <i class="fas fa-bars"></i>
                     </a>
-                    <form class="searchbox" action="">
+                    <?php if(empty($_GET)): ?>
+                    <form class="searchbox" method="post" action="<?=esc($_SERVER['PHP_SELF'])?>">
                         <button type="submit" class="searchbox-submit"> <i class="fas fa-search"></i> </button>
-                        <input type="text" class="searchbox-input" placeholder="type to search">
+                        <input type="text" class="searchbox-input" placeholder="type to search from title" name="search">
                     </form>
+                    <?php endif; ?>
                     <div class="tools">
                         <div class="dropdown tools-item">
                             <a href="#" class="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

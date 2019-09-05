@@ -139,4 +139,35 @@ class TourModel extends Model
 		return $stmt->rowCount();
 	}
 
+	/**
+	 * Returns all searched tours
+	 * @param  String $keywords search keyword
+	 * @return Array           tours
+	 */
+	public function search($keywords)
+	{
+		$keywords = "%$keywords%";
+		$query = "SELECT
+					tours.*,
+					categories.name as category
+					FROM
+					{$this->table}
+					JOIN
+					categories USING(category_id)
+					WHERE
+					title LIKE :title
+					ORDER BY
+					title";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$params = array(
+			':title' => $keywords
+		);
+
+		$stmt->execute($params);
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
 }
