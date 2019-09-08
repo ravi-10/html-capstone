@@ -8,6 +8,7 @@
     require __DIR__ . '/../app/atg_config.php';
 
     use App\TourModel;
+    use App\ItinerariesModel;
 
     $title = 'ATG - Tour Details';
 
@@ -19,8 +20,12 @@
     }
 
     $heading = 'Tour Details';
+
     $obj_tour = new TourModel;
     $single_tour = $obj_tour->one($_GET['tour_id']);
+
+    $obj_itineraries = new ItinerariesModel;
+    $tour_itineraries = $obj_itineraries->tourItineraries($single_tour['tour_id']);
 
     // including head file
     require '../inc/head.inc.php';
@@ -96,9 +101,15 @@
               </p>
               
               <h3>Itineraries</h3>
-              <p>
-                Iternaries description
-              </p>
+              <ul>
+                <?php foreach ($tour_itineraries as $itinerary) : ?>
+                  <li>
+                    <strong><?=esc($itinerary['name'])?>: </strong>
+                    <span><?=esc($itinerary['description'])?></span>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
+              
             </div>
           </div>
         </div>        
