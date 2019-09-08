@@ -13,7 +13,7 @@
     $heading = 'Tours';
 
     $obj_tour = new TourModel;
-    $tours = $obj_tour->all('title');
+    $tours = $obj_tour->all('title', 'backend');
 
     if('POST' == $_SERVER['REQUEST_METHOD']){
         $tours = $obj_tour->search($_POST['search']);

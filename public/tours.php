@@ -13,7 +13,7 @@
     $heading = 'Tours';
 
     $obj_tour = new TourModel;
-    $tours = $obj_tour->all('from_date');
+    $tours = $obj_tour->all('from_date', 'frontend');
 
     // including head file
     require '../inc/head.inc.php';

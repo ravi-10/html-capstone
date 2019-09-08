@@ -27,8 +27,15 @@ class TourModel extends Model
 	 * @param  Array $tour_array form fields
 	 * @return Mixed array
 	 */
-	public function all($order_by)
+	public function all($order_by, $for)
 	{
+		$condition = "";
+
+		if($for == 'frontend'){
+			$current_date = date('Y-m-d');
+			$condition = " WHERE is_published = true and booking_ends >= '$current_date' ";
+		}
+
 		$query = "SELECT
 					tours.*,
 					categories.name as category
@@ -36,8 +43,11 @@ class TourModel extends Model
 					{$this->table}
 					JOIN
 					categories USING(category_id)
+					$condition
 					ORDER BY
 					$order_by";
+
+					//echo $query; die;
 
 		$stmt = static::$dbh->prepare($query);
 

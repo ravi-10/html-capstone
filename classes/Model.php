@@ -27,7 +27,7 @@ class Model
 	 * Return all results from Model table
 	 * @return Mixed array or bool
 	 */
-	public function all($order_by)
+	public function all($order_by, $for)
 	{
 		$query = "SELECT * FROM {$this->table} ORDER BY $order_by";
 
