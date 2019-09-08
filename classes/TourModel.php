@@ -23,10 +23,11 @@ class TourModel extends Model
 	protected $key = 'tour_id';
 
 	/**
-	 * Return all tours from tours table
+	 * Return all tours from tours table ordered by needed parameter
+	 * @param  Array $tour_array form fields
 	 * @return Mixed array
 	 */
-	public function all()
+	public function all($order_by)
 	{
 		$query = "SELECT
 					tours.*,
@@ -36,7 +37,7 @@ class TourModel extends Model
 					JOIN
 					categories USING(category_id)
 					ORDER BY
-					title";
+					$order_by";
 
 		$stmt = static::$dbh->prepare($query);
 

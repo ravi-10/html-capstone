@@ -27,9 +27,9 @@ class Model
 	 * Return all results from Model table
 	 * @return Mixed array or bool
 	 */
-	public function all()
+	public function all($order_by)
 	{
-		$query = "SELECT * FROM {$this->table}";
+		$query = "SELECT * FROM {$this->table} ORDER BY $order_by";
 
 		$stmt = static::$dbh->prepare($query);
 

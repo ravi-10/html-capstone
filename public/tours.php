@@ -7,8 +7,13 @@
     
     require __DIR__ . '/../app/atg_config.php';
 
+    use App\TourModel;
+
     $title = 'ATG - Tours';
     $heading = 'Tours';
+
+    $obj_tour = new TourModel;
+    $tours = $obj_tour->all('from_date');
 
     // including head file
     require '../inc/head.inc.php';
@@ -24,84 +29,59 @@
             <h1><?=esc($heading)?></h1>
           </div>
         </div>
-        
-        <div class="tour_container">
-          <div class="tour_box left">
-            <div class="img">
-              <img src="images/france.jpg" alt="france">
-              <span class="rate">$5,000</span>
-              <span class="more"><a href="#">More Info..</a></span>
-            </div>
-            <div class="description">
-              <h2>France</h2>
-              <p>April 20 - April 30</p>
-              <ul>
-                <li>Visit the city</li>
-                <li>Try local cuisine</li>
-                <li>Know history of the city</li>
-                <li>Visit museums</li>
-              </ul>
-            </div>
-          </div>
 
-          <div class="tour_box right">
-            <div class="img">
-              <img src="images/berlin.jpg" alt="berlin">
-              <span class="rate">$4,500</span>
-              <span class="more"><a href="#">More Info..</a></span>
-            </div>
-            <div class="description">
-              <h2>Berlin</h2>
-              <p>May 05 - May 11</p>
-              <ul>
-                <li>Visit the city</li>
-                <li>Try local cuisine</li>
-                <li>Know history of the city</li>
-                <li>Visit museums</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <?php
+          $counter = 0;
+          $css_class_align = 'left';
         
-        <div class="tour_container">
-          <div class="tour_box left">
-            <div class="img">
-              <img src="images/spain.jpg" alt="spain">
-              <span class="rate">$5,200</span>
-              <span class="more"><a href="#">More Info..</a></span>
-            </div>
-            <div class="description">
-              <h2>Spain</h2>
-              <p>May 22 - May 28</p>
-              <ul>
-                <li>Visit the city</li>
-                <li>Try local cuisine</li>
-                <li>Know history of the city</li>
-                <li>Visit museums</li>
-              </ul>
-            </div>
-          </div>
+          foreach ($tours as $tour) :
+            $counter++;
+            if($counter%2 == 1) {
+              $css_class_align = 'left'; // class left for odd item
+              echo '<div class="tour_container">'; // open tour container at every odd tour item
+            } else {
+              $css_class_align = 'right'; // class right for even item
+            }
+        ?>
+            <div class="tour_box <?=esc_attr($css_class_align)?>">
+              <div class="img">
+                <img src="images/uploads/tours/thumbnail/<?=esc_attr($tour['thumbnail_image'])?>" alt="<?=esc_attr($tour['thumbnail_image'])?>">
+                <span class="rate">
+                  <?php
+                    $price = '$ ' . $tour['price'];
+                    echo esc($price);
+                  ?>
+                </span>
+                <span class="more"><a href="tour_details.php?tour_id=<?=esc_attr($tour['tour_id'])?>">More Info..</a></span>
+              </div>
+              <div class="description">
+                <h2><?=esc($tour['country'])?></h2>
+                <p>
+                  <?php
+                      $formatted_from_date = date('F d, Y', strtotime($tour['from_date']));
+                      $formatted_to_date = date('F d, Y', strtotime($tour['to_date']));
 
-          <div class="tour_box right">
-            <div class="img">
-              <img src="images/venice.jpg" alt="venice">
-              <span class="rate">$6,500</span>
-              <span class="more"><a href="#">More Info..</a></span>
+                      $duration = $formatted_from_date . ' - ' . $formatted_to_date;
+                      echo esc($duration);
+                  ?>
+                </p>
+                <br/>
+                <p><?=esc(mb_substr($tour['description'], 0, 100, 'UTF-8'))?></p>
+                <br/>
+              </div>
             </div>
-            <div class="description">
-              <h2>Venice</h2>
-              <p>June 12 - June 23</p>
-              <ul>
-                <li>Visit the city</li>
-                <li>Try local cuisine</li>
-                <li>Know history of the city</li>
-                <li>Visit museums</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <a href="#" id="link_more_tours">Get More Tours</a>
+          
+        <?php
+          // close tour container at every even tour item, also close if last item is odd
+          if($counter%2 == 0) {
+              echo '</div>'; // close tour container
+            } else {
+              if($counter == count($tours)){
+                echo '</div>';
+              } 
+            }
+          endforeach;
+        ?>
         
       </main>
       
