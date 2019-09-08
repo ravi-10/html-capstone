@@ -14,7 +14,14 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
         <link rel="stylesheet" href="css/spur.css">
         <link rel="stylesheet" href="css/admin.css">
+
         <title><?=esc($title)?></title>
+
+        <link rel="icon" href="../images/favicon.ico" /> <!-- favicon -->
+        <link rel="apple-touch-icon" sizes="57x57" href="../images/apple-icon-57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-icon-72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-icon-114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="../images/apple-icon-144.png" />
 
         <!--
     

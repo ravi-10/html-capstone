@@ -16,6 +16,9 @@ class HomeModel extends Model
 	 */
 	public function upcomingTours()
 	{
+		$current_date = date('Y-m-d');
+		$condition = " WHERE is_published = true and booking_ends >= '$current_date' ";
+
 		$query = "SELECT
 					tours.*,
 					categories.name as category
@@ -23,6 +26,7 @@ class HomeModel extends Model
 					tours
 					JOIN
 					categories USING(category_id)
+					$condition
 					ORDER BY
 					from_date
 					LIMIT 3";

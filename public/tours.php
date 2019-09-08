@@ -30,6 +30,10 @@
           </div>
         </div>
 
+        <div class="flash <?=$_SESSION['flash_class']?>">
+            <?php require __DIR__ . '/../inc/flash.inc.php'; ?>
+        </div>
+
         <?php
           $counter = 0;
           $css_class_align = 'left';
@@ -52,7 +56,7 @@
                     echo esc($price);
                   ?>
                 </span>
-                <span class="more"><a href="tour_details.php?tour_id=<?=esc_attr($tour['tour_id'])?>">More Info..</a></span>
+                <span class="more"><a href="single_tour.php?tour_id=<?=esc_attr($tour['tour_id'])?>">More Info..</a></span>
               </div>
               <div class="description">
                 <h2><?=esc($tour['country'])?></h2>

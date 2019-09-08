@@ -23,8 +23,9 @@ class TourModel extends Model
 	protected $key = 'tour_id';
 
 	/**
-	 * Return all tours from tours table ordered by needed parameter
-	 * @param  Array $tour_array form fields
+	 * Return all tours from tours table by needed parameters
+	 * @param String $order_by column field to order tours
+	 * @param String $for 'backend' 0r 'frontend' to create specific query
 	 * @return Mixed array
 	 */
 	public function all($order_by, $for)
@@ -47,13 +48,37 @@ class TourModel extends Model
 					ORDER BY
 					$order_by";
 
-					//echo $query; die;
-
 		$stmt = static::$dbh->prepare($query);
 
 		$stmt->execute();
 
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	/**
+	 * Return one result from tour table
+	 * @param  INT $id tour_id
+	 * @return Array of tour data
+	 */
+	public function one($id)
+	{
+		$query = "SELECT
+					tours.*,
+					categories.name as category
+					FROM
+					{$this->table}
+					JOIN
+					categories USING(category_id)
+					WHERE
+					{$this->key} = :id";
+
+		$params = array(':id' => $id);
+
+		$stmt = static::$dbh->prepare($query);
+
+		$stmt->execute($params);
+
+		return $stmt->fetch(\PDO::FETCH_ASSOC);	
 	}
 
 	/**

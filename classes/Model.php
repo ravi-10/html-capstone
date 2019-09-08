@@ -24,8 +24,10 @@ class Model
 	}
 
 	/**
-	 * Return all results from Model table
-	 * @return Mixed array or bool
+	 * Return all tours from tours table by needed parameters
+	 * @param String $order_by column field to order tours
+	 * @param String $for 'backend' 0r 'frontend' to create specific query
+	 * @return Mixed array
 	 */
 	public function all($order_by, $for)
 	{

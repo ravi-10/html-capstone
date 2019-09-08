@@ -1,0 +1,210 @@
+<style>
+  main{
+    float: left;
+  }
+  
+  main div#hero img{
+    width: 960px;
+    //height: 393px;
+    height: 150px;
+    display: inline-block;
+  }
+  
+  main div#hero div{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 4px;
+    left: 0;
+    background-color: rgba(223,121,0,0.52);
+  }
+  
+  main div#hero div h1{
+    margin: 0;
+    text-align: center;
+    //margin-top: 22%;
+    margin-top: 9.5%;
+    color: #fff;
+    text-shadow: 1px 2px 2px rgba(255,255,255,0.3);
+  }
+  
+  main div.tour_container{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 20px;
+  }
+  
+  main div.tour_container .left{
+    float: left;
+  }
+  
+  main div.tour_container .right{
+    float: right;
+  }
+  
+  main div.tour_box{
+    //width: 450px;
+    //display: inline-block;
+    text-align: center;
+    //border-bottom: 1px solid #df7900;
+    //margin-bottom: 30px;
+  }
+  
+  main div.tour_box div.img{
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    //width: 400px;
+    //height: 200px;
+    //display: inline-block;
+  }
+  
+  main div.tour_box div.img img{
+    width: 600px;
+  }
+  
+  main div.tour_box div.img span.rate{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    padding: 7px 15px;
+    background-color: rgba(39,142,189,.9);
+    color: #fff;
+  }
+  
+  main div.tour_box div.img span.more{
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    right: 0;
+    text-align: center;
+    background-color: rgba(223,121,0,0.9);
+  }
+  
+  main div.tour_box div.img span.more a{
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+  }
+  
+  main div.tour_box div.description h2{
+    margin: 0;
+    color: #df7900;
+    padding-top: 10px;
+  }
+  
+  main div.tour_box div.description p{
+    margin: 0;
+    padding-top: 5px;
+  }
+  
+  main div.tour_box div.description ul{
+    display: inline-block;
+  }
+  
+  main div.tour_box div.description ul li{
+    text-align: left;
+    line-height: 24px;
+  }
+  
+  footer{
+    clear: both;
+  }
+  
+  @media screen and (max-width: 768px){
+    main div#hero img {
+      max-width: 100%;
+      height: auto;
+      min-height: auto;
+    }
+    
+    main div.tour_container {
+      padding: 0;
+    }
+    
+    main div.tour_box {
+      width: 90%;
+      margin: 0 5%;
+      margin-bottom: 30px;
+    }
+    
+    main div.tour_box:first-child {
+      margin-top: 20px;
+    }
+  }
+  
+  @media screen and (min-width: 769px) and (max-width: 850px){
+    main div#hero img {
+      max-width: 100%;
+      height: auto;
+      min-height: auto;
+    }
+    
+    main div.tour_container {
+      padding: 0;
+    }
+    
+    main div.tour_box {
+      width: 90%;
+      margin: 0 5%;
+      margin-bottom: 30px;
+    }
+    
+    main div.tour_box:first-child {
+      margin-top: 20px;
+    }
+  }
+  
+  @media screen and (min-width: 851px) and (max-width: 980px){
+    main div.tour_container {
+      padding: 15px 0;
+    }
+    
+    main div.tour_box {
+      width: 50%;
+    }
+  }
+  
+  p.justify{
+    text-align: justify;
+    padding: 20px 70px;
+    line-height: 28px;
+  }
+  
+  p.warn{
+    background-color: #c33;
+    color: #fff;
+    padding: 5px 0;
+    width: 600px;
+    margin: 10px auto;
+  }
+  
+  span#included{
+    display: inline-block;
+    float: left;
+    margin-left: 150px;
+  }
+  
+  span#sites{
+    display: inline-block;
+    float: right;
+    margin-right: 150px;
+  }
+  
+  button#book_now{
+    border: none;
+    width: 400px;
+    height: 40px;
+    font-size: 1.4em;
+    background-color: #df7900;
+    color: #fff;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+  
+  span.small{ 
+    font-size: 0.75em;
+  }
+</style>

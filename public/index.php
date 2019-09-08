@@ -56,7 +56,7 @@
                 <p>
                   <?=esc($tour['description'])?>
                 </p>
-                <a href="tour_details.php?tour_id=<?=esc_attr($tour['tour_id'])?>">Read More</a>
+                <a href="single_tour.php?tour_id=<?=esc_attr($tour['tour_id'])?>">Read More</a>
               </div>
             </div>
 
