@@ -7,7 +7,12 @@
     
     require __DIR__ . '/../app/atg_config.php';
 
+    use App\HomeModel;
+
     $title = 'Around The Globe';
+
+    $obj_home = new HomeModel;
+    $upcoming_tours = $obj_home->upcomingTours();
 
     // including head file
     require '../inc/head.inc.php';
@@ -28,53 +33,34 @@
         
         <div id="upcoming_tours">
           <h2>Upcoming Tours</h2>
-          <div class="tour">
-            <div class="title">
-              <h3>Amsterdam</h3>
-              <span>April 20 - April 27</span>
+
+          <?php foreach ($upcoming_tours as $tour) : ?>
+
+            <div class="tour">
+              <div class="title">
+                <h3><?=esc($tour['country'])?></h3>
+                <span>
+                  <?php
+                      $formatted_from_date = date('F d, Y', strtotime($tour['from_date']));
+                      $formatted_to_date = date('F d, Y', strtotime($tour['to_date']));
+
+                      $duration = $formatted_from_date . ' - ' . $formatted_to_date;
+                      echo esc($duration);
+                  ?>    
+                </span>
+              </div>
+              <div class="tour_image">
+                <img src="images/uploads/tours/thumbnail/<?=esc_attr($tour['thumbnail_image'])?>" alt="esc_attr($tour['thumbnail_image'])?>">
+              </div>
+              <div class="description">
+                <p>
+                  <?=esc($tour['description'])?>
+                </p>
+                <a href="tour_details.php?tour_id=<?=esc_attr($tour['tour_id'])?>">Read More</a>
+              </div>
             </div>
-            <div class="tour_image">
-              <img src="images/amsterdam.jpg" alt="amsterdam">
-            </div>
-            <div class="description">
-              <p>
-                Donec vel nisi ut libero hendrerit facilisis. Etiam lobortis lacus vel pretium rhoncus. In imperdiet efficitur purus, id libero varius lacus vel eros varius vel.
-              </p>
-              <a href="#">Read More</a>
-            </div>
-          </div>
-          
-          <div class="tour">
-            <div class="title">
-              <h3>Ibiza</h3>
-              <span>May 12 - May 17</span>
-            </div>
-            <div class="tour_image">
-              <img src="images/ibiza.jpg" alt="ibiza">
-            </div>
-            <div class="description">
-              <p>
-                Phasellus laoreet fermentum lectus, vitae ultricies ante malesuada at. Proin mattis consequat gravida. Nulla eleifend mattis arcu vel pellentesque.
-              </p>
-              <a href="#">Read More</a>
-            </div>
-          </div>
-          
-          <div class="tour">
-            <div class="title">
-              <h3>Bali</h3>
-              <span>June 15 - June 23</span>
-            </div>
-            <div class="tour_image">
-              <img src="images/bali.jpg" alt="bali">
-            </div>
-            <div class="description">
-              <p>
-                Aliquam sagittis ac felis pretium vestibulum. In id mauris vitae libero bibendum sagittis. Pellentesque vel neque a purus tincidunt tincidunt.
-              </p>
-              <a href="#">Read More</a>
-            </div>
-          </div>
+
+          <?php endforeach; ?>
         </div>
         
         <div id="recent_blogs">
