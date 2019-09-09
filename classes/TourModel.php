@@ -214,6 +214,8 @@ class TourModel extends Model
 
 	/**
 	 * Returns all searched tours
+	 * @param String $order_by column field to order tours
+	 * @param String $for 'backend' or 'frontend' to create specific query
 	 * @param  String $keywords search keyword
 	 * @return Array           tours
 	 */
@@ -221,11 +223,13 @@ class TourModel extends Model
 	{
 		$keywords = "%$keywords%";
 		$condition = '';
+		$order = 'ASC';
 
 		if($for == 'frontend'){
 			$current_date = date('Y-m-d');
 			$condition = " WHERE is_published = true AND booking_ends >= '$current_date'
 							AND title LIKE :title ";
+			$order = 'DESC';
 		}
 		
 		$query = "SELECT
@@ -237,7 +241,8 @@ class TourModel extends Model
 					categories USING(category_id)
 					$condition
 					ORDER BY
-					title";
+					$order_by
+					$order";
 
 		$stmt = static::$dbh->prepare($query);
 

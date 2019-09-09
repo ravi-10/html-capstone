@@ -22,6 +22,13 @@
         
         if(!empty($_POST['search'])){
             $tours = $obj_tour->search('from_date', 'frontend', $_POST['search']);
+            if(count($tours) > 0){
+                $_SESSION['flash'] = count($tours) .' tour(s) found';
+                $_SESSION['flash_class'] = 'flash-success';
+            } else {
+                $_SESSION['flash'] = 'No tour found. Please try again.';
+                $_SESSION['flash_class'] = 'flash-info';
+            }
         } else {
             $_SESSION['flash'] = "Please type something to search a tour by title";
             $_SESSION['flash_class'] = 'flash-info';
@@ -136,11 +143,17 @@
               }
             endforeach;
           else :
+            if(empty($_POST['search'])) :
         ?>
+
             <div class="no_data">
               <p>There is no tour available</p>
             </div>
-        <?php endif; ?>
+
+      <?php
+            endif;
+          endif; 
+      ?>
         
       </main>
       

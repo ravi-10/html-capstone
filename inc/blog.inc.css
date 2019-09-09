@@ -17,6 +17,29 @@
     left: 0;
     background-color: rgba(223,121,0,0.52);
   }
+
+  main div#hero div.search{
+    top: unset;
+    right: 50px;
+    bottom: 20px;
+    left: unset;
+    background-color: rgba(223,121,0,0);
+  }
+
+  main div#hero div.search .txt_search{
+    height: 30px;
+    width: 250px;
+    padding: 0 10px;
+  }
+
+  main div#hero div.search button{
+    background-color: rgb(51,132,179);
+    color: #fff;
+    border: none;
+    height: 36px;
+    width: 80px;
+    margin-left: -5px;
+  }
   
   main div#hero div h1{
     margin: 0;
@@ -100,6 +123,16 @@
     background-color: #fff;
     font-weight: 700;
     box-shadow: 1px 1px 3px 1px rgba(223,121,0,.5);
+  }
+
+  main div.no_data{
+    text-align: center;
+  }
+
+  main div.no_data p{
+    background-color: rgba(49, 112, 143, .9);
+    color: #fff;
+    padding: 10px;
   }
   
   footer{

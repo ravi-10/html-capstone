@@ -85,4 +85,46 @@ class BlogModel extends Model
 		return $stmt->fetch(\PDO::FETCH_ASSOC);	
 	}
 
+	/**
+	 * Returns all searched blogs
+	 * @param String $order_by column field to order tours
+	 * @param String $for 'backend' or 'frontend' to create specific query
+	 * @param  String $keywords search keyword
+	 * @return Array           blogs
+	 */
+	public function search($order_by, $for, $keywords)
+	{
+		$keywords = "%$keywords%";
+		$condition = '';
+		$order = 'ASC';
+
+		if($for == 'frontend'){
+			$condition = " WHERE is_published = true AND title LIKE :title ";
+			$order = 'DESC';
+		}
+
+		$query = "SELECT
+					blogs.*,
+					users.first_name,
+					users.last_name
+					FROM
+					{$this->table}
+					JOIN
+					users USING(user_id)
+					$condition
+					ORDER BY
+					$order_by
+					$order";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$params = array(
+			':title' => $keywords
+		);
+
+		$stmt->execute($params);
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
 }

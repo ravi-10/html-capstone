@@ -13,7 +13,26 @@
     $heading = 'Blog';
 
     $obj_blog = new BlogModel;
-    $blogs = $obj_blog->all('published_at', 'frontend');
+    
+    if(!empty($_POST)) {
+        if(!empty($_POST['search'])){
+            $blogs = $obj_blog->search('published_at', 'frontend', $_POST['search']);
+            if(count($blogs) > 0){
+                $_SESSION['flash'] = count($blogs) .' blog(s) found';
+                $_SESSION['flash_class'] = 'flash-success';
+            } else {
+                $_SESSION['flash'] = 'No blog found. Please try again.';
+                $_SESSION['flash_class'] = 'flash-info';
+            }
+        } else {
+            $_SESSION['flash'] = "Please type something to search a blog by title";
+            $_SESSION['flash_class'] = 'flash-info';
+            header('Location: blog.php');
+            die;
+        }
+    } else {
+        $blogs = $obj_blog->all('published_at', 'frontend');
+    }
 
     // including head file
     require '../inc/head.inc.php';
@@ -28,13 +47,22 @@
           <div>
             <h1><?=esc($heading)?></h1>
           </div>
+          <div class="search">
+            <form method="post" action="">
+              <input type="text" class="txt_search" name="search" placeholder="search by title" value="<?=clean('search')?>">
+              <button type="submit">Search</button>
+            </form>
+          </div>
         </div>
 
         <div class="flash <?=$_SESSION['flash_class']?>">
             <?php require __DIR__ . '/../inc/flash.inc.php'; ?>
         </div>
         
-        <?php foreach ($blogs as $blog) : ?>
+        <?php 
+            if (count($blogs) > 0) :
+              foreach ($blogs as $blog) : 
+        ?>
 
           <div class="post">
             <img src="images/uploads/blogs/thumbnail/<?=esc_attr($blog['thumbnail_image'])?>" alt="<?=esc_attr($blog['thumbnail_image'])?>" width="200" height="200">
@@ -51,8 +79,19 @@
             <a href="single_blog.php?blog_id=<?=esc_attr($blog['blog_id'])?>">read more..</a>
           </div>
           
-        <?php endforeach; ?>
-        
+        <?php 
+              endforeach;
+            else :
+              if(empty($_POST['search'])) :
+        ?>
+            <div class="no_data">
+              <p>There is no blog available</p>
+            </div>
+        <?php
+              endif;
+            endif; 
+        ?>
+      
       </main>
       
       <?php
