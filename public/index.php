@@ -31,7 +31,7 @@
           <img src="images/hero_image.jpg" alt="hero image">
           <div id="cta">
             <h1><?=esc($featured_tour['title'])?></h1>
-            <p><?=esc(mb_substr($featured_tour['description'], 0, 100, 'UTF-8'))?></p>
+            <p><?=esc(substr($featured_tour['description'], 0, 100, 'UTF-8'))?></p>
             <a href="single_tour.php?tour_id=<?=esc_attr($featured_tour['tour_id'])?>">Book Now</a>
           </div>
         </div>

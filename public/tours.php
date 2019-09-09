@@ -127,7 +127,7 @@
                   </p>
                   <br/>
                   <p><strong><?=esc($tour['title'])?></strong></p>
-                  <p><?=esc(mb_substr($tour['description'], 0, 100, 'UTF-8'))?></p>
+                  <p><?=esc(substr($tour['description'], 0, 100, 'UTF-8'))?></p>
                   <br/>
                 </div>
               </div>

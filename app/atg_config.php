@@ -6,6 +6,8 @@
      */
     
     use App\Model;
+
+    date_default_timezone_set('America/Winnipeg');
     
     // enabling php session
     session_start();
