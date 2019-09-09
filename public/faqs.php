@@ -1,19 +1,19 @@
 <?php
     /**
-     * Testimonials Page 
+     * FAQs Page 
      * last_update: 2019-09-09
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
     
     require __DIR__ . '/../app/atg_config.php';
 
-    use App\TestimonialModel;
+    use App\FaqsModel;
 
-    $title = 'ATG - Testimonials';
-    $heading = 'Testimonials';
+    $title = 'ATG - FAQs';
+    $heading = 'FAQs';
 
-    $obj_testimonial = new TestimonialModel;
-    $testimonials = $obj_testimonial->all('created_at', 'frontend');
+    $obj_faqs = new FaqsModel;
+    $faqs = $obj_faqs->all('created_at', 'frontend');
 
     // including head file
     require '../inc/head.inc.php';
@@ -30,12 +30,11 @@
           </div>
         </div>
         
-        <?php foreach ($testimonials as $testimonial) : ?>
-          <div class="testimonial">
-            <h2><?=esc($testimonial['title'])?></h2>
+        <?php foreach ($faqs as $faq) : ?>
+          <div class="faq">
+            <h2><?=esc($faq['question'])?></h2>
             <div class="content">
-              <p><?=esc($testimonial['description'])?></p>
-              <span>- <?=esc($testimonial['first_name'] . ' ' . $testimonial['last_name'])?></span>
+              <p><?=esc($faq['answer'])?></p>
             </div>
           </div>
         <?php endforeach; ?>

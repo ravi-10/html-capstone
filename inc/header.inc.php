@@ -15,7 +15,7 @@
       <a href="#"><img src="images/facebook-32.png" alt="facebook"></a>
     </div>
     <div id="top_links">
-      <a href="#">FAQs</a>
+      <a href="faqs.php">FAQs</a>
       <?php if($_SESSION['logged_in']) : ?>
         <a href="profile.php">Profile</a>
         <a href="login.php?logout=1">Logout</a>
