@@ -11,6 +11,13 @@
     $title = 'ATG - View Cart';
     $heading = 'View Cart';
 
+    if(!$_SESSION['logged_in']) {
+        $_SESSION['flash'] = 'You must be logged in to view cart page.';
+        $_SESSION['flash_class'] = 'flash-info';
+        header('Location: login.php');
+        exit;
+    }
+
     // including head file
     require '../inc/head.inc.php';
 
@@ -36,13 +43,21 @@
             <th>Action</th>
           </tr>
           
+          <?php
+            $sub_total_qty = 0;
+            $sub_total_price = 0;
+          ?>
           <?php foreach ($_SESSION['cart'] as $cart) : ?>
             <tr>
               <td><?=esc($cart['title'])?></td>
               <td><?=esc($cart['price'])?></td>
               <td><?=esc($cart['quantity'])?></td>
               <td>
-                <?=esc(getLineTotal($cart['price'], $cart['quantity']))?>
+                <?php
+                    $sub_total_price += getLineTotal($cart['price'], $cart['quantity']);
+                    $sub_total_qty += $cart['quantity'];
+                ?>
+                <?=esc(number_format(getLineTotal($cart['price'], $cart['quantity']), 2))?>
               </td>
               <td>
                 <form action="remove_from_cart.php" method="post">
@@ -52,6 +67,44 @@
               </td>
             </tr>
           <?php endforeach; ?>
+
+          <tr class="total">
+            <td></td>
+            <td>Sub Total</td>
+            <td><?=esc($sub_total_qty)?></td>
+            <td><?=esc($sub_total_price)?></td>
+            <td></td>
+          </tr>
+
+          <tr class="total">
+            <td></td>
+            <td>GST</td>
+            <td></td>
+            <td><?=esc(number_format(getGST($sub_total_price), 2))?></td>
+            <td></td>
+          </tr>
+
+          <tr class="total">
+            <td></td>
+            <td>PST</td>
+            <td></td>
+            <td><?=esc(number_format(getPST($sub_total_price), 2))?></td>
+            <td></td>
+          </tr>
+
+          <tr class="total">
+            <td></td>
+            <td>Total</td>
+            <td></td>
+            <td><?=esc(number_format(getTotal($sub_total_price), 2))?></td>
+            <td></td>
+          </tr>
+
+          <tr class="checkout">
+            <td colspan="5">
+              <a href="#">Checkout Now</a>
+            </td>
+          </tr>
 
         </table>
       </main>

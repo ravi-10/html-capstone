@@ -53,6 +53,22 @@
     text-align: center;
     border-bottom: 1px solid #cc8d98;
   }
+
+  main table#cart_details tr.total{
+    background-color: #cfcfcf;
+  }
+
+  main table#cart_details tr.checkout td{
+    text-align: right;
+  }
+
+  main table#cart_details tr.checkout td a{
+    background-color: #666;
+    color: #fff;
+    padding: 5px 10px;
+    margin-right: 10px;
+    text-decoration: none;
+  }
   
   footer{
     clear: both;

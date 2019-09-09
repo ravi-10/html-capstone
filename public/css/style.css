@@ -57,6 +57,16 @@ header div#utility_nav div#top_links a.view_cart{
   margin-right: 10px;
 }
 
+header div#utility_nav div#top_links a.view_cart span.cart_count{
+  background-color: #FFF;
+  color: #000;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
 header div#utility_nav div#top_links a:hover,
 header div#utility_nav div#top_links a:active{
   color: #df7900;

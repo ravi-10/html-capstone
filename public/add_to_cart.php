@@ -9,6 +9,13 @@
 
     use App\TourModel;
 
+    if(!$_SESSION['logged_in']) {
+        $_SESSION['flash'] = 'You must be logged in to add to cart.';
+        $_SESSION['flash_class'] = 'flash-info';
+        header('Location: login.php');
+        exit;
+    }
+
 	if(!isset($_SESSION['cart'])){
 		$_SESSION['cart'] = array();
 	}

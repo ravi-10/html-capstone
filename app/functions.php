@@ -65,25 +65,25 @@
         die;
 	}
 
-	define("GST", 0.8);
-	define("PST", 0.5);
+	define("GST", 0.08);
+	define("PST", 0.05);
 
 	function getLineTotal($price, $quantity)
 	{
 		return $price * $quantity;
 	}
 
-	function getGST($price, $quantity)
+	function getGST($price)
 	{
-		return getLineTotal($price, $quantity) * GST;
+		return $price * GST;
 	}
 
-	function getPST($price, $quantity)
+	function getPST($price)
 	{
-		return getLineTotal($price, $quantity) * PST;
+		return $price * PST;
 	}
 
-	function getTotal($price, $quantity)
+	function getTotal($price)
 	{
-		return getLineTotal($price, $quantity) + getGST($price, $quantity) + getPST($price, $quantity);
+		return $price + getGST($price) + getPST($price);
 	}

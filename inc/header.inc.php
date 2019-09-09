@@ -18,9 +18,11 @@
       <?php if($_SESSION['logged_in']) : ?>
         <a href="view_cart.php" class="view_cart">
           Cart
+          <span class="cart_count">
           <?php
             echo esc(count($_SESSION['cart']));
           ?>
+          </span>
         </a>
       <?php endif; ?>
       <a href="faqs.php">FAQs</a>

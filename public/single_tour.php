@@ -45,21 +45,25 @@
         <div class="tour_container">
 
           <div class="tour_box">
-            <form action="add_to_cart.php" method="post">
-                <input type="hidden" name="tour_id" value="<?=esc_attr($single_tour['tour_id'])?>">
-                <div class="quantity">
-                  <label>Quantity</label>
-                  <select name="quantity">
-                    <?php
-                      $max = $single_tour['max_allowed_bookings'];
-                      for ($i=1; $i <= $max ; $i++) :
-                    ?>
-                      <option value="<?=esc_attr($i)?>"><?=esc($i)?></option>
-                    <?php endfor; ?>
-                  </select>
-                </div>
-                <button type="submit" id="book_now">Add to Cart</button>
-            </form>
+            <?php if($_SESSION['logged_in']) : ?>
+              <form action="add_to_cart.php" method="post">
+                  <input type="hidden" name="tour_id" value="<?=esc_attr($single_tour['tour_id'])?>">
+                  <div class="quantity">
+                    <label>Quantity</label>
+                    <select name="quantity">
+                      <?php
+                        $max = $single_tour['max_allowed_bookings'];
+                        for ($i=1; $i <= $max ; $i++) :
+                      ?>
+                        <option value="<?=esc_attr($i)?>"><?=esc($i)?></option>
+                      <?php endfor; ?>
+                    </select>
+                  </div>
+                  <button type="submit" id="book_now">Add to Cart</button>
+              </form>
+            <?php else : ?>
+              Please login to book a tour <a class="login" href="login.php">Login</a>
+            <?php endif; ?>
             <p class="warn">
               <?php
                   $obj_from_date = date_create($single_tour['from_date']);
