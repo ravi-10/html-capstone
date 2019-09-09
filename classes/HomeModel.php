@@ -38,4 +38,29 @@ class HomeModel extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Return limited recent blogs from blog table
+	 * @return Mixed array
+	 */
+	public function recentBlogs()
+	{
+		$condition = " WHERE is_published = true ";
+
+		$query = "SELECT
+					*
+					FROM
+					blogs
+					$condition
+					ORDER BY
+					published_at
+					DESC
+					LIMIT 2";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$stmt->execute();
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
 }

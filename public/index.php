@@ -14,6 +14,8 @@
     $obj_home = new HomeModel;
     $upcoming_tours = $obj_home->upcomingTours();
 
+    $recent_blogs = $obj_home->recentBlogs();
+
     // including head file
     require '../inc/head.inc.php';
 
@@ -65,21 +67,18 @@
         
         <div id="recent_blogs">
           <h2>Recent Blogs</h2>
-          <div class="blog">
-            <img src="images/trip_tips.jpg" alt="tips to plan a trip">
-            <div class="overlay">
-              <a href="#">Tips to plan a trip</a>
+          <?php foreach ($recent_blogs as $blog) : ?>
+            <div class="blog">
+              <img src="images/uploads/blogs/thumbnail/<?=esc_attr($blog['thumbnail_image'])?>" alt="<?=esc_attr($blog['thumbnail_image'])?>">
+              <div class="overlay">
+                <a href="single_blog.php?blog_id=<?=esc($blog['blog_id'])?>"><?=esc($blog['title'])?></a>
+              </div>
             </div>
-          </div>
-          <div class="blog">
-            <img src="images/explore_switzerland.jpg" alt="explore switzerland">
-            <div class="overlay">
-              <a href="#">Explore Switzerland</a>
-            </div>
-          </div>
+          <?php endforeach; ?>
+          
           <div class="blog" id="blog_read_more">
             <div class="overlay">
-              <a href="#">More...</a>
+              <a href="blog.php">More...</a>
             </div>
           </div>
         </div>
