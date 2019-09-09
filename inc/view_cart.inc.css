@@ -1,0 +1,68 @@
+<style>
+  main{
+    float: left;
+  }
+  
+  main div#hero img{
+    width: 960px;
+    height: 393px;
+    display: inline-block;
+  }
+  
+  main div#hero div{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 4px;
+    left: 0;
+    background-color: rgba(223,121,0,0.52);
+  }
+  
+  main div#hero div h1{
+    margin: 0;
+    text-align: center;
+    margin-top: 22%;
+    color: #fff;
+    text-shadow: 1px 2px 2px rgba(255,255,255,0.3);
+  }
+  
+  main table#cart_details{
+    width: 100%;
+    margin: 0 auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+     margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  main table#cart_details caption{
+    color: #df7900;
+    font-size: 2em;
+  }
+  
+  main table#cart_details th{
+    padding: 10px 0;
+    color: #fff;
+    background-color: #df7900;
+    border: 1px solid #df7900;
+    font-weight: 400;
+  }
+  
+  main table#cart_details td{
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid #cc8d98;
+  }
+  
+  footer{
+    clear: both;
+  }
+  
+  @media screen and (max-width: 768px){
+    main div#hero img {
+      max-width: 100%;
+      height: auto;
+      min-height: auto;
+    }
+  }
+</style>

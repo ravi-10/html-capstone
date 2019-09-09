@@ -70,6 +70,8 @@
             require '../inc/single_blog.inc.css';
         } elseif($title == 'ATG - FAQs') {
             require '../inc/faqs.inc.css';
+        } elseif($title == 'ATG - View Cart') {
+            require '../inc/view_cart.inc.css';
         }
         
         

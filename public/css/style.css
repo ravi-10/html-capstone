@@ -50,6 +50,13 @@ header div#utility_nav div#top_links a{
   color: #3290c1;
 }
 
+header div#utility_nav div#top_links a.view_cart{
+  background-color: #666;
+  color: #fff;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
 header div#utility_nav div#top_links a:hover,
 header div#utility_nav div#top_links a:active{
   color: #df7900;

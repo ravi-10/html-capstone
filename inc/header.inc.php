@@ -15,6 +15,14 @@
       <a href="#"><img src="images/facebook-32.png" alt="facebook"></a>
     </div>
     <div id="top_links">
+      <?php if($_SESSION['logged_in']) : ?>
+        <a href="view_cart.php" class="view_cart">
+          Cart
+          <?php
+            echo esc(count($_SESSION['cart']));
+          ?>
+        </a>
+      <?php endif; ?>
       <a href="faqs.php">FAQs</a>
       <?php if($_SESSION['logged_in']) : ?>
         <a href="profile.php">Profile</a>

@@ -64,3 +64,26 @@
         header('Location: login.php');
         die;
 	}
+
+	define("GST", 0.8);
+	define("PST", 0.5);
+
+	function getLineTotal($price, $quantity)
+	{
+		return $price * $quantity;
+	}
+
+	function getGST($price, $quantity)
+	{
+		return getLineTotal($price, $quantity) * GST;
+	}
+
+	function getPST($price, $quantity)
+	{
+		return getLineTotal($price, $quantity) * PST;
+	}
+
+	function getTotal($price, $quantity)
+	{
+		return getLineTotal($price, $quantity) + getGST($price, $quantity) + getPST($price, $quantity);
+	}

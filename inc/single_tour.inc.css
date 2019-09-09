@@ -43,6 +43,16 @@
   main div.tour_box{
     text-align: center;
   }
+
+  main div.tour_box div.quantity{
+    margin-bottom: 10px;
+  }
+
+  main div.tour_box div.quantity select{
+    height: 30px;
+    width: 50px;
+    margin-left: 10px;
+  }
   
   main div.tour_box div.img{
     position: relative;
