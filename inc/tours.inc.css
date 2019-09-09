@@ -17,6 +17,29 @@
     left: 0;
     background-color: rgba(223,121,0,0.52);
   }
+
+  main div#hero div.search{
+    top: unset;
+    right: 50px;
+    bottom: 20px;
+    left: unset;
+    background-color: rgba(223,121,0,0);
+  }
+
+  main div#hero div.search .txt_search{
+    height: 30px;
+    width: 250px;
+    padding: 0 10px;
+  }
+
+  main div#hero div.search button{
+    background-color: rgb(51,132,179);
+    color: #fff;
+    border: none;
+    height: 36px;
+    width: 80px;
+    margin-left: -5px;
+  }
   
   main div#hero div h1{
     margin: 0;

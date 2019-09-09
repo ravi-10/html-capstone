@@ -217,9 +217,17 @@ class TourModel extends Model
 	 * @param  String $keywords search keyword
 	 * @return Array           tours
 	 */
-	public function search($keywords)
+	public function search($order_by, $for, $keywords)
 	{
 		$keywords = "%$keywords%";
+		$condition = '';
+
+		if($for == 'frontend'){
+			$current_date = date('Y-m-d');
+			$condition = " WHERE is_published = true AND booking_ends >= '$current_date'
+							AND title LIKE :title ";
+		}
+		
 		$query = "SELECT
 					tours.*,
 					categories.name as category
@@ -227,8 +235,7 @@ class TourModel extends Model
 					{$this->table}
 					JOIN
 					categories USING(category_id)
-					WHERE
-					title LIKE :title
+					$condition
 					ORDER BY
 					title";
 

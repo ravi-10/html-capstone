@@ -14,10 +14,22 @@
     $heading = 'Tours';
 
     $obj_tour = new TourModel;
-    $tours = $obj_tour->all('from_date', 'frontend');
+    
 
     if(!empty($_GET['category_id'])){
         $tours = $obj_tour->allByCategory('from_date', 'frontend', $_GET['category_id']);
+    } elseif(!empty($_POST)) {
+        
+        if(!empty($_POST['search'])){
+            $tours = $obj_tour->search('from_date', 'frontend', $_POST['search']);
+        } else {
+            $_SESSION['flash'] = "Please type something to search a tour by title";
+            $_SESSION['flash_class'] = 'flash-info';
+            header('Location: tours.php');
+            die;
+        }
+    } else {
+        $tours = $obj_tour->all('from_date', 'frontend');
     }
 
     $obj_category = new CategoryModel;
@@ -36,6 +48,12 @@
           <div>
             <h1><?=esc($heading)?></h1>
           </div>
+          <div class="search">
+            <form method="post" action="">
+              <input type="text" class="txt_search" name="search" placeholder="search by title" value="<?=clean('search')?>">
+              <button type="submit">Search</button>
+            </form>
+          </div>
         </div>
 
         <div class="flash <?=$_SESSION['flash_class']?>">
@@ -45,7 +63,7 @@
         <div class="categories">
           <a href="tours.php"
             class="<?php
-              if(empty($_GET['category_id'])){
+              if(empty($_GET['category_id']) && empty($_POST['search'])){
                   echo esc_attr('selected');
               }
             ?>">All</a>
@@ -101,6 +119,7 @@
                     ?>
                   </p>
                   <br/>
+                  <p><strong><?=esc($tour['title'])?></strong></p>
                   <p><?=esc(mb_substr($tour['description'], 0, 100, 'UTF-8'))?></p>
                   <br/>
                 </div>
