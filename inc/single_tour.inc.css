@@ -5,7 +5,6 @@
   
   main div#hero img{
     width: 960px;
-    //height: 393px;
     height: 150px;
     display: inline-block;
   }
@@ -22,7 +21,6 @@
   main div#hero div h1{
     margin: 0;
     text-align: center;
-    //margin-top: 22%;
     margin-top: 9.5%;
     color: #fff;
     text-shadow: 1px 2px 2px rgba(255,255,255,0.3);
@@ -43,20 +41,13 @@
   }
   
   main div.tour_box{
-    //width: 450px;
-    //display: inline-block;
     text-align: center;
-    //border-bottom: 1px solid #df7900;
-    //margin-bottom: 30px;
   }
   
   main div.tour_box div.img{
     position: relative;
     width: 600px;
     margin: 0 auto;
-    //width: 400px;
-    //height: 200px;
-    //display: inline-block;
   }
   
   main div.tour_box div.img img{

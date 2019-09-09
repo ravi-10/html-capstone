@@ -56,7 +56,7 @@
             <h1><?=esc($heading)?></h1>
           </div>
           <div class="search">
-            <form method="post" action="">
+            <form method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>">
               <input type="text" class="txt_search" name="search" placeholder="search by title" value="<?=clean('search')?>">
               <button type="submit">Search</button>
             </form>
