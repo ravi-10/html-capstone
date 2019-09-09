@@ -9,6 +9,32 @@ namespace App;
 
 class HomeModel extends Model
 {
+	/**
+	 * Return featured tour from tours table
+	 * @return Mixed array
+	 */
+	public function featuredTour()
+	{
+		$condition = " WHERE is_featured = true ";
+
+		$query = "SELECT
+					tours.*,
+					categories.name as category
+					FROM
+					tours
+					JOIN
+					categories USING(category_id)
+					$condition
+					ORDER BY
+					from_date
+					LIMIT 1";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$stmt->execute();
+
+		return $stmt->fetch(\PDO::FETCH_ASSOC);
+	}
 
 	/**
 	 * Return limited upcoming tours from tours table

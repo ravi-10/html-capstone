@@ -12,6 +12,9 @@
     $title = 'Around The Globe';
 
     $obj_home = new HomeModel;
+
+    $featured_tour = $obj_home->featuredTour();
+
     $upcoming_tours = $obj_home->upcomingTours();
 
     $recent_blogs = $obj_home->recentBlogs();
@@ -27,9 +30,9 @@
         <div id="hero">
           <img src="images/hero_image.jpg" alt="hero image">
           <div id="cta">
-            <h1>An Evening in Paris</h1>
-            <p>Sed lacinia, libero at accumsan blandit, erat lorem venenatis purus, vitae laoreet urna felis eget risus. Donec elementum ex sit.</p>
-            <a href="#">Book Now</a>
+            <h1><?=esc($featured_tour['title'])?></h1>
+            <p><?=esc(mb_substr($featured_tour['description'], 0, 100, 'UTF-8'))?></p>
+            <a href="single_tour.php?tour_id=<?=esc_attr($featured_tour['tour_id'])?>">Book Now</a>
           </div>
         </div>
         
