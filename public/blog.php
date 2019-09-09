@@ -7,8 +7,13 @@
     
     require __DIR__ . '/../app/atg_config.php';
 
+    use App\BlogModel;
+
     $title = 'ATG - Blog';
     $heading = 'Blog';
+
+    $obj_blog = new BlogModel;
+    $blogs = $obj_blog->all('published_at', 'frontend');
 
     // including head file
     require '../inc/head.inc.php';
@@ -25,47 +30,24 @@
           </div>
         </div>
         
-        <div class="post">
-          <img src="images/guidance.jpg" alt="guidance" width="200" height="200">
-          <h2>Be Your Own Guide</h2>
-          <span>By ATG on April 09, 2019</span>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis veritatis praesentium natus iure, facilis explicabo omnis sint quod quaerat fugit, ducimus aperiam deserunt laboriosam nihil repellendus? Inventore voluptate, maiores ut. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt dignissimos, itaque iusto fugit quas quia sit quisquam, molestiae pariatur nulla odio sapiente officiis. Voluptatem aliquam voluptatum est culpa, cum sit.</p>
-          <a href="#">read more..</a>
-        </div>
-        
-        <div class="post">
-          <img src="images/nature.jpg" alt="nature">
-          <h2>Into the Unknown</h2>
-          <span>By ATG on April 02, 2019</span>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis veritatis praesentium natus iure, facilis explicabo omnis sint quod quaerat fugit, ducimus aperiam deserunt laboriosam nihil repellendus? Inventore voluptate, maiores ut. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt dignissimos, itaque iusto fugit quas quia sit quisquam, molestiae pariatur nulla odio sapiente officiis. Voluptatem aliquam voluptatum est culpa, cum sit.</p>
-          <a href="#">read more..</a>
-        </div>
-        
-        <div class="post">
-          <img src="images/road-trip.jpg" alt="road trip">
-          <h2>Plan a Road Trip for Summer</h2>
-          <span>By ATG on March 24, 2019</span>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis veritatis praesentium natus iure, facilis explicabo omnis sint quod quaerat fugit, ducimus aperiam deserunt laboriosam nihil repellendus? Inventore voluptate, maiores ut. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt dignissimos, itaque iusto fugit quas quia sit quisquam, molestiae pariatur nulla odio sapiente officiis. Voluptatem aliquam voluptatum est culpa, cum sit.</p>
-          <a href="#">read more..</a>
-        </div>
-        
-        <div class="post">
-          <img src="images/lava.jpg" alt="lava">
-          <h2>Essential Things to Experience Lava Safely</h2>
-          <span>By ATG on March 15, 2019</span>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis veritatis praesentium natus iure, facilis explicabo omnis sint quod quaerat fugit, ducimus aperiam deserunt laboriosam nihil repellendus? Inventore voluptate, maiores ut. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt dignissimos, itaque iusto fugit quas quia sit quisquam, molestiae pariatur nulla odio sapiente officiis. Voluptatem aliquam voluptatum est culpa, cum sit.</p>
-          <a href="#">read more..</a>
-        </div>
-        
-        <div class="post">
-          <img src="images/camping.jpg" alt="camping">
-          <h2>Beginners Tips for Camping</h2>
-          <span>By ATG on March 09, 2019</span>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis veritatis praesentium natus iure, facilis explicabo omnis sint quod quaerat fugit, ducimus aperiam deserunt laboriosam nihil repellendus? Inventore voluptate, maiores ut. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt dignissimos, itaque iusto fugit quas quia sit quisquam, molestiae pariatur nulla odio sapiente officiis. Voluptatem aliquam voluptatum est culpa, cum sit.</p>
-          <a href="#">read more..</a>
-        </div>
-        
-        <a href="#" id="older_posts">Older Posts</a>
+        <?php foreach ($blogs as $blog) : ?>
+
+          <div class="post">
+            <img src="images/uploads/blogs/thumbnail/<?=esc_attr($blog['thumbnail_image'])?>" alt="<?=esc_attr($blog['thumbnail_image'])?>" width="200" height="200">
+            <h2><?=esc($blog['title'])?></h2>
+            <span>
+              <?php
+                  $author = $blog['first_name'] . ' ' . $blog['last_name'];
+                  $formatted_published_date = date('F d, Y', strtotime($blog['published_at']));
+                  $published_info = "By $author on $formatted_published_date";
+                  echo esc($published_info);
+              ?>
+            </span>
+            <p><?=esc(mb_substr($blog['description'], 0, 100, 'UTF-8'))?></p>
+            <a href="single_blog.php?blog_id=<?=esc_attr($blog['blog_id'])?>">read more..</a>
+          </div>
+          
+        <?php endforeach; ?>
         
       </main>
       

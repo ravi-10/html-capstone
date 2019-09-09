@@ -101,14 +101,18 @@
               </p>
               
               <h3>Itineraries</h3>
-              <ul>
-                <?php foreach ($tour_itineraries as $itinerary) : ?>
-                  <li>
-                    <strong><?=esc($itinerary['name'])?>: </strong>
-                    <span><?=esc($itinerary['description'])?></span>
-                  </li>
-                <?php endforeach; ?>
-              </ul>
+              <?php if(count($tour_itineraries) > 0) : ?>
+                <ul>
+                  <?php foreach ($tour_itineraries as $itinerary) : ?>
+                    <li>
+                      <strong><?=esc($itinerary['name'])?>: </strong>
+                      <span><?=esc($itinerary['description'])?></span>
+                    </li>
+                  <?php endforeach; ?>
+                </ul>
+              <?php else : ?>
+                <p>There is no itinerary assigned to this tour.</p>
+              <?php endif; ?>
               
             </div>
           </div>

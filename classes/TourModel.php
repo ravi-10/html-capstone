@@ -1,7 +1,7 @@
 <?php
 /**
  * Tour Model Class Page 
- * last_update: 2019-09-04
+ * last_update: 2019-09-08
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */
 
@@ -30,7 +30,7 @@ class TourModel extends Model
 	 */
 	public function all($order_by, $for)
 	{
-		$condition = "";
+		$condition = '';
 
 		if($for == 'frontend'){
 			$current_date = date('Y-m-d');
