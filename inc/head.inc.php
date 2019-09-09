@@ -66,7 +66,10 @@
             require '../inc/login.inc.css';
         } elseif(($title == 'ATG - Tour Details')) {
             require '../inc/single_tour.inc.css';
+        } elseif(($title == 'ATG - Blog Details')) {
+            require '../inc/single_blog.inc.css';
         }
+        
         
     ?>
 

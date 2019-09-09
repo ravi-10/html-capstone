@@ -29,6 +29,10 @@
             <h1><?=esc($heading)?></h1>
           </div>
         </div>
+
+        <div class="flash <?=$_SESSION['flash_class']?>">
+            <?php require __DIR__ . '/../inc/flash.inc.php'; ?>
+        </div>
         
         <?php foreach ($blogs as $blog) : ?>
 

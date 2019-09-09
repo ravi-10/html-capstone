@@ -58,4 +58,31 @@ class BlogModel extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Return one result from blog table
+	 * @param  INT $id blog_id
+	 * @return Array of blog data
+	 */
+	public function one($id)
+	{
+		$query = "SELECT
+					blogs.*,
+					users.first_name,
+					users.last_name
+					FROM
+					{$this->table}
+					JOIN
+					users USING(user_id)
+					WHERE
+					{$this->key} = :id";
+
+		$params = array(':id' => $id);
+
+		$stmt = static::$dbh->prepare($query);
+
+		$stmt->execute($params);
+
+		return $stmt->fetch(\PDO::FETCH_ASSOC);	
+	}
+
 }

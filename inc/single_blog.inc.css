@@ -1,0 +1,146 @@
+<style>
+  main{
+    float: left;
+  }
+  
+  main div#hero img{
+    width: 960px;
+    //height: 393px;
+    height: 150px;
+    display: inline-block;
+  }
+  
+  main div#hero div{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 4px;
+    left: 0;
+    background-color: rgba(223,121,0,0.52);
+  }
+  
+  main div#hero div h1{
+    margin: 0;
+    text-align: center;
+    //margin-top: 22%;
+    margin-top: 9.5%;
+    color: #fff;
+    text-shadow: 1px 2px 2px rgba(255,255,255,0.3);
+  }
+  
+  main div.blog_container{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 20px;
+  }
+  
+  main div.blog_container .left{
+    float: left;
+  }
+  
+  main div.blog_container .right{
+    float: right;
+  }
+  
+  main div.blog_box{
+    text-align: center;
+  }
+  
+  main div.blog_box div.img{
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+  }
+  
+  main div.blog_box div.img img{
+    width: 600px;
+  }
+  
+  main div.blog_box div.description h2{
+    margin: 0;
+    color: #df7900;
+    padding-top: 10px;
+  }
+  
+  main div.blog_box div.description p{
+    margin: 0;
+    padding-top: 5px;
+  }
+  
+  main div.blog_box div.description ul{
+    display: inline-block;
+  }
+  
+  main div.blog_box div.description ul li{
+    text-align: left;
+    line-height: 24px;
+  }
+  
+  footer{
+    clear: both;
+  }
+  
+  @media screen and (max-width: 768px){
+    main div#hero img {
+      max-width: 100%;
+      height: auto;
+      min-height: auto;
+    }
+    
+    main div.blog_container {
+      padding: 0;
+    }
+    
+    main div.blog_box {
+      width: 90%;
+      margin: 0 5%;
+      margin-bottom: 30px;
+    }
+    
+    main div.blog_box:first-child {
+      margin-top: 20px;
+    }
+  }
+  
+  @media screen and (min-width: 769px) and (max-width: 850px){
+    main div#hero img {
+      max-width: 100%;
+      height: auto;
+      min-height: auto;
+    }
+    
+    main div.blog_container {
+      padding: 0;
+    }
+    
+    main div.blog_box {
+      width: 90%;
+      margin: 0 5%;
+      margin-bottom: 30px;
+    }
+    
+    main div.blog_box:first-child {
+      margin-top: 20px;
+    }
+  }
+  
+  @media screen and (min-width: 851px) and (max-width: 980px){
+    main div.blog_container {
+      padding: 15px 0;
+    }
+    
+    main div.blog_box {
+      width: 50%;
+    }
+  }
+  
+  p.justify{
+    text-align: justify;
+    padding: 20px 70px;
+    line-height: 28px;
+  }
+  
+  span.small{ 
+    font-size: 0.75em;
+  }
+</style>
