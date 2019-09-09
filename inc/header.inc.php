@@ -20,7 +20,11 @@
           Cart
           <span class="cart_count">
           <?php
-            echo esc(count($_SESSION['cart']));
+            if(!empty($_SESSION['cart'])){
+              echo esc(count($_SESSION['cart']));
+            } else {
+              echo "0";
+            }
           ?>
           </span>
         </a>

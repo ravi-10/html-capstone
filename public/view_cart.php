@@ -42,7 +42,7 @@
             <th>Line Price</th>
             <th>Action</th>
           </tr>
-          
+          <?php if(!empty($_SESSION['cart'])) : ?>
           <?php
             $sub_total_qty = 0;
             $sub_total_price = 0;
@@ -105,6 +105,14 @@
               <a href="#">Checkout Now</a>
             </td>
           </tr>
+
+        <?php else : ?>
+          <tr class="">
+            <td colspan="5">
+              There is no tour in cart
+            </td>
+          </tr>          
+        <?php endif; ?>
 
         </table>
       </main>
