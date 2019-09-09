@@ -331,6 +331,12 @@ main div#recent_blogs div.blog{
   margin-bottom: 20px;
 }
 
+main div#recent_blogs div.blog img{
+  width: 290px;
+  height: 195px;
+  display: inline-block;
+}
+
 main div#recent_blogs div.blog div.overlay{
   position: absolute;
   top: 0;
@@ -338,6 +344,13 @@ main div#recent_blogs div.blog div.overlay{
   bottom: 0;
   left: 0;
   background-color: rgba(51,132,179,.7);
+}
+
+main div#recent_blogs div.blog div.overlay div{
+  display: table-cell;
+  width: 290px;
+  height: 195px;
+  vertical-align: middle;
 }
 
 main div#recent_blogs div.blog div.overlay:hover{

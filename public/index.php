@@ -71,19 +71,23 @@
         <div id="recent_blogs">
           <h2>Recent Blogs</h2>
           <?php foreach ($recent_blogs as $blog) : ?>
-            <div class="blog">
-              <img src="images/uploads/blogs/thumbnail/<?=esc_attr($blog['thumbnail_image'])?>" alt="<?=esc_attr($blog['thumbnail_image'])?>">
-              <div class="overlay">
-                <a href="single_blog.php?blog_id=<?=esc($blog['blog_id'])?>"><?=esc($blog['title'])?></a>
+            <a href="single_blog.php?blog_id=<?=esc($blog['blog_id'])?>">
+              <div class="blog">
+                <img src="images/uploads/blogs/thumbnail/<?=esc_attr($blog['thumbnail_image'])?>" alt="<?=esc_attr($blog['thumbnail_image'])?>">
+                <div class="overlay">
+                  <div><?=esc($blog['title'])?></div>
+                </div>
               </div>
-            </div>
+            </a>
           <?php endforeach; ?>
           
-          <div class="blog" id="blog_read_more">
-            <div class="overlay">
-              <a href="blog.php">More...</a>
+          <a href="blog.php" id="blog_read_more">
+            <div class="blog">
+              <div class="overlay">
+                <div>More...</div>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       </main>
       

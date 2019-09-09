@@ -357,39 +357,43 @@ main div#recent_blogs div.blog div.overlay{
   background-color: rgba(51,132,179,.7);
 }
 
+main div#recent_blogs div.blog div.overlay div{
+  display: table-cell;
+  width: 290px;
+  height: 195px;
+  vertical-align: middle;
+}
+
 main div#recent_blogs div.blog div.overlay:hover{
   background-color: rgba(255,255,255,0.8);
   border: 1px solid rgb(51,132,179);
 }
 
-main div#recent_blogs div#blog_read_more div.overlay:last-child:hover{
-  background-color: rgba(255,255,255,1);
-  border: 1px solid rgb(51,132,179);
-}
-
-main div#recent_blogs div.blog div.overlay:hover a{
+main div#recent_blogs a:hover{
   color: rgb(51,132,179);
   font-weight: 700;
   text-shadow: 1px 2px 2px rgba(0,0,0,0.3);
 }
 
-main div#recent_blogs div.blog div.overlay a{
+main div#recent_blogs a{
   color: #fff;
   font-size: 2em;
-  display: block;
   text-align: center;
   text-decoration: none;
-  padding: 0 60px;
-  padding-top: 60px;
 }
 
-main div#recent_blogs div#blog_read_more{
+main div#recent_blogs a#blog_read_more div{
   background-color: rgb(51,132,179);
 }
 
-main div#recent_blogs div#blog_read_more a{
+main div#recent_blogs a#blog_read_more{
   padding-top: 0;
   line-height: 195px;
+}
+
+main div#recent_blogs a#blog_read_more:hover div.overlay div{
+  background-color: rgba(255,255,255,1);
+  border: 1px solid rgb(51,132,179);
 }
 
 main div.flash p{
