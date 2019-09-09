@@ -25,6 +25,26 @@
     color: #fff;
     text-shadow: 1px 2px 2px rgba(255,255,255,0.3);
   }
+
+  main div.categories{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  main div.categories a{
+    text-decoration: none;
+    color: #fff;
+    background-color: #df7900;
+    margin: 10px;
+    padding: 10px 20px;
+    display: inline-block;
+  }
+
+  main div.categories a:hover,
+  main div.categories a.selected{
+    background-color: rgb(51,132,179)
+  }
   
   main div.tour_container{
     width: 100%;
@@ -120,6 +140,16 @@
     background-color: #fff;
     font-weight: 700;
     box-shadow: 1px 1px 3px 1px rgba(223,121,0,.5);
+  }
+
+  main div.no_data{
+    text-align: center;
+  }
+
+  main div.no_data p{
+    background-color: rgba(49, 112, 143, .9);
+    color: #fff;
+    padding: 10px;
   }
   
   footer{

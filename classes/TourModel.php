@@ -82,6 +82,43 @@ class TourModel extends Model
 	}
 
 	/**
+	 * Return all tours from tours table by needed parameters
+	 * @param String $order_by column field to order tours
+	 * @param String $for 'backend' or 'frontend' to create specific query
+	 * @param Integer $category_id category_id
+	 * @return Mixed array
+	 */
+	public function allByCategory($order_by, $for, $category_id)
+	{
+		$condition = '';
+
+		if($for == 'frontend'){
+			$current_date = date('Y-m-d');
+			$condition = " WHERE is_published = true AND booking_ends >= '$current_date'
+							AND category_id = :category_id ";
+		}
+
+		$query = "SELECT
+					tours.*,
+					categories.name as category
+					FROM
+					{$this->table}
+					JOIN
+					categories USING(category_id)
+					$condition
+					ORDER BY
+					$order_by";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$params = array(':category_id' => $category_id);
+
+		$stmt->execute($params);
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	/**
 	 * Save a tour in database table and returns inserted id
 	 * @param  Array $tour_array form fields
 	 * @return Integer             inserted id
