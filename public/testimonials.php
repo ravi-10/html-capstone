@@ -7,8 +7,13 @@
     
     require __DIR__ . '/../app/atg_config.php';
 
+    use App\TestimonialModel;
+
     $title = 'ATG - Testimonials';
     $heading = 'Testimonials';
+
+    $obj_testimonial = new TestimonialModel;
+    $testimonials = $obj_testimonial->all('created_at', 'frontend');
 
     // including head file
     require '../inc/head.inc.php';
@@ -25,29 +30,15 @@
           </div>
         </div>
         
-        <div class="testimonial">
-          <h2>Animi quam dolor vero aperiam</h2>
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt iure, nisi perferendis. Culpa quaerat tenetur eum enim laudantium esse consequuntur voluptate inventore, expedita, atque, repudiandae odit tempora sed quas repellendus? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis blanditiis provident est quas, totam vitae quo quibusdam magni esse, perspiciatis dolorum. Facere esse quis eius sapiente sunt ad eos quod!</p>
-            <span>- Christopher Gardner</span>
+        <?php foreach ($testimonials as $testimonial) : ?>
+          <div class="testimonial">
+            <h2><?=esc($testimonial['title'])?></h2>
+            <div class="content">
+              <p><?=esc($testimonial['description'])?></p>
+              <span>- <?=esc($testimonial['first_name'] . ' ' . $testimonial['last_name'])?></span>
+            </div>
           </div>
-        </div>
-        
-        <div class="testimonial">
-          <h2>Eos maxime ciendis.</h2>
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt iure, nisi perferendis. Culpa quaerat tenetur eum enim laudantium esse consequuntur voluptate inventore, expedita, atque, repudiandae odit tempora sed quas repellendus? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis blanditiis provident est quas, totam vitae quo quibusdam magni esse, perspiciatis dolorum. Facere esse quis eius sapiente sunt ad eos quod!</p>
-            <span>- Jay Twistle</span>
-          </div>
-        </div>
-        
-        <div class="testimonial">
-          <h2>Animi quam dolor vero aperiam</h2>
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt iure, nisi perferendis. Culpa quaerat tenetur eum enim laudantium esse consequuntur voluptate inventore, expedita, atque, repudiandae odit tempora sed quas repellendus? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis blanditiis provident est quas, totam vitae quo quibusdam magni esse, perspiciatis dolorum. Facere esse quis eius sapiente sunt ad eos quod!</p>
-            <span>- Walter Ribbon</span>
-          </div>
-        </div>
+        <?php endforeach; ?>
         
       </main>
       
