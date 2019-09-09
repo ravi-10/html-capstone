@@ -75,7 +75,7 @@
                   echo esc($published_info);
               ?>
             </span>
-            <p><?=esc(mb_substr($blog['description'], 0, 100, 'UTF-8'))?></p>
+            <p><?=esc(substr($blog['description'], 0, 100))?></p>
             <a href="single_blog.php?blog_id=<?=esc_attr($blog['blog_id'])?>">read more..</a>
           </div>
           
