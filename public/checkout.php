@@ -6,7 +6,8 @@
      */
     
     require __DIR__ . '/../app/atg_config.php';
-    //require 'cart_config.php';
+    use App\Validator;
+    use App\BookingModel;
 
     $title = 'ATG - Checkout';
     $heading = 'Checkout';
@@ -17,6 +18,40 @@
         header('Location: login.php');
         exit;
     }
+
+    if ('POST' == $_SERVER['REQUEST_METHOD']) {
+
+        // Instantiating object of Validator class
+        $v = new Validator;
+
+        foreach ($_POST as $key => $value) {
+            // calling required function for all fields
+            $v->required($key);
+        }
+
+        $v->generalStringValidator('name');
+        $v->numbersOnly('card_number');
+        $v->dateFormat('expiry_date');
+        $v->numbersOnly('cvv');
+
+        $errors = $v->getErrors();
+
+        // checking if there is no errors before inserting a record
+        if(empty($errors)) {
+
+          $b = new BookingModel;
+          $booking_id = $b->saveBooking($_POST);
+          if($booking_id > 0) {
+              $inserted_rows = $b->saveBookingLineItems($booking_id);
+              if($inserted_rows > 0) {
+                  header('Location: thank_you.php?booking_id=' . $booking_id);
+                  die;
+              }
+          }
+
+        } // endif
+
+    } // end of POST
 
     // including head file
     require '../inc/head.inc.php';
@@ -65,14 +100,24 @@
             <td></td>
             <td>Sub Total</td>
             <td><?=esc($sub_total_qty)?></td>
-            <td><?=esc($sub_total_price)?></td>
+            <td>
+              <?php
+                $calculated_sub_total = number_format($sub_total_price, 2);
+                echo esc($calculated_sub_total);
+              ?>
+            </td>
           </tr>
 
           <tr class="total">
             <td></td>
             <td>GST</td>
             <td></td>
-            <td><?=esc(number_format(getGST($sub_total_price), 2))?></td>
+            <td>
+              <?php
+                $calculated_gst = number_format(getGST($sub_total_price), 2);
+                echo esc($calculated_gst);
+              ?>
+            </td>
             <td></td>
           </tr>
 
@@ -80,7 +125,12 @@
             <td></td>
             <td>PST</td>
             <td></td>
-            <td><?=esc(number_format(getPST($sub_total_price), 2))?></td>
+            <td>
+              <?php
+                $calculated_pst = number_format(getPST($sub_total_price), 2);
+                echo esc($calculated_pst);
+              ?>
+            </td>
             <td></td>
           </tr>
 
@@ -88,7 +138,12 @@
             <td></td>
             <td>Total</td>
             <td></td>
-            <td><?=esc(number_format(getTotal($sub_total_price), 2))?></td>
+            <td>
+              <?php
+                $calculated_total = number_format(getTotal($sub_total_price), 2, '.', '');
+                echo esc($calculated_total);
+              ?>
+              </td>
             <td></td>
           </tr>
 
@@ -104,6 +159,11 @@
 
         <form id="payment" name="payment" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>
           <h2>Payment Information</h2>
+          <input type="hidden" name="sub_total" value="<?=esc_attr($sub_total_price)?>">
+          <input type="hidden" name="gst" value="<?=esc_attr($calculated_gst)?>">
+          <input type="hidden" name="pst" value="<?=esc_attr($calculated_pst)?>">
+          <input type="hidden" name="total" value="<?=esc_attr($calculated_total)?>">
+
           <p>
             <label for="name">Name on Card</label>
             <input type="text" id="name" class="form_control" name="name" placeholder="Enter name on card" value="<?=clean('name')?>" />
@@ -115,7 +175,7 @@
 
           <p>
             <label for="card_number">Credit Card Number</label>
-            <input type="text" id="card_number" class="form_control" name="card_number" placeholder="Enter card number" />
+            <input type="text" id="card_number" class="form_control" name="card_number" placeholder="Enter card number" value="<?=clean('card_number')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['card_number'])) : ?>
               <span class="error"><?=esc($errors['card_number'])?></span>
@@ -124,7 +184,7 @@
 
           <p>
             <label for="expiry_date">Expiry Date</label>
-            <input type="text" id="expiry_date" class="form_control" name="expiry_date" placeholder="Enter expiry date" />
+            <input type="text" id="expiry_date" class="form_control" name="expiry_date" placeholder="Enter expiry date" value="<?=clean('expiry_date')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['expiry_date'])) : ?>
               <span class="error"><?=esc($errors['expiry_date'])?></span>
@@ -133,7 +193,7 @@
 
           <p>
             <label for="cvv">CVV</label>
-            <input type="text" id="cvv" class="form_control" name="cvv" placeholder="Enter cvv" />
+            <input type="text" id="cvv" class="form_control" name="cvv" placeholder="Enter cvv" value="<?=clean('cvv')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['cvv'])) : ?>
               <span class="error"><?=esc($errors['cvv'])?></span>

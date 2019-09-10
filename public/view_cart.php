@@ -6,7 +6,6 @@
      */
     
     require __DIR__ . '/../app/atg_config.php';
-    //require 'cart_config.php';
 
     $title = 'ATG - View Cart';
     $heading = 'View Cart';
@@ -70,7 +69,7 @@
                       <option value="<?=esc_attr($i)?>"><?=esc($i)?></option>
                     <?php endfor; ?>
                   </select>
-                  <button type="submit">Remove Tour</button>
+                  <button type="submit" class="remove">Remove Tour</button>
               </form>
               </td>
             </tr>

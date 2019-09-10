@@ -267,6 +267,20 @@ class Validator
 	}
 
 	/**
+	 * Function to validate for numbers only
+	 * @param  Number $field A form field
+	 * @return void
+	 */
+	public function numbersOnly($field)
+	{
+		$pattern = '/^[\d]+$/';
+
+		if(preg_match($pattern, $this->post[$field]) !== 1) {
+			$this->setError($field, "{$this->label($field)} must be only numbers");
+		}
+	}
+
+	/**
 	 * Get validation errors
 	 * @return Array
 	 */

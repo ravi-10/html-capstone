@@ -54,6 +54,13 @@
     border-bottom: 1px solid #cc8d98;
   }
 
+  main table#cart_details td button.remove{
+    background-color: rgb(51,132,179);
+    color: #fff;
+    border: none;
+    padding: 2px 5px;
+  }
+
   main table#cart_details tr.total{
     background-color: #cfcfcf;
   }
