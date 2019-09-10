@@ -8,8 +8,8 @@
     require __DIR__ . '/../app/atg_config.php';
     //require 'cart_config.php';
 
-    $title = 'ATG - View Cart';
-    $heading = 'View Cart';
+    $title = 'ATG - Checkout';
+    $heading = 'Checkout';
 
     if(!$_SESSION['logged_in']) {
         $_SESSION['flash'] = 'You must be logged in to view cart page.';
@@ -34,13 +34,12 @@
         </div>
         
         <table id="cart_details">
-          <caption>Added Tour(s)</caption>
+          <caption>Booked Tour(s)</caption>
           <tr>
             <th>Tour</th>
             <th>Unit Price</th>
             <th>Quantity</th>
             <th>Line Price</th>
-            <th>Action</th>
           </tr>
           <?php if(!empty($_SESSION['cart'])) : ?>
           <?php
@@ -59,20 +58,6 @@
                 ?>
                 <?=esc(number_format(getLineTotal($cart['price'], $cart['quantity']), 2))?>
               </td>
-              <td>
-                <form action="remove_from_cart.php" method="post">
-                  <input type="hidden" name="tour_id" value="<?=esc_attr($cart['tour_id'])?>">
-                  <select name="quantity">
-                    <?php
-                      $max = $cart['quantity'];
-                      for ($i=$max; $i >= 1 ; $i--) :
-                    ?>
-                      <option value="<?=esc_attr($i)?>"><?=esc($i)?></option>
-                    <?php endfor; ?>
-                  </select>
-                  <button type="submit">Remove Tour</button>
-              </form>
-              </td>
             </tr>
           <?php endforeach; ?>
 
@@ -81,7 +66,6 @@
             <td>Sub Total</td>
             <td><?=esc($sub_total_qty)?></td>
             <td><?=esc($sub_total_price)?></td>
-            <td></td>
           </tr>
 
           <tr class="total">
@@ -108,12 +92,6 @@
             <td></td>
           </tr>
 
-          <tr class="checkout">
-            <td colspan="5">
-              <a href="checkout.php">Checkout Now</a>
-            </td>
-          </tr>
-
         <?php else : ?>
           <tr class="">
             <td colspan="5">
@@ -123,6 +101,54 @@
         <?php endif; ?>
 
         </table>
+
+        <form id="payment" name="payment" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>
+          <h2>Payment Information</h2>
+          <p>
+            <label for="name">Name on Card</label>
+            <input type="text" id="name" class="form_control" name="name" placeholder="Enter name on card" value="<?=clean('name')?>" />
+            <span class="required">*</span>
+            <?php if(!empty($errors['name'])) : ?>
+              <span class="error"><?=esc($errors['name'])?></span>
+            <?php endif; ?>
+          </p>
+
+          <p>
+            <label for="card_number">Credit Card Number</label>
+            <input type="text" id="card_number" class="form_control" name="card_number" placeholder="Enter card number" />
+            <span class="required">*</span>
+            <?php if(!empty($errors['card_number'])) : ?>
+              <span class="error"><?=esc($errors['card_number'])?></span>
+            <?php endif; ?>
+          </p>
+
+          <p>
+            <label for="expiry_date">Expiry Date</label>
+            <input type="text" id="expiry_date" class="form_control" name="expiry_date" placeholder="Enter expiry date" />
+            <span class="required">*</span>
+            <?php if(!empty($errors['expiry_date'])) : ?>
+              <span class="error"><?=esc($errors['expiry_date'])?></span>
+            <?php endif; ?>
+          </p>
+
+          <p>
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" class="form_control" name="cvv" placeholder="Enter cvv" />
+            <span class="required">*</span>
+            <?php if(!empty($errors['cvv'])) : ?>
+              <span class="error"><?=esc($errors['cvv'])?></span>
+            <?php endif; ?>
+          </p>
+          
+          <p id="form_buttons">
+            <input type="submit" class="button" value="Pay Now" />
+            <input type="reset" class="button" />
+          </p>
+
+          <p class="center">
+            <a href="tours.php">Continue Booking</a>
+          </p>
+        </form>
       </main>
       
       <?php
