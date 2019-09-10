@@ -62,6 +62,14 @@
               <td>
                 <form action="remove_from_cart.php" method="post">
                   <input type="hidden" name="tour_id" value="<?=esc_attr($cart['tour_id'])?>">
+                  <select name="quantity">
+                    <?php
+                      $max = $cart['quantity'];
+                      for ($i=$max; $i >= 1 ; $i--) :
+                    ?>
+                      <option value="<?=esc_attr($i)?>"><?=esc($i)?></option>
+                    <?php endfor; ?>
+                  </select>
                   <button type="submit">Remove Tour</button>
               </form>
               </td>
