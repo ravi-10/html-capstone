@@ -15,7 +15,7 @@
       <a href="#"><img src="images/facebook-32.png" alt="facebook"></a>
     </div>
     <div id="top_links">
-      <?php if($_SESSION['logged_in']) : ?>
+      <?php if(!empty($_SESSION['logged_in'])) : ?>
         <a href="view_cart.php" class="view_cart">
           Cart
           <span class="cart_count">
@@ -30,7 +30,7 @@
         </a>
       <?php endif; ?>
       <a href="faqs.php">FAQs</a>
-      <?php if($_SESSION['logged_in']) : ?>
+      <?php if(!empty($_SESSION['logged_in'])) : ?>
         <a href="profile.php">Profile</a>
         <a href="login.php?logout=1">Logout</a>
       <?php else : ?>

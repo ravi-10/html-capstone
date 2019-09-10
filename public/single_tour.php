@@ -62,7 +62,11 @@
                   <button type="submit" id="book_now">Add to Cart</button>
               </form>
             <?php else : ?>
-              Please login to book a tour <a class="login" href="login.php">Login</a>
+              Please login to book a tour 
+              <a class="login" 
+                href="login.php?request_from=single_tour.php?tour_id=<?=esc_attr($single_tour['tour_id'])?>">
+                Login
+              </a>
             <?php endif; ?>
             <p class="warn">
               <?php

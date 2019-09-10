@@ -17,6 +17,11 @@
         logout();
     }
 
+    $request_from = "";
+    if(!empty($_GET['request_from'])){
+      $request_from = $_GET['request_from'];
+    }
+
     if($_SESSION['logged_in']) {
         $_SESSION['flash'] = 'You are already logged in!';
         $_SESSION['flash_class'] = 'flash-info';
@@ -34,8 +39,10 @@
         $v = new Validator;
 
         foreach ($_POST as $key => $value) {
-            // calling required function for all fields
-            $v->required($key);
+            if($key != 'request_from') {
+                // calling required function for all fields
+                $v->required($key);
+            }
         }
         
         $v->email('email');
@@ -65,8 +72,13 @@
                   $_SESSION['flash'] = "Welcome Back, {$user['first_name']}! You have successfully logged in.";
                   $_SESSION['flash_class'] = 'flash-success';
                   session_regenerate_id(true);
-                  header('Location: profile.php');
+                  if(!empty($_POST['request_from'])){
+                      header('Location: ' . $_POST['request_from']);
+                  } else {
+                      header('Location: profile.php');
+                  }
                   die;
+                  
               } else {
                   unset($_SESSION['logged_in']);
                   $errors['credentials'] = "Login credentials do not match";
@@ -100,6 +112,8 @@
         </div>
         
         <form id="login" name="login" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>
+          <input type="hidden" name="request_from" value="<?=esc_attr($request_from)?>">
+
           <p>
             <?php if(!empty($errors['credentials'])) : ?>
               <span class="error"><?=esc($errors['credentials'])?></span>
