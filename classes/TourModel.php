@@ -228,7 +228,7 @@ class TourModel extends Model
 		if($for == 'frontend'){
 			$current_date = date('Y-m-d');
 			$condition = " WHERE is_published = true AND booking_ends >= '$current_date'
-							AND title LIKE :title ";
+							AND (title LIKE :keywords OR country LIKE :keywords) ";
 			$order = 'DESC';
 		}
 		
@@ -247,7 +247,7 @@ class TourModel extends Model
 		$stmt = static::$dbh->prepare($query);
 
 		$params = array(
-			':title' => $keywords
+			':keywords' => $keywords
 		);
 
 		$stmt->execute($params);

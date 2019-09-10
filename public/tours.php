@@ -57,7 +57,9 @@
           </div>
           <div class="search">
             <form method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>">
-              <input type="text" class="txt_search" name="search" placeholder="search by title" value="<?=clean('search')?>">
+              <input type="text" class="txt_search" name="search" 
+                placeholder="search by title or coutry" 
+                value="<?=clean('search')?>">
               <button type="submit">Search</button>
             </form>
           </div>
