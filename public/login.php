@@ -35,6 +35,15 @@
     // checking if form has submitted with POST request
     if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
+        // validate every POST submission for the csrf token
+        if(empty($_POST['csrf']) || $_POST['csrf'] != $_SESSION['csrf']) {
+            $_SESSION['flash'] = "Your session appears to have expired. 
+                                  CSRF token mismatch! Please log in again.";
+            $_SESSION['flash_class'] = 'flash-alert';
+            header('Location: login.php');
+            die;
+        }
+
         // Instantiating object of Validator class
         $v = new Validator;
 
@@ -112,6 +121,7 @@
         </div>
         
         <form id="login" name="login" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>
+          <input type="hidden" name="csrf" value="<?=esc_attr(csrf())?>" />
           <input type="hidden" name="request_from" value="<?=esc_attr($request_from)?>">
 
           <p>

@@ -28,6 +28,15 @@
 
     if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
+        // validate every POST submission for the csrf token
+        if(empty($_POST['csrf']) || $_POST['csrf'] != $_SESSION['csrf']) {
+            $_SESSION['flash'] = "Your session appears to have expired. 
+                                  CSRF token mismatch! Please try again.";
+            $_SESSION['flash_class'] = 'flash-alert';
+            header('Location: checkout.php');
+            die;
+        }
+
         // Instantiating object of Validator class
         $v = new Validator;
 
@@ -179,6 +188,7 @@
 
         <form id="payment" name="payment" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>
           <h2>Payment Information</h2>
+          <input type="hidden" name="csrf" value="<?=esc_attr(csrf())?>" />
           <input type="hidden" name="sub_total" value="<?=esc_attr($sub_total_price)?>">
           <input type="hidden" name="gst" value="<?=esc_attr($calculated_gst)?>">
           <input type="hidden" name="pst" value="<?=esc_attr($calculated_pst)?>">

@@ -40,5 +40,19 @@
 	// Setting dbh to model via init method of function
 	Model::init($dbh);
 
+	// generate a csrf token if we need one
+	if(empty($_SESSION['csrf'])) {
+	    $_SESSION['csrf'] = md5( uniqid() . time() );
+	}
+
+	/**
+	 * function to get randomly generated csrf
+	 * @return String generated token
+	 */
+	function csrf()
+	{
+	    return $_SESSION['csrf'];
+	}
+
 	// including functions file
 	require 'functions.php';
