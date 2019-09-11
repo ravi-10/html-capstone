@@ -31,6 +31,10 @@
             <h1><?=esc($heading)?></h1>
           </div>
         </div>
+
+        <div class="flash <?=$_SESSION['flash_class']?>">
+            <?php require __DIR__ . '/../inc/flash.inc.php'; ?>
+        </div>
         
         <table id="cart_details">
           <caption>Added Tour(s)</caption>
@@ -116,7 +120,7 @@
         <?php else : ?>
           <tr class="">
             <td colspan="5">
-              There is no tour in cart
+              There is no tour in cart. <a href="tours.php">Continue Booking</a>
             </td>
           </tr>          
         <?php endif; ?>

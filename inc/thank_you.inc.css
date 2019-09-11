@@ -1,0 +1,159 @@
+<style>
+  main{
+    float: left;
+  }
+  
+  main div#hero img{
+    width: 960px;
+    height: 393px;
+    display: inline-block;
+  }
+  
+  main div#hero div{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 4px;
+    left: 0;
+    background-color: rgba(223,121,0,0.52);
+  }
+  
+  main div#hero div h1{
+    margin: 0;
+    text-align: center;
+    margin-top: 22%;
+    color: #fff;
+    text-shadow: 1px 2px 2px rgba(255,255,255,0.3);
+  }
+
+  main div.booking-info{
+    color: rgb(51,132,179);
+    text-align: center;
+    background-color: #efefef;
+    padding-bottom: 30px;
+    padding-top: 5px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+
+  main div.booking-info span{
+    color: #222f43;
+  }
+
+  main div.booking-info strong.value{
+    color: #df7900;
+  }
+
+  main div.company-user{
+    width: 100%;
+    color: rgb(51,132,179);
+    text-align: center;
+  }
+
+  main div.company-info{
+    width: 45%;
+    display: inline-block;
+    background-color: #efefef;
+    padding-bottom: 30px;
+  }
+
+  main div.company-info span{
+    color: #222f43;
+  }
+
+  main div.company-info strong.value{
+    color: #df7900;
+  }
+
+  main div.user-info{
+    width: 45%;
+    display: inline-block;
+    background-color: #efefef;
+    padding-bottom: 30px;
+  }
+
+  main div.user-info span{
+    color: #222f43;
+  }
+
+  main div.user-info strong.value{
+    color: #df7900;
+  }
+  
+  main table#booking_details{
+    width: 100%;
+    margin: 0 auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+     margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  main table#booking_details caption{
+    color: #df7900;
+    font-size: 2em;
+  }
+  
+  main table#booking_details th{
+    padding: 10px 0;
+    color: #fff;
+    background-color: #df7900;
+    border: 1px solid #df7900;
+    font-weight: 400;
+  }
+  
+  main table#booking_details td{
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid #cc8d98;
+  }
+
+  main table#booking_details td button.remove{
+    background-color: rgb(51,132,179);
+    color: #fff;
+    border: none;
+    padding: 2px 5px;
+  }
+
+  main table#booking_details tr.total{
+    background-color: #cfcfcf;
+  }
+
+  main table#booking_details tr.checkout td{
+    text-align: right;
+  }
+
+  main table#booking_details tr.checkout td a{
+    background-color: #666;
+    color: #fff;
+    padding: 5px 10px;
+    margin-right: 10px;
+    text-decoration: none;
+  }
+  
+  footer{
+    clear: both;
+  }
+  
+  @media screen and (max-width: 768px){
+    main div#hero img {
+      max-width: 100%;
+      height: auto;
+      min-height: auto;
+    }
+
+    main form#payment{
+      width: 90%;
+      margin: 20px auto;   
+    }
+    
+    main form#payment .form_control{
+      width: 91%;
+    }
+
+    main form#payment span.error{
+      width: 91%;
+      margin-left: 0;
+    }
+  }
+</style>

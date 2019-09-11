@@ -19,6 +19,13 @@
         exit;
     }
 
+    if(empty($_SESSION['cart'])) {
+        $_SESSION['flash'] = 'There is no tour in cart, please add tour(s) in cart to checkout.';
+        $_SESSION['flash_class'] = 'flash-info';
+        header('Location: tours.php');
+        exit;
+    }
+
     if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
         // Instantiating object of Validator class
@@ -66,6 +73,10 @@
           <div>
             <h1><?=esc($heading)?></h1>
           </div>
+        </div>
+
+        <div class="flash <?=$_SESSION['flash_class']?>">
+            <?php require __DIR__ . '/../inc/flash.inc.php'; ?>
         </div>
         
         <table id="cart_details">

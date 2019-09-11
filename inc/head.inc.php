@@ -72,6 +72,8 @@
             require '../inc/faqs.inc.css';
         } elseif($title == 'ATG - View Cart' || $title == 'ATG - Checkout') {
             require '../inc/view_cart.inc.css';
+        } elseif($title == 'ATG - Thank You') {
+            require '../inc/thank_you.inc.css';
         }
         
         

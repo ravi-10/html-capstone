@@ -106,4 +106,28 @@ class BookingModel extends Model
 		return $inserted_rows;
 	}
 
+	/**
+	 * Return booking line items
+	 * @param  INT $id booking_id
+	 * @return Array of booking line items data
+	 */
+	public function getLineItems($id)
+	{
+		$query = "SELECT 
+					booking_line_items.*,
+					tours.title
+					FROM
+					booking_line_items
+					JOIN tours USING(tour_id)
+					WHERE booking_id = :booking_id";
+
+		$params = array(':booking_id' => $id);
+
+		$stmt = static::$dbh->prepare($query);
+
+		$stmt->execute($params);
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);	
+	}
+
 }
