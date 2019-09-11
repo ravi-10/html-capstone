@@ -8,8 +8,11 @@
 <html lang="en"> <!-- html starts -->
   <head> <!-- head starts -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Meta Viewport tag: Ensures the browser doesn’t report the full resolution of the device -->
-    <meta name="description" content="Around the Globe is a travel company providing satisfactory touring experiences around the world." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <!-- Meta Viewport tag: Ensures the browser doesn’t report the full 
+        resolution of the device -->
+    <meta name="description" 
+        content="Around the Globe is a travel company providing satisfactory touring experiences around the world." />
     <meta name="keywords" content="travel, tour, vacation, trip, travel tips" />
     <title><?=esc($title)?></title>
     
@@ -37,16 +40,24 @@
 
     -->
     
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700%7cRoboto:400" rel="stylesheet"> <!-- including google fonts -->
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen and (min-width: 769px)" /> <!-- desktop css -->
-    <link rel="stylesheet" href="css/mobile.css" type="text/css" media="screen and (max-width: 768px)" /> <!-- mobile css -->
-    <link rel="stylesheet" href="css/print.css" type="text/css" media="print" /> <!-- print css -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700%7cRoboto:400" 
+        rel="stylesheet"> <!-- including google fonts -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" 
+        media="screen and (min-width: 769px)" /> <!-- desktop css -->
+    <link rel="stylesheet" href="css/mobile.css" type="text/css" 
+        media="screen and (max-width: 768px)" /> <!-- mobile css -->
+    <link rel="stylesheet" href="css/print.css" type="text/css" media="print" /> 
+    <!-- print css -->
     
     <link rel="icon" href="images/favicon.ico" /> <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144.png" />
+    <link rel="apple-touch-icon" sizes="57x57" 
+            href="images/apple-icon-57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" 
+            href="images/apple-icon-72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" 
+            href="images/apple-icon-114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" 
+            href="images/apple-icon-144.png" />
     
     <?php
         // including unique style block for specific pages
@@ -60,7 +71,8 @@
             require '../inc/testimonials.inc.css';
         } elseif($title == 'ATG - Tours') {
             require '../inc/tours.inc.css';
-        } elseif(($title == 'ATG - Registration') || ($title == 'ATG - Profile')) {
+        } elseif(($title == 'ATG - Registration') || 
+                    ($title == 'ATG - Profile')) {
             require '../inc/registration.inc.css';
         } elseif(($title == 'ATG - Login')) {
             require '../inc/login.inc.css';

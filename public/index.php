@@ -32,7 +32,9 @@
           <div id="cta">
             <h1><?=esc($featured_tour['title'])?></h1>
             <p><?=esc(substr($featured_tour['description'], 0, 100))?></p>
-            <a href="single_tour.php?tour_id=<?=esc_attr($featured_tour['tour_id'])?>">Book Now</a>
+            <a href="single_tour.php?tour_id=<?=esc_attr($featured_tour['tour_id'])?>">
+              Book Now
+            </a>
           </div>
         </div>
         
@@ -55,13 +57,16 @@
                 </span>
               </div>
               <div class="tour_image">
-                <img src="images/uploads/tours/thumbnail/<?=esc_attr($tour['thumbnail_image'])?>" alt="esc_attr($tour['thumbnail_image'])?>">
+                <img src="images/uploads/tours/thumbnail/<?=esc_attr($tour['thumbnail_image'])?>" 
+                alt="esc_attr($tour['thumbnail_image'])?>">
               </div>
               <div class="description">
                 <p>
                   <?=esc($tour['description'])?>
                 </p>
-                <a href="single_tour.php?tour_id=<?=esc_attr($tour['tour_id'])?>">Read More</a>
+                <a href="single_tour.php?tour_id=<?=esc_attr($tour['tour_id'])?>">
+                  Read More
+                </a>
               </div>
             </div>
 
@@ -73,7 +78,8 @@
           <?php foreach ($recent_blogs as $blog) : ?>
             <a href="single_blog.php?blog_id=<?=esc($blog['blog_id'])?>">
               <div class="blog">
-                <img src="images/uploads/blogs/thumbnail/<?=esc_attr($blog['thumbnail_image'])?>" alt="<?=esc_attr($blog['thumbnail_image'])?>">
+                <img src="images/uploads/blogs/thumbnail/<?=esc_attr($blog['thumbnail_image'])?>" 
+                alt="<?=esc_attr($blog['thumbnail_image'])?>">
                 <div class="overlay">
                   <div><?=esc($blog['title'])?></div>
                 </div>

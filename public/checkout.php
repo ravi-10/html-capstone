@@ -20,7 +20,8 @@
     }
 
     if(empty($_SESSION['cart'])) {
-        $_SESSION['flash'] = 'There is no tour in cart, please add tour(s) in cart to checkout.';
+        $_SESSION['flash'] = 'There is no tour in cart, please 
+                              add tour(s) in cart to checkout.';
         $_SESSION['flash_class'] = 'flash-info';
         header('Location: tours.php');
         exit;
@@ -186,17 +187,24 @@
 
         </table>
 
-        <form id="payment" name="payment" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>
+        <form id="payment" name="payment" method="post" 
+            action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" 
+            novalidate>
           <h2>Payment Information</h2>
           <input type="hidden" name="csrf" value="<?=esc_attr(csrf())?>" />
-          <input type="hidden" name="sub_total" value="<?=esc_attr($sub_total_price)?>">
-          <input type="hidden" name="gst" value="<?=esc_attr($calculated_gst)?>">
-          <input type="hidden" name="pst" value="<?=esc_attr($calculated_pst)?>">
-          <input type="hidden" name="total" value="<?=esc_attr($calculated_total)?>">
+          <input type="hidden" name="sub_total" 
+            value="<?=esc_attr($sub_total_price)?>">
+          <input type="hidden" name="gst" 
+            value="<?=esc_attr($calculated_gst)?>">
+          <input type="hidden" name="pst" 
+            value="<?=esc_attr($calculated_pst)?>">
+          <input type="hidden" name="total" 
+            value="<?=esc_attr($calculated_total)?>">
 
           <p>
             <label for="name">Name on Card</label>
-            <input type="text" id="name" class="form_control" name="name" placeholder="Enter name on card" value="<?=clean('name')?>" />
+            <input type="text" id="name" class="form_control" name="name" 
+              placeholder="Enter name on card" value="<?=clean('name')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['name'])) : ?>
               <span class="error"><?=esc($errors['name'])?></span>
@@ -205,7 +213,9 @@
 
           <p>
             <label for="card_number">Credit Card Number</label>
-            <input type="text" id="card_number" class="form_control" name="card_number" placeholder="Enter card number" value="<?=clean('card_number')?>" />
+            <input type="text" id="card_number" class="form_control" 
+              name="card_number" placeholder="Enter card number" 
+              value="<?=clean('card_number')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['card_number'])) : ?>
               <span class="error"><?=esc($errors['card_number'])?></span>
@@ -214,7 +224,9 @@
 
           <p>
             <label for="expiry_date">Expiry Date</label>
-            <input type="text" id="expiry_date" class="form_control" name="expiry_date" placeholder="Enter expiry date" value="<?=clean('expiry_date')?>" />
+            <input type="text" id="expiry_date" class="form_control" 
+              name="expiry_date" placeholder="Enter expiry date" 
+              value="<?=clean('expiry_date')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['expiry_date'])) : ?>
               <span class="error"><?=esc($errors['expiry_date'])?></span>
@@ -223,7 +235,8 @@
 
           <p>
             <label for="cvv">CVV</label>
-            <input type="text" id="cvv" class="form_control" name="cvv" placeholder="Enter cvv" value="<?=clean('cvv')?>" />
+            <input type="text" id="cvv" class="form_control" name="cvv" 
+              placeholder="Enter cvv" value="<?=clean('cvv')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['cvv'])) : ?>
               <span class="error"><?=esc($errors['cvv'])?></span>

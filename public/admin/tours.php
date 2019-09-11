@@ -42,7 +42,8 @@
                         <div class="spur-card-title">List of Tours</div>
                     </div>
                     <div class="card-body card-body-with-dark-table">
-                        <table class="table table-dark table-in-card" id="table_tours">
+                        <table class="table table-dark table-in-card" 
+                            id="table_tours">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -63,11 +64,18 @@
                                         <td class="title"><?=esc($tour['title'])?></td>
                                         <td><?=esc($tour['category'])?></td>
                                         <td>
-                                            <span class="badge badge-light">Country</span>
-                                            <span class="badge badge-dark"><?=esc($tour['country'])?></span>
+                                            <span class="badge badge-light">
+                                                Country
+                                            </span>
+                                            <span class="badge badge-dark">
+                                                <?=esc($tour['country'])?></span>
                                             <br />
-                                            <span class="badge badge-light">From</span>
-                                            <span class="badge badge-dark"><?=esc($tour['from_date'])?></span>
+                                            <span class="badge badge-light">
+                                                From
+                                            </span>
+                                            <span class="badge badge-dark">
+                                                <?=esc($tour['from_date'])?>
+                                            </span>
                                             <br />
                                             <span class="badge badge-light">To</span>
                                             <span class="badge badge-dark"><?=esc($tour['to_date'])?></span>

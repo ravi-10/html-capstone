@@ -1,7 +1,7 @@
 <?php
 /**
  * Tour Model Class Page 
- * last_update: 2019-09-08
+ * last_update: 2019-09-11
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */
 
@@ -34,7 +34,8 @@ class TourModel extends Model
 
 		if($for == 'frontend'){
 			$current_date = date('Y-m-d');
-			$condition = " WHERE is_published = true and booking_ends >= '$current_date' ";
+			$condition = " WHERE is_published = true and 
+							booking_ends >= '$current_date' ";
 		}
 
 		$query = "SELECT
@@ -94,7 +95,8 @@ class TourModel extends Model
 
 		if($for == 'frontend'){
 			$current_date = date('Y-m-d');
-			$condition = " WHERE is_published = true AND booking_ends >= '$current_date'
+			$condition = " WHERE is_published = true AND 
+							booking_ends >= '$current_date'
 							AND category_id = :category_id ";
 		}
 
@@ -227,8 +229,9 @@ class TourModel extends Model
 
 		if($for == 'frontend'){
 			$current_date = date('Y-m-d');
-			$condition = " WHERE is_published = true AND booking_ends >= '$current_date'
-							AND (title LIKE :keywords OR country LIKE :keywords) ";
+			$condition = " WHERE is_published = true AND 
+							booking_ends >= '$current_date' AND 
+							(title LIKE :keywords OR country LIKE :keywords) ";
 			$order = 'DESC';
 		}
 		

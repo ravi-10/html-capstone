@@ -1,7 +1,7 @@
 <?php
 	/**
      * Configuration File 
-     * last_update: 2019-08-19
+     * last_update: 2019-09-11
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
     
@@ -15,7 +15,8 @@
     // enabling output buffering
     ob_start();
 
-    // if SESSION is not set, setting 'logged_in' as false by default to utilize it further
+    // if SESSION is not set, setting 'logged_in' as false by default 
+    // to utilize it further
     if(!isset($_SESSION['logged_in'])){
     	$_SESSION['logged_in'] = false;
     }
@@ -28,7 +29,8 @@
 
 	// Setting Database Credentials
 	define('DB_DSN', 'mysql:host=localhost;dbname=atg_tours');
-	// remember to ensure the defined user is exists and has access to the required db
+	// remember to ensure the defined user is exists and 
+	// has access to the required db
 	define('DB_USER', 'root');
 	define('DB_PASS', '');
 

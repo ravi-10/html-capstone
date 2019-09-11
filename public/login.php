@@ -61,7 +61,8 @@
         // checking if there is no errors before login
         if(empty($errors)) {
 
-            $query = 'SELECT user_id, first_name, password FROM users WHERE email = :email';
+            $query = 'SELECT user_id, first_name, password FROM users 
+                      WHERE email = :email';
 
             $stmt = $dbh->prepare($query);
 
@@ -78,7 +79,8 @@
               if(password_verify($_POST['password'], $user['password'])) {
                   $_SESSION['logged_in'] = true;
                   $_SESSION['user_id'] = $user['user_id'];
-                  $_SESSION['flash'] = "Welcome Back, {$user['first_name']}! You have successfully logged in.";
+                  $_SESSION['flash'] = "Welcome Back, {$user['first_name']}! 
+                                        You have successfully logged in.";
                   $_SESSION['flash_class'] = 'flash-success';
                   session_regenerate_id(true);
                   if(!empty($_POST['request_from'])){
@@ -120,9 +122,13 @@
             <?php require __DIR__ . '/../inc/flash.inc.php'; ?>
         </div>
         
-        <form id="login" name="login" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>
-          <input type="hidden" name="csrf" value="<?=esc_attr(csrf())?>" />
-          <input type="hidden" name="request_from" value="<?=esc_attr($request_from)?>">
+        <form id="login" name="login" method="post" 
+          action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" 
+          novalidate>
+          <input type="hidden" name="csrf" 
+            value="<?=esc_attr(csrf())?>" />
+          <input type="hidden" name="request_from" 
+            value="<?=esc_attr($request_from)?>">
 
           <p>
             <?php if(!empty($errors['credentials'])) : ?>
@@ -132,7 +138,8 @@
 
           <p>
             <label for="email">Email</label>
-            <input type="email" id="email" class="form_control" name="email" placeholder="Enter your email" value="<?=clean('email')?>" />
+            <input type="email" id="email" class="form_control" name="email" 
+              placeholder="Enter your email" value="<?=clean('email')?>" />
             <span class="required">*</span>
             <?php if(!empty($errors['email'])) : ?>
               <span class="error"><?=esc($errors['email'])?></span>
@@ -141,7 +148,8 @@
 
           <p>
             <label for="password">Password</label>
-            <input type="password" id="password" class="form_control" name="password" placeholder="Enter your password" />
+            <input type="password" id="password" class="form_control" 
+              name="password" placeholder="Enter your password" />
             <span class="required">*</span>
             <?php if(!empty($errors['password'])) : ?>
               <span class="error"><?=esc($errors['password'])?></span>

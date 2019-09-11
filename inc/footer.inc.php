@@ -11,7 +11,9 @@
 			    	require 'footer_nav.inc.php';
 			    ?>
 			    <div id="copyright">
-			      <p>All rights reserved &copy; Around The Globe <?=date('Y')?></p>
+			      <p>
+			      	All rights reserved &copy; Around The Globe <?=esc(date('Y'))?>
+			      </p>
 			    </div>
 			</footer>
 

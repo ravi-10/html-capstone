@@ -1,7 +1,7 @@
 <?php
 /**
  * Tour Model Class Page 
- * last_update: 2019-09-08
+ * last_update: 2019-09-11
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */
 
@@ -51,8 +51,8 @@ class BookingModel extends Model
 							$result_address['province'] . ', ' . 
 							$result_address['country'];
 
-		$query = "INSERT INTO {$this->table} (user_id, customer_address, sub_total,
-					gst, pst, total, status) VALUES (:user_id,
+		$query = "INSERT INTO {$this->table} (user_id, customer_address,
+					 sub_total, gst, pst, total, status) VALUES (:user_id,
 					:customer_address, :sub_total, :gst,
 					:pst, :total, :status)";
 

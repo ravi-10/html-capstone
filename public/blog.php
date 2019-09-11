@@ -16,7 +16,8 @@
     
     if(!empty($_POST)) {
         if(!empty($_POST['search'])){
-            $blogs = $obj_blog->search('published_at', 'frontend', $_POST['search']);
+            $blogs = $obj_blog->search('published_at', 
+                                        'frontend', $_POST['search']);
             if(count($blogs) > 0){
                 $_SESSION['flash'] = count($blogs) .' blog(s) found';
                 $_SESSION['flash_class'] = 'flash-success';
@@ -49,7 +50,8 @@
           </div>
           <div class="search">
             <form method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>">
-              <input type="text" class="txt_search" name="search" placeholder="search by title" value="<?=clean('search')?>">
+              <input type="text" class="txt_search" name="search" 
+                placeholder="search by title" value="<?=clean('search')?>">
               <button type="submit">Search</button>
             </form>
           </div>
@@ -65,7 +67,8 @@
         ?>
 
           <div class="post">
-            <img src="images/uploads/blogs/thumbnail/<?=esc_attr($blog['thumbnail_image'])?>" alt="<?=esc_attr($blog['thumbnail_image'])?>" width="200" height="200">
+            <img src="images/uploads/blogs/thumbnail/<?=esc_attr($blog['thumbnail_image'])?>" 
+              alt="<?=esc_attr($blog['thumbnail_image'])?>" width="200" height="200">
             <h2><?=esc($blog['title'])?></h2>
             <span>
               <?php
@@ -76,7 +79,9 @@
               ?>
             </span>
             <p><?=esc(substr($blog['description'], 0, 100))?></p>
-            <a href="single_blog.php?blog_id=<?=esc_attr($blog['blog_id'])?>">read more..</a>
+            <a href="single_blog.php?blog_id=<?=esc_attr($blog['blog_id'])?>">
+              read more..
+            </a>
           </div>
           
         <?php 

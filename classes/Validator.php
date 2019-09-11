@@ -54,7 +54,8 @@ class Validator
 		$pattern = '/^([a-zA-Z\s\'])+$/';
 
 		if(preg_match($pattern, $this->post[$field]) !== 1) {
-			$this->setError($field, "Only alphabets, apostrophe and space allowed for {$this->label($field)}");
+			$this->setError($field, "Only alphabets, apostrophe and 
+							space allowed for {$this->label($field)}");
 		}
 	}
 
@@ -66,7 +67,8 @@ class Validator
 	public function generalLengthValidator($field)
 	{
 		if(strlen($this->post[$field]) < 2 || strlen($this->post[$field]) > 50) {
-			$this->setError($field, "{$this->label($field)} must be of minimum 2 characters or maximum of 50 characters");
+			$this->setError($field, "{$this->label($field)} must be of 
+							minimum 2 characters or maximum of 50 characters");
 		}
 	}
 
@@ -80,9 +82,12 @@ class Validator
 		$pattern = '/^([a-zA-Z0-9\s\'\-\_\&\\\(\)])+$/';
 
 		if(strlen($this->post[$field]) < 2 || strlen($this->post[$field]) > 100) {
-			$this->setError($field, "{$this->label($field)} must be of minimum 2 characters or maximum of 100 characters");
+			$this->setError($field, "{$this->label($field)} must be of 
+							minimum 2 characters or maximum of 100 characters");
 		} elseif(preg_match($pattern, $this->post[$field]) !== 1) {
-			$this->setError($field, "Only alphabets, digits, apostrophe, space, and character like (-_&\) are allowed for {$this->label($field)}");
+			$this->setError($field, "Only alphabets, digits, apostrophe, space, 
+							and character like (-_&\) are allowed 
+							for {$this->label($field)}");
 		}
 	}
 
@@ -96,7 +101,8 @@ class Validator
 		$pattern = '/^[A-Z]\d[A-Z]\s?\d[A-Z]\d$/i';
 
 		if(preg_match($pattern, $this->post[$field]) !== 1) {
-			$this->setError($field, "Please enter valid {$this->label($field)} eg:E8K2H7");
+			$this->setError($field, "Please enter valid {$this->label($field)}
+									 eg:E8K2H7");
 		}
 	}
 
@@ -122,7 +128,8 @@ class Validator
 	public function email($field)
 	{
 		if(strlen($this->post[$field]) > 100) {
-			$this->setError($field, "{$this->label($field)} must be of maximum 100 characters");
+			$this->setError($field, "{$this->label($field)} must be of 
+										maximum 100 characters");
 		} elseif(!filter_var($this->post[$field], FILTER_VALIDATE_EMAIL)) {
 			$this->setError($field, 'Please provide a valid email address');
 		}
@@ -153,7 +160,8 @@ class Validator
 
 		if($resultCount > 0) {
 			// Email already exists in database
-			$this->setError($field, 'Email already exists. Please try different email.');
+			$this->setError($field, 'Email already exists. 
+										Please try different email.');
 		}
 	}
 
@@ -167,11 +175,17 @@ class Validator
 		$pattern = '/(?=.*[A-Z]+)(?=.*[a-z]+)(?=.*[0-9]+)(?=.*[\!\@\#\$\%\^\&\*\(\)]+).{6,}/';
 		
 		if(strlen($this->post[$field1]) < 6 || strlen($this->post[$field1]) > 20) {
-			$this->setError($field1, "{$this->label($field1)} must be of minimum 6 characters or maximum of 20 characters");
+			$this->setError($field1, "{$this->label($field1)} must be of minimum 
+									6 characters or maximum of 20 characters");
 		} elseif(preg_match($pattern, $this->post[$field1]) !== 1){
-			$this->setError($field1, "Please enter valid {$this->label($field1)}. It must consist of an uppercase letter, a lower case letter, a digit, a special character, and must be atleast 6 characters long.");
+			$this->setError($field1, "Please enter valid {$this->label($field1)}. 
+										It must consist of an uppercase letter, 
+										a lower case letter, a digit, a special 
+										character, and must be atleast 6 
+										characters long.");
 		} elseif($this->post[$field1] != $this->post[$field2]){
-			$this->setError($field2, "{$this->label($field1)} and {$this->label($field2)} does not match");
+			$this->setError($field2, "{$this->label($field1)} and 
+										{$this->label($field2)} does not match");
 		}
 
 	}
@@ -185,15 +199,19 @@ class Validator
 	{
 		// checks for YYYY-mm-dd format
 		// first capture group: ([12]\d{3})
-		// 		checks if year start with 1 or 2 and check for 3 more digits after to 			make a 4 digit year
+		// 		checks if year start with 1 or 2 and check for 3 more digits 
+		// 		after to make a 4 digit year
 		// second capture group: (0[1-9]|1[0-2])
-		// 		checks if month start with 0 or 1 and allows values between 01 to 12
+		// 		checks if month start with 0 or 1 and allows values between 
+		// 		01 to 12
 		// third capture group: (0[1-9]|[12]\d|3[01])
-		// 		checks if date starts with 0,1,2 or 3 and allows values between 01 to 31
+		// 		checks if date starts with 0,1,2 or 3 and allows values between 
+		// 		01 to 31
 		$pattern = '/^(([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/';
 
 		if(preg_match($pattern, $this->post[$field]) !== 1) {
-			$this->setError($field, 'Please enter a valid date in following structure eg: 2019-09-04');
+			$this->setError($field, 'Please enter a valid date in following 
+				structure eg: 2019-09-04');
 		}
 	}
 
@@ -204,8 +222,10 @@ class Validator
 	 */
 	public function dateNotFromPast($field)
 	{
-		// strtotime() converts date into the number of seconds since January 1 1970
-		// time() returns the current time in the number of seconds since January 1 1970
+		// strtotime() converts date into the number of seconds 
+		// since January 1 1970
+		// time() returns the current time in the number of seconds 
+		// since January 1 1970
 		$entered_date = strtotime($this->post[$field]);
 		$current_date = time();
 		if ($entered_date < $current_date) {
@@ -238,7 +258,9 @@ class Validator
 		$pattern = '/^((\d{1,3})(\.\d{1,2})?)$/';
 
 		if(preg_match($pattern, $this->post[$field]) !== 1) {
-			$this->setError($field, 'Price should be in following format eg: 149 or 149.99 and not more than total of 5 digits');
+			$this->setError($field, 'Price should be in following format 
+							eg: 149 or 149.99 and not more than 
+							total of 5 digits');
 		}
 	}
 
@@ -250,7 +272,8 @@ class Validator
 	public function countryLength($field)
 	{
 		if(strlen($this->post[$field]) < 2 || strlen($this->post[$field]) > 20) {
-			$this->setError($field, "{$this->label($field)} must be of minimum 2 characters or maximum of 20 characters");
+			$this->setError($field, "{$this->label($field)} must be of minimum 
+									2 characters or maximum of 20 characters");
 		}
 	}
 
@@ -262,7 +285,8 @@ class Validator
 	public function lengthForFullVarchar($field)
 	{
 		if(strlen($this->post[$field]) < 2 || strlen($this->post[$field]) > 255) {
-			$this->setError($field, "{$this->label($field)} must be of minimum 2 characters or maximum of 255 characters");
+			$this->setError($field, "{$this->label($field)} must be of minimum 2
+									 characters or maximum of 255 characters");
 		}
 	}
 
@@ -276,7 +300,8 @@ class Validator
 		$pattern = '/^[\d]+$/';
 
 		if(preg_match($pattern, $this->post[$field]) !== 1) {
-			$this->setError($field, "{$this->label($field)} must be only numbers");
+			$this->setError($field, "{$this->label($field)} must be only 
+									numbers");
 		}
 	}
 

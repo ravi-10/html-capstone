@@ -9,19 +9,27 @@
 
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
+        <meta name="viewport" 
+                content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" 
+                href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" 
+                integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" 
+        rel="stylesheet">
         <link rel="stylesheet" href="css/spur.css">
         <link rel="stylesheet" href="css/admin.css">
 
         <title><?=esc($title)?></title>
 
         <link rel="icon" href="../images/favicon.ico" /> <!-- favicon -->
-        <link rel="apple-touch-icon" sizes="57x57" href="../images/apple-icon-57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-icon-72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-icon-114.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="../images/apple-icon-144.png" />
+        <link rel="apple-touch-icon" sizes="57x57" 
+                href="../images/apple-icon-57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" 
+                href="../images/apple-icon-72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" 
+                href="../images/apple-icon-114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" 
+                href="../images/apple-icon-144.png" />
 
         <!--
     
@@ -55,7 +63,9 @@
                     <a href="#!" class="menu-toggle">
                         <i class="fas fa-bars"></i>
                     </a>
-                    <a href="index.php" class="spur-logo"><i class="fas fa-globe"></i> <span>ATG Admin</span></a>
+                    <a href="index.php" class="spur-logo">
+                        <i class="fas fa-globe"></i> <span>ATG Admin</span>
+                    </a>
                 </header>
                 <?php
                     // including nav file
@@ -69,19 +79,29 @@
                         <i class="fas fa-bars"></i>
                     </a>
                     <?php if(empty($_GET)): ?>
-                    <form class="searchbox" method="post" action="<?=esc($_SERVER['PHP_SELF'])?>">
-                        <button type="submit" class="searchbox-submit"> <i class="fas fa-search"></i> </button>
-                        <input type="text" class="searchbox-input" placeholder="type to search from title" name="search">
+                    <form class="searchbox" method="post" 
+                                action="<?=esc($_SERVER['PHP_SELF'])?>">
+                        <button type="submit" class="searchbox-submit"> 
+                            <i class="fas fa-search"></i> 
+                        </button>
+                        <input type="text" class="searchbox-input" 
+                                placeholder="type to search from title" 
+                                name="search" value="<?=clean('search')?>">
                     </form>
                     <?php endif; ?>
                     <div class="tools">
                         <div class="dropdown tools-item">
-                            <a href="#" class="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="" id="dropdownMenu1" 
+                                data-toggle="dropdown" aria-haspopup="true" 
+                                aria-expanded="false">
                                 <i class="fas fa-user"></i>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                            <div class="dropdown-menu dropdown-menu-right" 
+                                aria-labelledby="dropdownMenu1">
                                 <a class="dropdown-item" href="#">Profile</a>
-                                <a class="dropdown-item" href="../login.php">Logout</a>
+                                <a class="dropdown-item" href="../login.php">
+                                    Logout
+                                </a>
                             </div>
                         </div>
                     </div>

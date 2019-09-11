@@ -1,7 +1,7 @@
 <?php
 /**
  * Tour Model Class Page 
- * last_update: 2019-09-04
+ * last_update: 2019-09-11
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */
 
@@ -43,7 +43,8 @@ class HomeModel extends Model
 	public function upcomingTours()
 	{
 		$current_date = date('Y-m-d');
-		$condition = " WHERE is_published = true and booking_ends >= '$current_date' ";
+		$condition = " WHERE is_published = true and
+						 booking_ends >= '$current_date' ";
 
 		$query = "SELECT
 					tours.*,

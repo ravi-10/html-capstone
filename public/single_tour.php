@@ -47,7 +47,8 @@
           <div class="tour_box">
             <?php if($_SESSION['logged_in']) : ?>
               <form action="add_to_cart.php" method="post">
-                  <input type="hidden" name="tour_id" value="<?=esc_attr($single_tour['tour_id'])?>">
+                  <input type="hidden" name="tour_id" 
+                    value="<?=esc_attr($single_tour['tour_id'])?>">
                   <div class="quantity">
                     <label>Quantity</label>
                     <select name="quantity">
@@ -95,7 +96,9 @@
                   echo esc($price);
                 ?>
               </span>
-              <span class="more country"><a href="#"><?=esc($single_tour['country'])?></a></span>
+              <span class="more country">
+                <a href="#"><?=esc($single_tour['country'])?></a>
+              </span>
             </div>
             <div class="description">
               <p>

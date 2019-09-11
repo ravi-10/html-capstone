@@ -35,7 +35,8 @@
     if('POST' == $_SERVER['REQUEST_METHOD']) {
 
         foreach ($_POST as $key => $value) {
-            // calling required function for all fields except is_published because it is a checkbox
+            // calling required function for all fields except is_published 
+            // because it is a checkbox
             if ($key != 'is_published'){
                 $v->required($key);
             }
@@ -87,18 +88,25 @@
                     <div class="card-body">
                         <form method="post" action="" novalidate>
                             <div class="form-group">
-                                <input type="hidden" class="form-control" id="tour_id" name="tour_id" value="<?=esc_attr($tour['tour_id'])?>">
+                                <input type="hidden" class="form-control" 
+                                    id="tour_id" name="tour_id" 
+                                    value="<?=esc_attr($tour['tour_id'])?>">
                             </div>
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Tour Title" value="<?=esc_attr($tour['title'])?>">
+                                <input type="text" class="form-control" 
+                                    id="title" name="title" placeholder="Tour Title" 
+                                    value="<?=esc_attr($tour['title'])?>">
                                 <?php if(!empty($errors['title'])) : ?>
-                                    <div class="alert alert-danger" role="alert"><?=esc($errors['title'])?></div>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?=esc($errors['title'])?>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="category">Category</label>
-                                <select class="form-control" id="category" name="category">
+                                <select class="form-control" id="category" 
+                                    name="category">
                                     <option value="">Select Category</option>
                                     <?php foreach($categories as $category) : ?>
                                       <option value="<?=esc_attr($category['category_id'])?>" <?php echo ($category['category_id'] == $tour['category_id']) ? "selected" : ""; ?>>
@@ -107,81 +115,127 @@
                                     <?php endforeach; ?>
                                 </select>
                                 <?php if(!empty($errors['category'])) : ?>
-                                    <div class="alert alert-danger" role="alert"><?=esc($errors['category'])?></div>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?=esc($errors['category'])?>
+                                    
+                                    </div>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="featured_image">Featured Image</label>
-                                <input type="text" class="form-control" id="featured_image" name="featured_image" placeholder="Featured Image" value="<?=esc_attr($tour['featured_image'])?>">
+                                <input type="text" class="form-control" 
+                                    id="featured_image" name="featured_image" 
+                                    placeholder="Featured Image" 
+                                    value="<?=esc_attr($tour['featured_image'])?>">
                                 <?php if(!empty($errors['featured_image'])) : ?>
-                                    <div class="alert alert-danger" role="alert"><?=esc($errors['featured_image'])?></div>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?=esc($errors['featured_image'])?>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="thumbnail_image">Thumbnail Image</label>
-                                <input type="text" class="form-control" id="thumbnail_image" name="thumbnail_image" placeholder="Thumbnail Image" value="<?=esc_attr($tour['thumbnail_image'])?>">
+                                <input type="text" class="form-control" 
+                                    id="thumbnail_image" name="thumbnail_image" 
+                                    placeholder="Thumbnail Image" 
+                                    value="<?=esc_attr($tour['thumbnail_image'])?>">
                                 <?php if(!empty($errors['thumbnail_image'])) : ?>
-                                    <div class="alert alert-danger" role="alert"><?=esc($errors['thumbnail_image'])?></div>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?=esc($errors['thumbnail_image'])?>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea class="form-control" id="description" name="description" rows="3"><?=esc($tour['description'])?></textarea>
+                                <textarea class="form-control" id="description" 
+                                    name="description" rows="3">
+                                    <?=esc($tour['description'])?>
+                                </textarea>
                                 <?php if(!empty($errors['description'])) : ?>
-                                    <div class="alert alert-danger" role="alert"><?=esc($errors['description'])?></div>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?=esc($errors['description'])?>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="country">Country</label>
-                                <input type="text" class="form-control" id="country" name="country" placeholder="Country" value="<?=esc_attr($tour['country'])?>">
+                                <input type="text" class="form-control" 
+                                        id="country" name="country" 
+                                        placeholder="Country" 
+                                        value="<?=esc_attr($tour['country'])?>">
                                 <?php if(!empty($errors['country'])) : ?>
-                                    <div class="alert alert-danger" role="alert"><?=esc($errors['country'])?></div>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?=esc($errors['country'])?></div>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="from_date">From Date</label>
-                                <input type="text" class="form-control" id="from_date" name="from_date" placeholder="From Date" value="<?=esc_attr($tour['from_date'])?>">
+                                <input type="text" class="form-control" 
+                                    id="from_date" name="from_date" 
+                                    placeholder="From Date" 
+                                    value="<?=esc_attr($tour['from_date'])?>">
                                 <?php if(!empty($errors['from_date'])) : ?>
-                                    <div class="alert alert-danger" role="alert"><?=esc($errors['from_date'])?></div>
+                                    <div class="alert alert-danger" 
+                                        role="alert"><?=esc($errors['from_date'])?>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="to_date">To Date</label>
-                                <input type="text" class="form-control" id="to_date" name="to_date" placeholder="To Date" value="<?=esc_attr($tour['to_date'])?>">
+                                <input type="text" class="form-control" 
+                                    id="to_date" name="to_date" placeholder="To Date" 
+                                    value="<?=esc_attr($tour['to_date'])?>">
                                 <?php if(!empty($errors['to_date'])) : ?>
-                                    <div class="alert alert-danger" role="alert"><?=esc($errors['to_date'])?></div>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?=esc($errors['to_date'])?>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="price">Price</label>
-                                <input type="text" class="form-control" id="price" name="price" placeholder="Price" value="<?=esc_attr($tour['price'])?>">
+                                <input type="text" class="form-control" id="price" 
+                                    name="price" placeholder="Price" 
+                                    value="<?=esc_attr($tour['price'])?>">
                                 <?php if(!empty($errors['price'])) : ?>
-                                    <div class="alert alert-danger" role="alert"><?=esc($errors['price'])?></div>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?=esc($errors['price'])?>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="booking_ends">Booking Ends</label>
-                                <input type="text" class="form-control" id="booking_ends" name="booking_ends" placeholder="Booking Ends" value="<?=esc_attr($tour['booking_ends'])?>">
+                                <input type="text" class="form-control" 
+                                    id="booking_ends" name="booking_ends" 
+                                    placeholder="Booking Ends" 
+                                    value="<?=esc_attr($tour['booking_ends'])?>">
                                 <?php if(!empty($errors['booking_ends'])) : ?>
-                                    <div class="alert alert-danger" role="alert"><?=esc($errors['booking_ends'])?></div>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?=esc($errors['booking_ends'])?>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="max_allowed_bookings">Maximum Allowed Bookings</label>
-                                <select class="form-control" id="max_allowed_bookings" name="max_allowed_bookings">
+                                <select class="form-control" id="max_allowed_bookings" 
+                                    name="max_allowed_bookings">
                                     <?php for($i=1; $i<=9; $i++): ?>
-                                        <option value="<?=esc_attr($i)?>" <?php echo ($tour['max_allowed_bookings'] == $i) ? "selected" : ""; ?>>
+                                        <option value="<?=esc_attr($i)?>" 
+                                            <?php echo ($tour['max_allowed_bookings'] == $i) ? "selected" : ""; ?>>
                                             <?=esc($i)?>
                                         </option>
                                     <?php endfor; ?>
                                 </select>
                                 <?php if(!empty($errors['max_allowed_bookings'])) : ?>
-                                    <div class="alert alert-danger" role="alert"><?=esc($errors['max_allowed_bookings'])?></div>
+                                    <div class="alert alert-danger" 
+                                        role="alert">
+                                        <?=esc($errors['max_allowed_bookings'])?>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="is_published" name="is_published" <?php echo ($tour['is_published'] == true) ? "checked" : ""; ?>>
+                                    <input type="checkbox" class="custom-control-input" 
+                                    id="is_published" name="is_published" <?php echo ($tour['is_published'] == true) ? "checked" : ""; ?>>
                                     <label class="custom-control-label" for="is_published">is Published?</label>
                                 </div>
                             </div>                            

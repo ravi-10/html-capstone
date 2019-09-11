@@ -25,22 +25,27 @@
           </div>
         </div>
         
-        <form id="contact" name="contact" method="post" action="http://www.scott-media.com/test/form_display.php" autocomplete="on">
+        <form id="contact" name="contact" method="post" 
+          action="http://www.scott-media.com/test/form_display.php" 
+          autocomplete="on">
           <p>
             <label for="name">Name</label>
-            <input type="text" id="name" class="form_control" name="name" maxlength="50" placeholder="Enter your name" required />
+            <input type="text" id="name" class="form_control" name="name" 
+              maxlength="50" placeholder="Enter your name" required />
             <span class="required">*</span>
           </p>
           
           <p>
             <label for="name">Email</label>
-            <input type="email" id="email" class="form_control" name="email" placeholder="Enter your email" required />
+            <input type="email" id="email" class="form_control" name="email" 
+              placeholder="Enter your email" required />
             <span class="required">*</span>
           </p>
           
           <p>
             <label for="travel_preference">Travel Preference</label>
-            <select name="travel_preference" id="travel_preference" class="form_control">
+            <select name="travel_preference" id="travel_preference" 
+              class="form_control">
               <option value="">Select Preference</option>
               <option value="solo">Solo</option>
               <option value="group">Group</option>
@@ -50,7 +55,8 @@
           
           <p>
             <label for="subject">Subject</label>
-            <input type="text" id="subject" class="form_control" name="subject" placeholder="Enter subject" required />
+            <input type="text" id="subject" class="form_control" name="subject" 
+              placeholder="Enter subject" required />
             <span class="required">*</span>
           </p>
           

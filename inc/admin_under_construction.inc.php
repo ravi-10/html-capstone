@@ -14,7 +14,10 @@
                 </div>
                 <div class="spur-card-title"> Page Under Construction </div>
             </div>
-            <div class="card-body bg-info text-white"> This page is currenty in development phase. Please visit later again to check on the updates. </div>
+            <div class="card-body bg-info text-white"> 
+                This page is currenty in development phase. 
+                Please visit later again to check on the updates. 
+            </div>
         </div>
     </div>
 </div>

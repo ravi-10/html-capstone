@@ -56,7 +56,9 @@
         	<h2>Booking Info</h2>
         	<span>
         		<span>Booking #: </span>
-        		<strong class="value"><?=esc('10000' . $booking['booking_id'])?></strong>
+        		<strong class="value">
+              <?=esc('10000' . $booking['booking_id'])?>
+            </strong>
         	</span>
         	<br>
         	<span>

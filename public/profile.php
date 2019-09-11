@@ -13,7 +13,8 @@
     if($_SESSION['logged_in']) {
         // query to get details of logged user
         $query = "SELECT
-              first_name, last_name, street, city, postal_code, province, country, phone, email
+              first_name, last_name, street, city, postal_code, province, 
+              country, phone, email
               FROM users WHERE user_id = :user_id";
 
         // prepare the query
@@ -57,8 +58,8 @@
         <ul>
         	<?php foreach ($result as $key => $value) : ?>
         		<li>
-        			<span class="key"><?=ucwords(str_replace('_', ' ', $key))?> :</span>
-        			<span class="value"><?=$value?></span>
+        			<span class="key"><?=esc(ucwords(str_replace('_', ' ', $key)))?> :</span>
+        			<span class="value"><?=esc($value)?></span>
         		</li>
         	<?php endforeach; ?>
         </ul>

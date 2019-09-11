@@ -57,14 +57,16 @@
               <td><?=esc($cart['quantity'])?></td>
               <td>
                 <?php
-                    $sub_total_price += getLineTotal($cart['price'], $cart['quantity']);
+                    $sub_total_price += getLineTotal($cart['price'], 
+                                                      $cart['quantity']);
                     $sub_total_qty += $cart['quantity'];
                 ?>
                 <?=esc(number_format(getLineTotal($cart['price'], $cart['quantity']), 2))?>
               </td>
               <td>
                 <form action="remove_from_cart.php" method="post">
-                  <input type="hidden" name="tour_id" value="<?=esc_attr($cart['tour_id'])?>">
+                  <input type="hidden" name="tour_id" 
+                    value="<?=esc_attr($cart['tour_id'])?>">
                   <select name="quantity">
                     <?php
                       $max = $cart['quantity'];
@@ -120,7 +122,8 @@
         <?php else : ?>
           <tr class="">
             <td colspan="5">
-              There is no tour in cart. <a class="continue_booking" href="tours.php">Continue Booking</a>
+              There is no tour in cart. <a class="continue_booking" 
+              href="tours.php">Continue Booking</a>
             </td>
           </tr>          
         <?php endif; ?>

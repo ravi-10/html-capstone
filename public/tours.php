@@ -17,7 +17,8 @@
     
 
     if(!empty($_GET['category_id'])){
-        $tours = $obj_tour->allByCategory('from_date', 'frontend', $_GET['category_id']);
+        $tours = $obj_tour->allByCategory('from_date', 
+                                          'frontend', $_GET['category_id']);
     } elseif(!empty($_POST)) {
         
         if(!empty($_POST['search'])){
@@ -100,7 +101,8 @@
               $counter++;
               if($counter%2 == 1) {
                 $css_class_align = 'left'; // class left for odd item
-                echo '<div class="tour_container">'; // open tour container at every odd tour item
+                echo '<div class="tour_container">'; 
+                // open tour container at every odd tour item
               } else {
                 $css_class_align = 'right'; // class right for even item
               }
@@ -135,7 +137,8 @@
               </div>
             
           <?php
-            // close tour container at every even tour item, also close if last item is odd
+            // close tour container at every even tour item, 
+            // also close if last item is odd
             if($counter%2 == 0) {
                 echo '</div>'; // close tour container
               } else {
