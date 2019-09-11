@@ -13,7 +13,8 @@
     $heading = 'Thank You for Booking!';
 
     if(!$_SESSION['logged_in']) {
-        $_SESSION['flash'] = 'You must be logged in and pay for booking to view thank you page.';
+        $_SESSION['flash'] = 'You must be logged in and pay for booking to 
+                                view payment details page.';
         $_SESSION['flash_class'] = 'flash-info';
         header('Location: login.php');
         exit;

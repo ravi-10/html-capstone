@@ -120,7 +120,7 @@
         <?php else : ?>
           <tr class="">
             <td colspan="5">
-              There is no tour in cart. <a href="tours.php">Continue Booking</a>
+              There is no tour in cart. <a class="continue_booking" href="tours.php">Continue Booking</a>
             </td>
           </tr>          
         <?php endif; ?>

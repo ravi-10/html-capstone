@@ -47,14 +47,23 @@
         if(empty($errors)) {
 
           $b = new BookingModel;
-          $booking_id = $b->saveBooking($_POST);
-          if($booking_id > 0) {
-              $inserted_rows = $b->saveBookingLineItems($booking_id);
-              if($inserted_rows > 0) {
-                  header('Location: thank_you.php?booking_id=' . $booking_id);
-                  die;
+          try {
+              $dbh->beginTransaction();
+
+              $booking_id = $b->saveBooking($_POST);
+              if($booking_id > 0) {
+                  $inserted_rows = $b->saveBookingLineItems($booking_id);
+                  if($inserted_rows > 0) {
+                      $dbh->commit();
+                      header('Location: thank_you.php?booking_id=' . $booking_id);
+                      die;
+                  }
               }
+          } catch (PDOException $e) {
+            $dbh->rollback();
+            throw $e;
           }
+
 
         } // endif
 

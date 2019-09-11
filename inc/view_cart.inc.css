@@ -151,6 +151,10 @@
   main form#payment p.center a:active{
     color: #df7900;
   }
+
+  main form a.continue_booking{
+    color: #df7900;
+  }
   
   footer{
     clear: both;
