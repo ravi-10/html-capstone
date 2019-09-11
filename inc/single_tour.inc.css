@@ -104,6 +104,10 @@
     margin: 0;
     padding-top: 5px;
   }
+
+  main div.tour_box div.description p a.category{
+    color: #df7900;
+  }
   
   main div.tour_box div.description ul{
     display: inline-block;

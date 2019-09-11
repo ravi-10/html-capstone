@@ -47,9 +47,10 @@
         }
 
         $v->generalStringValidator('name');
-        $v->numbersOnly('card_number');
+        $v->cardNumberOnly('card_number');
         $v->dateFormat('expiry_date');
-        $v->numbersOnly('cvv');
+        $v->dateNotFromPast('expiry_date');
+        $v->cvv('cvv');
 
         $errors = $v->getErrors();
 

@@ -291,17 +291,32 @@ class Validator
 	}
 
 	/**
-	 * Function to validate for numbers only
+	 * Function to validate for card number only
 	 * @param  Number $field A form field
 	 * @return void
 	 */
-	public function numbersOnly($field)
+	public function cardNumberOnly($field)
 	{
-		$pattern = '/^[\d]+$/';
+		$pattern = '/^(\d{16})$/';
 
 		if(preg_match($pattern, $this->post[$field]) !== 1) {
 			$this->setError($field, "{$this->label($field)} must be only 
-									numbers");
+									numbers and of 16 digits");
+		}
+	}
+
+	/**
+	 * Function to validate for cvv
+	 * @param  Number $field A form field
+	 * @return void
+	 */
+	public function cvv($field)
+	{
+		$pattern = '/^(\d{3})$/';
+
+		if(preg_match($pattern, $this->post[$field]) !== 1) {
+			$this->setError($field, "{$this->label($field)} must be only 
+									numbers and of 3 digits");
 		}
 	}
 

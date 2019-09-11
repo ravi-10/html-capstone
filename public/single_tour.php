@@ -114,10 +114,11 @@
               </p>
               <p>
                 <em>
-                  <?php
-                    $category = 'Category - ' . $single_tour['category'];
-                    echo esc($category);
-                  ?>
+                  Category - 
+                  <a class="category" 
+                    href="tours.php?category_id=<?=esc_attr($single_tour['category_id'])?>">
+                    <?=esc($single_tour['category'])?>
+                  </a>
                 </em>
               </p>
               
