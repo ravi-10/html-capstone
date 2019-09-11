@@ -142,6 +142,12 @@
       min-height: auto;
     }
 
+    main div.company-info,
+    main div.user-info{
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
     main form#payment{
       width: 90%;
       margin: 20px auto;   

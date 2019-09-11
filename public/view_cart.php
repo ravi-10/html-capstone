@@ -115,6 +115,8 @@
 
           <tr class="checkout">
             <td colspan="5">
+              <a class="continue_booking" 
+              href="tours.php">Continue Booking</a>
               <a href="checkout.php">Checkout Now</a>
             </td>
           </tr>
