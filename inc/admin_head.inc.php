@@ -99,7 +99,8 @@
                             <div class="dropdown-menu dropdown-menu-right" 
                                 aria-labelledby="dropdownMenu1">
                                 <a class="dropdown-item" href="#">Profile</a>
-                                <a class="dropdown-item" href="../login.php">
+                                <a class="dropdown-item" 
+                                    href="../login.php?logout=1">
                                     Logout
                                 </a>
                             </div>

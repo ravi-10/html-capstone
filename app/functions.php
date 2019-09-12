@@ -59,6 +59,7 @@
 	{
 		session_regenerate_id();
         unset($_SESSION['logged_in']);
+        unset($_SESSION['role']);
         $_SESSION['flash'] = 'You have been successfully logged out.';
         $_SESSION['flash_class'] = 'flash-success';
         header('Location: login.php');

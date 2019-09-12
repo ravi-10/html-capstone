@@ -12,6 +12,14 @@
     $title = 'ATG - Admin Tours';
     $heading = 'Tours';
 
+    if(!$_SESSION['logged_in'] && $_SESSION['role'] != 'admin') {
+        $_SESSION['flash'] = 'You must be logged in as admin
+                                 to view admin tours page.';
+        $_SESSION['flash_class'] = 'flash-info';
+        header('Location: ../login.php?request_from=admin/tours.php');
+        exit;
+    }
+
     $obj_tour = new TourModel;
     $tours = $obj_tour->all('title', 'backend');
 

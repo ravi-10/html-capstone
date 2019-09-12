@@ -61,7 +61,7 @@
         // checking if there is no errors before login
         if(empty($errors)) {
 
-            $query = 'SELECT user_id, first_name, password FROM users 
+            $query = 'SELECT user_id, first_name, password, role FROM users 
                       WHERE email = :email';
 
             $stmt = $dbh->prepare($query);
@@ -79,14 +79,30 @@
               if(password_verify($_POST['password'], $user['password'])) {
                   $_SESSION['logged_in'] = true;
                   $_SESSION['user_id'] = $user['user_id'];
+                  $_SESSION['role'] = $user['role'];
                   $_SESSION['flash'] = "Welcome Back, {$user['first_name']}! 
                                         You have successfully logged in.";
-                  $_SESSION['flash_class'] = 'flash-success';
                   session_regenerate_id(true);
-                  if(!empty($_POST['request_from'])){
-                      header('Location: ' . $_POST['request_from']);
-                  } else {
-                      header('Location: profile.php');
+                  if($_SESSION['role'] == 'admin'){
+                      $_SESSION['flash_class'] = 'alert-success';
+                      if(!empty($_POST['request_from'])){
+                          header('Location: ' . $_POST['request_from']);
+                      } else {
+                          header('Location: admin/');
+                      }
+                  } elseif($_SESSION['role'] == 'blogger'){
+                      $_SESSION['flash_class'] = 'alert-success';
+                      if(!empty($_POST['request_from'])){
+                          header('Location: ' . $_POST['request_from']);
+                      } else {
+                          header('Location: admin/blogs.php');
+                      }
+                  } elseif($_SESSION['role'] == 'customer'){
+                      $_SESSION['flash_class'] = 'flash-success';
+                      if(!empty($_POST['request_from'])){
+                      } else {
+                          header('Location: profile.php');
+                      }
                   }
                   die;
                   

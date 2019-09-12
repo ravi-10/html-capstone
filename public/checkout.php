@@ -149,7 +149,6 @@
                 echo esc($calculated_gst);
               ?>
             </td>
-            <td></td>
           </tr>
 
           <tr class="total">
@@ -162,7 +161,6 @@
                 echo esc($calculated_pst);
               ?>
             </td>
-            <td></td>
           </tr>
 
           <tr class="total">
@@ -175,7 +173,6 @@
                 echo esc($calculated_total);
               ?>
               </td>
-            <td></td>
           </tr>
 
         <?php else : ?>

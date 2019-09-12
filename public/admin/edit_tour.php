@@ -11,6 +11,18 @@
     use App\CategoryModel;
     use App\Validator;
 
+    if(!$_SESSION['logged_in'] && $_SESSION['role'] != 'admin') {
+        $_SESSION['flash'] = 'You must be logged in as admin
+                                 to view edit tour page.';
+        $_SESSION['flash_class'] = 'flash-info';
+        if(!empty($_GET['tour_id'])){
+            header('Location: ../login.php?request_from=admin/edit_tour.php?tour_id=' . $_GET['tour_id']);
+        } else {
+            header('Location: ../login.php?request_from=admin/edit_tour.php');
+        }
+        exit;
+    }
+
     if(!isset($_GET['tour_id']) || empty($_GET['tour_id'])){
         $_SESSION['flash'] = "Please select a tour to edit";
         $_SESSION['flash_class'] = 'alert-info';

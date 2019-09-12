@@ -56,5 +56,7 @@
 	    return $_SESSION['csrf'];
 	}
 
+	//var_dump('log will work evrywhere');
+
 	// including functions file
 	require 'functions.php';
