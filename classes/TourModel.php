@@ -125,29 +125,38 @@ class TourModel extends Model
 	 * @param  Array $tour_array form fields
 	 * @return Integer             inserted id
 	 */
-	public function saveTour($tour_array)
+	public function save($array_tour, $featured_image, $thumbnail_image)
 	{
 		$dbh = static::$dbh;
+		$is_published = 0; // boolean false for tinyint datatype
+		if(!empty($array_tour['is_published'])) {
+			$is_published = 1; // boolean true for tinyint datatype
+		}
 
 		$query = 'INSERT INTO tours (title, category_id, featured_image,
 					thumbnail_image, description, country, from_date, to_date,
-					price, booking_ends, max_allowed_bookings) VALUES (:title,
-					:category_id, :featured_image, :thumbnail_image,
-					:description, :country, :from_date, :to_date, :price,
-					:booking_ends, :max_allowed_bookings)';
+					price, booking_ends, bookings_available, max_allowed_bookings,
+					is_published) 
+					VALUES 
+					(:title, :category_id, :featured_image, :thumbnail_image, 
+					:description, :country, :from_date, :to_date, :price, 
+					:booking_ends, :bookings_available, :max_allowed_bookings, 
+					:is_published)';
 
 		$params = array(
-						':title' => $tour_array['title'],
-						':category_id' => $tour_array['category_id'],
-						':featured_image' => $tour_array['featured_image'],
-						':thumbnail_image' => $tour_array['thumbnail_image'],
-						':description' => $tour_array['description'],
-						':country' => $tour_array['country'],
-						':from_date' => $tour_array['from_date'],
-						':to_date' => $tour_array['to_date'],
-						':price' => $tour_array['price'],
-						':booking_ends' => $tour_array['booking_ends'],
-						':max_allowed_bookings' => $tour_array['max_allowed_bookings']
+						':title' => $array_tour['title'],
+						':category_id' => $array_tour['category'],
+						':featured_image' => $featured_image,
+						':thumbnail_image' => $thumbnail_image,
+						':description' => $array_tour['description'],
+						':country' => $array_tour['country'],
+						':from_date' => $array_tour['from_date'],
+						':to_date' => $array_tour['to_date'],
+						':price' => $array_tour['price'],
+						':booking_ends' => $array_tour['booking_ends'],
+						':bookings_available' => $array_tour['bookings_available'],
+						':max_allowed_bookings' => $array_tour['max_allowed_bookings'],
+						':is_published' => $is_published
 					);
 
 		$stmt = $dbh->prepare($query);
@@ -184,6 +193,7 @@ class TourModel extends Model
 					to_date = :to_date,
 					price = :price,
 					booking_ends = :booking_ends,
+					bookings_available = :bookings_available,
 					max_allowed_bookings = :max_allowed_bookings,
 					is_published = :is_published,
 					updated_at = :updated_at
@@ -203,6 +213,7 @@ class TourModel extends Model
 			':to_date' => $array_tour['to_date'],
 			':price' => $array_tour['price'],
 			':booking_ends' => $array_tour['booking_ends'],
+			':bookings_available' => $array_tour['bookings_available'],
 			':max_allowed_bookings' => $array_tour['max_allowed_bookings'],
 			':is_published' => $is_published,
 			':updated_at' => $updated_at,

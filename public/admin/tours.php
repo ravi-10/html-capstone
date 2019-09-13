@@ -50,6 +50,11 @@
 
         <div class="row">
             <div class="col">
+                <a href="manage_tour.php">
+                    <button type="button" class="btn btn-primary mb-1">
+                        Add New Tour
+                    </button>
+                </a>
                 <div class="card spur-card">
                     <div class="card-header bg-secondary text-white">
                         <div class="spur-card-icon">
@@ -119,7 +124,7 @@
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <a href="edit_tour.php?tour_id=<?=esc_attr($tour['tour_id'])?>">
+                                            <a href="manage_tour.php?tour_id=<?=esc_attr($tour['tour_id'])?>">
                                                 <button type="button" class="btn btn-primary btn-sm mb-1">Edit</button>
                                             </a>
                                             <a href="#">
