@@ -13,3 +13,7 @@ form#tour div.thumbnail{
 a:hover{
 	text-decoration: none;
 }
+
+table#table_categories td.description{
+	max-width: 220px;
+}

@@ -128,6 +128,8 @@ class TourModel extends Model
 	/**
 	 * Save a tour in database table and returns inserted id
 	 * @param  Array $tour_array form fields
+	 * @param  String $featured_image image path
+	 * @param  String $thumbnail_image image path
 	 * @return Integer             inserted id
 	 */
 	public function save($array_tour, $featured_image, $thumbnail_image)
@@ -174,6 +176,8 @@ class TourModel extends Model
 	/**
 	 * Update data of a tour and returns affected rows
 	 * @param  Array $array_tour form fields
+	 * @param  String $featured_image image path
+	 * @param  String $thumbnail_image image path
 	 * @return Integer             affected rows
 	 */
 	public function update($array_tour, $featured_image, $thumbnail_image)
