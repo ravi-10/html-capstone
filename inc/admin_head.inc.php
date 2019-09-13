@@ -85,7 +85,7 @@
                             <i class="fas fa-search"></i> 
                         </button>
                         <input type="text" class="searchbox-input" 
-                                placeholder="type to search from title" 
+                                placeholder="type to search" 
                                 name="search" value="<?=clean('search')?>">
                     </form>
                     <?php endif; ?>

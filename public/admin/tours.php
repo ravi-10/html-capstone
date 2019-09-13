@@ -24,13 +24,21 @@
     $tours = $obj_tour->all('title', 'backend');
 
     if('POST' == $_SERVER['REQUEST_METHOD']){
-        $tours = $obj_tour->search($_POST['search']);
-        if(count($tours)>0){
-            $_SESSION['flash'] = count($tours) . " Tour(s) Found";
-            $_SESSION['flash_class'] = 'alert-success';
+        if(!empty($_POST['search'])){
+            $tours = $obj_tour->search('created_at', 'backend', $_POST['search']);
+            if(count($tours)>0){
+                $_SESSION['flash'] = count($tours) . " Tour(s) Found";
+                $_SESSION['flash_class'] = 'alert-success';
+            } else {
+                $_SESSION['flash'] = "No Tour(s) Found";
+                $_SESSION['flash_class'] = 'alert-info';
+            }
         } else {
-            $_SESSION['flash'] = "No Tour(s) Found";
+            $_SESSION['flash'] = "Please type something to search a tour 
+                                    by title or country";
             $_SESSION['flash_class'] = 'alert-info';
+            header('Location: tours.php');
+            die;
         }
     }
 
@@ -69,7 +77,13 @@
                                 ?>
                                     <tr>
                                         <th scope="row"><?=esc($sr_no)?></th>
-                                        <td class="title"><?=esc($tour['title'])?></td>
+                                        <td class="title">
+                                            <?=esc($tour['title'])?>
+                                            <img 
+                                                src="../images/uploads/tours/thumbnail/<?=esc_attr($tour['thumbnail_image'])?>"
+                                                class="img-fluid" 
+                                                alt="<?=esc_attr($tour['thumbnail_image'])?>">
+                                        </td>
                                         <td><?=esc($tour['category'])?></td>
                                         <td>
                                             <span class="badge badge-light">

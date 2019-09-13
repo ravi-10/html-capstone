@@ -162,7 +162,7 @@ class TourModel extends Model
 	 * @param  Array $array_tour form fields
 	 * @return Integer             affected rows
 	 */
-	public function update($array_tour)
+	public function update($array_tour, $featured_image, $thumbnail_image)
 	{
 		$dbh = static::$dbh;
 		$is_published = 0; // boolean false for tinyint datatype
@@ -195,8 +195,8 @@ class TourModel extends Model
 		$params = array(
 			':title' => $array_tour['title'],
 			':category_id' => $array_tour['category'],
-			':featured_image' => $array_tour['featured_image'],
-			':thumbnail_image' => $array_tour['thumbnail_image'],
+			':featured_image' => $featured_image,
+			':thumbnail_image' => $thumbnail_image,
 			':description' => $array_tour['description'],
 			':country' => $array_tour['country'],
 			':from_date' => $array_tour['from_date'],
@@ -231,6 +231,10 @@ class TourModel extends Model
 			$current_date = date('Y-m-d');
 			$condition = " WHERE is_published = true AND 
 							booking_ends >= '$current_date' AND 
+							(title LIKE :keywords OR country LIKE :keywords) ";
+			$order = 'DESC';
+		} elseif($for == 'backend') {
+			$condition = " WHERE 
 							(title LIKE :keywords OR country LIKE :keywords) ";
 			$order = 'DESC';
 		}

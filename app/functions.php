@@ -52,6 +52,25 @@
 	}
 
 	/**
+	 * Return sanitied POST values for backend/admin forms
+	 * @param  String $field $_POST field name
+	 * @param  String $value existing value
+	 * @return String the sanitized value based on filled(posted) value
+	 */
+	function cleanBackend($field, $value)
+	{
+		if($_POST){
+			if(!empty($_POST[$field])) {
+				return esc_attr($_POST[$field]);
+			} else {
+				return '';
+			}
+		} else {
+			return esc_attr($value);
+		}
+	}
+
+	/**
 	 * Function to perform logout
 	 * @return void
 	 */

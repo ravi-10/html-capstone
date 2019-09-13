@@ -21,7 +21,7 @@
     // including head file
     require '../../inc/admin_head.inc.php';
 ?>
-
+        <?php require __DIR__ . '/../../inc/admin_flash.inc.php'; ?>
         <h1 class="dash-title"><?=esc($heading)?></h1>
         
         

@@ -1,3 +1,11 @@
 table#table_tours td.title{
 	max-width: 150px;
 }
+
+form#tour div.featured{
+	max-width: 200px;
+}
+
+form#tour div.thumbnail{
+	max-width: 100px;
+}
