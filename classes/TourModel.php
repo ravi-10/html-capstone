@@ -1,7 +1,7 @@
 <?php
 /**
  * Tour Model Class Page 
- * last_update: 2019-09-11
+ * last_update: 2019-09-13
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */
 
@@ -30,11 +30,12 @@ class TourModel extends Model
 	 */
 	public function all($order_by, $for)
 	{
-		$condition = '';
+		$condition = " WHERE tours.is_deleted = false
+						AND categories.is_deleted = false ";
 
 		if($for == 'frontend'){
 			$current_date = date('Y-m-d');
-			$condition = " WHERE is_published = true and 
+			$condition .= " AND is_published = true AND 
 							booking_ends >= '$current_date' ";
 		}
 
@@ -63,6 +64,10 @@ class TourModel extends Model
 	 */
 	public function one($id)
 	{
+		$condition = " WHERE tours.is_deleted = false
+						AND categories.is_deleted = false 
+						AND {$this->key} = :id";
+
 		$query = "SELECT
 					tours.*,
 					categories.name as category
@@ -70,8 +75,7 @@ class TourModel extends Model
 					{$this->table}
 					JOIN
 					categories USING(category_id)
-					WHERE
-					{$this->key} = :id";
+					$condition";
 
 		$params = array(':id' => $id);
 
@@ -91,11 +95,12 @@ class TourModel extends Model
 	 */
 	public function allByCategory($order_by, $for, $category_id)
 	{
-		$condition = '';
+		$condition = " WHERE tours.is_deleted = false
+						AND categories.is_deleted = false ";
 
 		if($for == 'frontend'){
 			$current_date = date('Y-m-d');
-			$condition = " WHERE is_published = true AND 
+			$condition .= " AND is_published = true AND 
 							booking_ends >= '$current_date'
 							AND category_id = :category_id ";
 		}
@@ -235,18 +240,18 @@ class TourModel extends Model
 	public function search($order_by, $for, $keywords)
 	{
 		$keywords = "%$keywords%";
-		$condition = '';
+		$condition = " WHERE tours.is_deleted = false
+						AND categories.is_deleted = false ";
 		$order = 'ASC';
 
 		if($for == 'frontend'){
 			$current_date = date('Y-m-d');
-			$condition = " WHERE is_published = true AND 
+			$condition .= " AND is_published = true AND 
 							booking_ends >= '$current_date' AND 
 							(title LIKE :keywords OR country LIKE :keywords) ";
 			$order = 'DESC';
 		} elseif($for == 'backend') {
-			$condition = " WHERE 
-							(title LIKE :keywords OR country LIKE :keywords) ";
+			$condition .= " AND (title LIKE :keywords OR country LIKE :keywords) ";
 			$order = 'DESC';
 		}
 		

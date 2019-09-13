@@ -9,3 +9,7 @@ form#tour div.featured{
 form#tour div.thumbnail{
 	max-width: 100px;
 }
+
+a:hover{
+	text-decoration: none;
+}

@@ -1,7 +1,7 @@
 <?php
 /**
  * Model Class Page 
- * last_update: 2019-08-26
+ * last_update: 2019-09-13
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */
 
@@ -31,7 +31,8 @@ class Model
 	 */
 	public function all($order_by, $for)
 	{
-		$query = "SELECT * FROM {$this->table} ORDER BY $order_by";
+		$query = "SELECT * FROM {$this->table}
+					WHERE is_deleted = false ORDER BY $order_by";
 
 		$stmt = static::$dbh->prepare($query);
 
@@ -42,13 +43,13 @@ class Model
 
 	/**
 	 * Return one result from Model table
-	 * @param  INT $id tour_id
-	 * @return Array of tour data
+	 * @param  INT $id id
+	 * @return Array of data
 	 */
 	public function one($id)
 	{
 		$query = "SELECT * from {$this->table}
-					WHERE {$this->key} = :id";
+					WHERE is_deleted = false AND {$this->key} = :id";
 
 		$params = array(':id' => $id);
 
@@ -57,6 +58,36 @@ class Model
 		$stmt->execute($params);
 
 		return $stmt->fetch(\PDO::FETCH_ASSOC);	
+	}
+
+	/**
+	 * Update is_deleted column to do soft delete
+	 * @param  Integer $id id
+	 * @return Integer             affected rows
+	 */
+	public function delete($id)
+	{
+		$updated_at = date('Y-m-d H:i:s');
+
+		$query = "UPDATE
+					{$this->table}
+					SET
+					is_deleted = :is_deleted,
+					updated_at = :updated_at
+					WHERE
+					{$this->key} = :id";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$params = array(
+			':is_deleted' => true,
+			':updated_at' => $updated_at,
+			':id' => $id
+		);
+
+		$stmt->execute($params);
+
+		return $stmt->rowCount();
 	}
 
 }

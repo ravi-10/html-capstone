@@ -42,6 +42,16 @@
         }
     }
 
+    if(!empty($_GET['delete_tour'])){
+        $deleted = $obj_tour->delete($_GET['delete_tour']);
+        if($deleted>0){
+            $_SESSION['flash'] = "Tour deleted successfully";
+            $_SESSION['flash_class'] = 'alert-success';
+            header('Location: tours.php');
+            die;
+        }
+    }
+
     // including head file
     require '../../inc/admin_head.inc.php';
 ?>
@@ -127,7 +137,8 @@
                                             <a href="manage_tour.php?tour_id=<?=esc_attr($tour['tour_id'])?>">
                                                 <button type="button" class="btn btn-primary btn-sm mb-1">Edit</button>
                                             </a>
-                                            <a href="#">
+                                            <a href="tours.php?delete_tour=<?=esc_attr($tour['tour_id'])?>"
+                                            onclick="return confirm('Are you sure to delete?')">
                                                 <button type="button" class="btn btn-danger btn-sm mb-1">Delete</button>
                                             </a>
                                         </td>
