@@ -47,4 +47,34 @@ class ItinerariesModel extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Returns all searched itineraries
+	 * @param  String $keywords search keyword
+	 * @return Array           itineraries
+	 */
+	public function search($keywords)
+	{
+		$keywords = "%$keywords%";
+		$condition = " WHERE is_deleted = false 
+						AND name LIKE :keywords";
+		
+		$query = "SELECT
+					*
+					FROM
+					{$this->table}
+					$condition
+					ORDER BY
+					name";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$params = array(
+			':keywords' => $keywords
+		);
+
+		$stmt->execute($params);
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
 }

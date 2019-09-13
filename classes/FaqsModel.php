@@ -1,7 +1,7 @@
 <?php
 /**
- * Blog Model Class Page 
- * last_update: 2019-09-08
+ * FAQ Model Class Page 
+ * last_update: 2019-09-13
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */
 
@@ -30,11 +30,11 @@ class FaqsModel extends Model
 	 */
 	public function all($order_by, $for)
 	{
-		$condition = '';
+		$condition = ' WHERE is_deleted = false ';
 		$order = 'ASC';
 
 		if($for == 'frontend'){
-			$condition = " WHERE is_published = true ";
+			$condition = " AND is_published = true ";
 			$order = 'DESC';
 		}
 
@@ -50,6 +50,36 @@ class FaqsModel extends Model
 		$stmt = static::$dbh->prepare($query);
 
 		$stmt->execute();
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	/**
+	 * Returns all searched faqs
+	 * @param  String $keywords search keyword
+	 * @return Array           faqs
+	 */
+	public function search($keywords)
+	{
+		$keywords = "%$keywords%";
+		$condition = " WHERE is_deleted = false 
+						AND question LIKE :keywords";
+		
+		$query = "SELECT
+					*
+					FROM
+					{$this->table}
+					$condition
+					ORDER BY
+					question";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$params = array(
+			':keywords' => $keywords
+		);
+
+		$stmt->execute($params);
 
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}

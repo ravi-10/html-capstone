@@ -1,6 +1,6 @@
 <?php
 /**
- * Blog Model Class Page 
+ * Testimonial Model Class Page 
  * last_update: 2019-09-08
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */

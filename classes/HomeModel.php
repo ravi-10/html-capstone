@@ -1,6 +1,6 @@
 <?php
 /**
- * Tour Model Class Page 
+ * Home Model Class Page 
  * last_update: 2019-09-11
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */
