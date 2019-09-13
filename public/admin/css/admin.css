@@ -52,3 +52,7 @@ table#table_bookings td.tour_details span.badge-dark{
 table#table_testimonials td.description{
 	max-width: 200px;
 }
+
+table#table_logs td span.badge-light{
+	white-space: normal;
+}

@@ -1,11 +1,12 @@
 <?php
 	/**
      * Configuration File 
-     * last_update: 2019-09-11
+     * last_update: 2019-09-13
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
     
     use App\Model;
+    use App\DatabaseLogger;
 
     date_default_timezone_set('America/Winnipeg');
     
@@ -41,6 +42,16 @@
 
 	// Setting dbh to model via init method of function
 	Model::init($dbh);
+
+	// logger object to insert log in database
+	$logger = new DatabaseLogger;
+	$current_datetime = date('Y-m-d H:i:s');
+	$request_uri = $_SERVER['REQUEST_URI'];
+	$request_method = $_SERVER['REQUEST_METHOD'];
+	$request_browser = $_SERVER['HTTP_USER_AGENT'];
+	$event = $current_datetime . '|' . $request_uri . '|' .
+				$request_method . '|' . $request_browser;
+	$logger->save($event);
 
 	// generate a csrf token if we need one
 	if(empty($_SESSION['csrf'])) {
