@@ -48,3 +48,7 @@ table#table_bookings td.tour_details span.badge-secondary{
 table#table_bookings td.tour_details span.badge-dark{
 	width: 75px;
 }
+
+table#table_testimonials td.description{
+	max-width: 200px;
+}

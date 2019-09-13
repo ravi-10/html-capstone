@@ -30,11 +30,12 @@ class TestimonialModel extends Model
 	 */
 	public function all($order_by, $for)
 	{
-		$condition = '';
+		$condition = ' WHERE testimonials.is_deleted = false 
+						AND users.is_deleted = false ';
 		$order = 'ASC';
 
 		if($for == 'frontend'){
-			$condition = " WHERE is_published = true ";
+			$condition .= " AND is_published = true ";
 			$order = 'DESC';
 		}
 
@@ -54,6 +55,41 @@ class TestimonialModel extends Model
 		$stmt = static::$dbh->prepare($query);
 
 		$stmt->execute();
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	/**
+	 * Returns all searched testimonials
+	 * @param  String $keywords search keyword
+	 * @return Array           testimonials
+	 */
+	public function search($keywords)
+	{
+		$keywords = "%$keywords%";
+		$condition = " WHERE testimonials.is_deleted = false 
+						AND users.is_deleted = false 
+						AND title LIKE :keywords ";
+
+		$query = "SELECT
+					testimonials.*,
+					users.first_name,
+					users.last_name
+					FROM
+					{$this->table}
+					JOIN
+					users USING(user_id)
+					$condition
+					ORDER BY
+					title";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$params = array(
+			':keywords' => $keywords
+		);
+
+		$stmt->execute($params);
 
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}

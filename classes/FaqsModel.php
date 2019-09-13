@@ -34,7 +34,7 @@ class FaqsModel extends Model
 		$order = 'ASC';
 
 		if($for == 'frontend'){
-			$condition = " AND is_published = true ";
+			$condition .= " AND is_published = true ";
 			$order = 'DESC';
 		}
 
@@ -63,7 +63,7 @@ class FaqsModel extends Model
 	{
 		$keywords = "%$keywords%";
 		$condition = " WHERE is_deleted = false 
-						AND question LIKE :keywords";
+						AND question LIKE :keywords ";
 		
 		$query = "SELECT
 					*

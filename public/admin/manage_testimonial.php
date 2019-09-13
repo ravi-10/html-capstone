@@ -1,20 +1,20 @@
 <?php
     /**
-     * Admin Users Page 
-     * last_update: 2019-09-04
+     * Admin Manage Testimonial Page 
+     * last_update: 2019-09-13
      * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
      */
     
     require __DIR__ . '/../../app/atg_config.php';
 
-    $title = 'ATG - Admin Users';
-    $heading = 'Users';
+    $title = 'ATG - Admin Manage Testimonial';
+    $heading = 'Manage Testimonial';
 
     if(!$_SESSION['logged_in'] && $_SESSION['role'] != 'admin') {
         $_SESSION['flash'] = 'You must be logged in as admin
-                                 to view users page.';
+                                 to view admin manage testimonial page.';
         $_SESSION['flash_class'] = 'flash-info';
-        header('Location: ../login.php?request_from=admin/users.php');
+        header('Location: ../login.php?request_from=admin/manage_testimonial.php');
         exit;
     }
 

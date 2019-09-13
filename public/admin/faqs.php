@@ -73,7 +73,7 @@
                     </div>
                     <div class="card-body card-body-with-dark-table">
                         <table class="table table-dark table-in-card" 
-                            id="table_categories">
+                            id="table_faqs">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
