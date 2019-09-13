@@ -9,48 +9,19 @@
 
     use App\TourModel;
 
-    $title = 'ATG - Admin Tours';
-    $heading = 'Tours';
+    $title = 'ATG - Admin Archived Tours';
+    $heading = 'Archived Tours';
 
     if(!$_SESSION['logged_in'] && $_SESSION['role'] != 'admin') {
         $_SESSION['flash'] = 'You must be logged in as admin
-                                 to view admin tours page.';
+                                 to view admin archived tours page.';
         $_SESSION['flash_class'] = 'flash-info';
-        header('Location: ../login.php?request_from=admin/tours.php');
+        header('Location: ../login.php?request_from=admin/archived_tours.php');
         exit;
     }
 
     $obj_tour = new TourModel;
-    $tours = $obj_tour->all('title', 'backend');
-
-    if('POST' == $_SERVER['REQUEST_METHOD']){
-        if(!empty($_POST['search'])){
-            $tours = $obj_tour->search('created_at', 'backend', $_POST['search']);
-            if(count($tours)>0){
-                $_SESSION['flash'] = count($tours) . " Tour(s) Found";
-                $_SESSION['flash_class'] = 'alert-success';
-            } else {
-                $_SESSION['flash'] = "No Tour(s) Found";
-                $_SESSION['flash_class'] = 'alert-info';
-            }
-        } else {
-            $_SESSION['flash'] = "Please type something to search a tour 
-                                    by title or country";
-            $_SESSION['flash_class'] = 'alert-info';
-            header('Location: tours.php');
-            die;
-        }
-    }
-
-    if(!empty($_GET['delete_tour'])){
-        $deleted = $obj_tour->delete($_GET['delete_tour']);
-        if($deleted>0){
-            $_SESSION['flash'] = "Tour deleted successfully";
-            $_SESSION['flash_class'] = 'alert-success';
-            header('Location: tours.php');
-            die;
-        }
-    }
+    $tours = $obj_tour->allArchived();
 
     // including head file
     require '../../inc/admin_head.inc.php';
@@ -60,22 +31,12 @@
 
         <div class="row">
             <div class="col">
-                <a href="manage_tour.php">
-                    <button type="button" class="btn btn-primary mb-1">
-                        Add New Tour
-                    </button>
-                </a>
-                <a href="archived_tours.php">
-                    <button type="button" class="btn btn-info mb-1">
-                        View Deleted Tours
-                    </button>
-                </a>
                 <div class="card spur-card">
                     <div class="card-header bg-secondary text-white">
                         <div class="spur-card-icon">
                             <i class="fas fa-table"></i>
                         </div>
-                        <div class="spur-card-title">List of Tours</div>
+                        <div class="spur-card-title">List of Archived Tours</div>
                     </div>
                     <div class="card-body card-body-with-dark-table">
                         <table class="table table-dark table-in-card" 
@@ -86,8 +47,6 @@
                                     <th scope="col">Title</th>
                                     <th scope="col">Category</th>
                                     <th scope="col">Booking Details</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -130,22 +89,6 @@
                                             <br />
                                             <span class="badge badge-light">Max Allowed Booking</span>
                                             <span class="badge badge-dark"><?=esc($tour['max_allowed_bookings'])?></span>
-                                        </td>
-                                        <td>
-                                            <?php if($tour['is_published'] == true): ?>
-                                                <span class="badge badge-success">Published</span>
-                                            <?php else: ?>
-                                                <span class="badge badge-warning">Not Published</span>
-                                            <?php endif; ?>
-                                        </td>
-                                        <td>
-                                            <a href="manage_tour.php?tour_id=<?=esc_attr($tour['tour_id'])?>">
-                                                <button type="button" class="btn btn-primary btn-sm mb-1">Edit</button>
-                                            </a>
-                                            <a href="tours.php?delete_tour=<?=esc_attr($tour['tour_id'])?>"
-                                            onclick="return confirm('Are you sure to delete?')">
-                                                <button type="button" class="btn btn-danger btn-sm mb-1">Delete</button>
-                                            </a>
                                         </td>
                                     </tr>
                                 <?php

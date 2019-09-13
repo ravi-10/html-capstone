@@ -278,4 +278,31 @@ class TourModel extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Return all archived tours from tours table by needed parameters
+	 * @return Mixed array
+	 */
+	public function allArchived()
+	{
+		$condition = " WHERE tours.is_deleted = true
+						OR categories.is_deleted = true ";
+
+		$query = "SELECT
+					tours.*,
+					categories.name as category
+					FROM
+					{$this->table}
+					JOIN
+					categories USING(category_id)
+					$condition
+					ORDER BY
+					title";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$stmt->execute();
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
 }
