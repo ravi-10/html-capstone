@@ -42,4 +42,35 @@ class UserModel extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Returns all searched users
+	 * @param  String $keywords search keyword
+	 * @return Array           users
+	 */
+	public function search($keywords)
+	{
+		$keywords = "%$keywords%";
+		$condition = " WHERE is_deleted = false 
+						AND (first_name LIKE :keywords OR 
+							last_name LIKE :keywords) ";
+
+		$query = "SELECT
+					*
+					FROM
+					{$this->table}
+					$condition
+					ORDER BY
+					first_name";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$params = array(
+			':keywords' => $keywords
+		);
+
+		$stmt->execute($params);
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
 }
