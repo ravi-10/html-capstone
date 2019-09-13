@@ -23,3 +23,28 @@ table#table_categories td.description{
 table#table_blogs td.title{
 	max-width: 150px;
 }
+
+table#table_bookings td.customer{
+	max-width: 150px;
+}
+
+table#table_bookings td.customer span.badge{
+	white-space: normal;
+}
+
+table#table_bookings td.tour_details{
+	max-width: 300px;
+}
+
+table#table_bookings td.tour_details span.badge-light{
+	width: 150px;
+	white-space: normal;
+}
+
+table#table_bookings td.tour_details span.badge-secondary{
+	width: 75px;
+}
+
+table#table_bookings td.tour_details span.badge-dark{
+	width: 75px;
+}

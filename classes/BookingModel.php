@@ -1,7 +1,7 @@
 <?php
 /**
- * Tour Model Class Page 
- * last_update: 2019-09-11
+ * Booking Model Class Page 
+ * last_update: 2019-09-13
  * Author: Ravi Patel, patel-r89@webmail.uwinnipeg.ca
  */
 
@@ -21,6 +21,34 @@ class BookingModel extends Model
 	 * @var string
 	 */
 	protected $key = 'booking_id';
+
+	/**
+	 * Return all bookings from bookings table by needed parameters
+	 * @param String $order_by column field to order tours
+	 * @param String $for 'backend' 0r 'frontend' to create specific query
+	 * @return Mixed array
+	 */
+	public function all($order_by, $for)
+	{
+		$query = "SELECT 
+					bookings.*,
+					users.first_name,
+					users.last_name
+					FROM 
+					{$this->table}
+					JOIN users USING(user_id)
+					WHERE 
+					users.is_deleted = false 
+					ORDER BY 
+					{$this->table}.$order_by
+					DESC";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$stmt->execute();
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
 
 	/**
 	 * Save a tour in database table and returns inserted id
@@ -128,6 +156,41 @@ class BookingModel extends Model
 		$stmt->execute($params);
 
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);	
+	}
+
+	/**
+	 * Returns all searched bookings
+	 * @param  String $keywords search keyword
+	 * @return Array           tours
+	 */
+	public function search($keywords)
+	{
+		$keywords = "%$keywords%";
+
+		$condition = " WHERE users.is_deleted = false
+						AND (first_name LIKE :keywords OR last_name LIKE :keywords) ";
+		
+		$query = "SELECT 
+					bookings.*,
+					users.first_name,
+					users.last_name
+					FROM 
+					{$this->table}
+					JOIN users USING(user_id)
+					$condition 
+					ORDER BY 
+					{$this->table}.created_at
+					DESC";
+
+		$stmt = static::$dbh->prepare($query);
+
+		$params = array(
+			':keywords' => $keywords
+		);
+
+		$stmt->execute($params);
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
 }
