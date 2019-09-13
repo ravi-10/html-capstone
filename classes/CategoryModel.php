@@ -27,7 +27,7 @@ class CategoryModel extends Model
 	 * @param  Array $tour_array form fields
 	 * @return Integer             inserted id
 	 */
-	public function save($array_tour)
+	public function save($array_category)
 	{
 		$dbh = static::$dbh;
 
@@ -36,8 +36,8 @@ class CategoryModel extends Model
 					(:name, :description)';
 
 		$params = array(
-						':name' => $array_tour['name'],
-						':description' => $array_tour['description']
+						':name' => $array_category['name'],
+						':description' => $array_category['description']
 					);
 
 		$stmt = $dbh->prepare($query);
@@ -52,7 +52,7 @@ class CategoryModel extends Model
 	 * @param  Array $array_tour form fields
 	 * @return Integer             affected rows
 	 */
-	public function update($array_tour)
+	public function update($array_category)
 	{
 		$dbh = static::$dbh;
 		
@@ -70,10 +70,10 @@ class CategoryModel extends Model
 		$stmt = $dbh->prepare($query);
 
 		$params = array(
-			':name' => $array_tour['name'],
-			':description' => $array_tour['description'],
+			':name' => $array_category['name'],
+			':description' => $array_category['description'],
 			':updated_at' => $updated_at,
-			':category_id' => $array_tour['category_id']
+			':category_id' => $array_category['category_id']
 		);
 
 		$stmt->execute($params);

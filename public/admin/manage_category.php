@@ -40,13 +40,21 @@
 
     if('POST' == $_SERVER['REQUEST_METHOD']) {
 
+        // validate every POST submission for the csrf token
+        if(empty($_POST['csrf']) || $_POST['csrf'] != $_SESSION['csrf']) {
+            $_SESSION['flash'] = "Your session appears to have expired. 
+                                  CSRF token mismatch! Please try again.";
+            $_SESSION['flash_class'] = 'alert-danger';
+            header('Location: categories.php');
+            die;
+        }
+
         foreach ($_POST as $key => $value) {
             // calling required function for all fields
             $v->required($key);
         }
         $v->generalStringValidator('name');
         $v->generalLengthValidator('name');
-        $v->generalStringValidator('description');
 
         $errors = $v->getErrors();
 
@@ -110,6 +118,8 @@
                                 }
                             ?>" 
                             id="category" novalidate>
+                            <input type="hidden" name="csrf" 
+                            value="<?=esc_attr(csrf())?>" />
 
                             <?php if(!empty($_GET['category_id'])) : ?>
                             <div class="form-group">

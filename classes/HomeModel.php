@@ -15,8 +15,10 @@ class HomeModel extends Model
 	 */
 	public function featuredTour()
 	{
-		$condition = " WHERE is_featured = true ";
-
+		$condition = " WHERE tours.is_deleted = false
+						AND categories.is_deleted = false
+						AND is_featured = true ";
+		
 		$query = "SELECT
 					tours.*,
 					categories.name as category
@@ -43,8 +45,11 @@ class HomeModel extends Model
 	public function upcomingTours()
 	{
 		$current_date = date('Y-m-d');
-		$condition = " WHERE is_published = true and
-						 booking_ends >= '$current_date' ";
+
+		$condition = " WHERE tours.is_deleted = false
+						AND categories.is_deleted = false
+						AND is_published = true 
+						AND booking_ends >= '$current_date' ";
 
 		$query = "SELECT
 					tours.*,
@@ -71,7 +76,8 @@ class HomeModel extends Model
 	 */
 	public function recentBlogs()
 	{
-		$condition = " WHERE is_published = true ";
+		$condition = " WHERE blogs.is_deleted = false
+						AND is_published = true";
 
 		$query = "SELECT
 					*

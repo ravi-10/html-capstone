@@ -2,11 +2,13 @@ table#table_tours td.title{
 	max-width: 150px;
 }
 
-form#tour div.featured{
+form#tour div.featured,
+form#blog div.featured{
 	max-width: 200px;
 }
 
-form#tour div.thumbnail{
+form#tour div.thumbnail,
+form#blog div.thumbnail{
 	max-width: 100px;
 }
 
@@ -16,4 +18,8 @@ a:hover{
 
 table#table_categories td.description{
 	max-width: 220px;
+}
+
+table#table_blogs td.title{
+	max-width: 150px;
 }

@@ -245,18 +245,14 @@ class TourModel extends Model
 	{
 		$keywords = "%$keywords%";
 		$condition = " WHERE tours.is_deleted = false
-						AND categories.is_deleted = false ";
-		$order = 'ASC';
+						AND categories.is_deleted = false
+						AND (title LIKE :keywords OR country LIKE :keywords) ";
+		$order = 'DESC';
 
 		if($for == 'frontend'){
 			$current_date = date('Y-m-d');
 			$condition .= " AND is_published = true AND 
-							booking_ends >= '$current_date' AND 
-							(title LIKE :keywords OR country LIKE :keywords) ";
-			$order = 'DESC';
-		} elseif($for == 'backend') {
-			$condition .= " AND (title LIKE :keywords OR country LIKE :keywords) ";
-			$order = 'DESC';
+							booking_ends >= '$current_date' ";
 		}
 		
 		$query = "SELECT

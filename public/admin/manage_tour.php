@@ -44,6 +44,15 @@
 
     if('POST' == $_SERVER['REQUEST_METHOD']) {
 
+        // validate every POST submission for the csrf token
+        if(empty($_POST['csrf']) || $_POST['csrf'] != $_SESSION['csrf']) {
+            $_SESSION['flash'] = "Your session appears to have expired. 
+                                  CSRF token mismatch! Please try again.";
+            $_SESSION['flash_class'] = 'alert-danger';
+            header('Location: tours.php');
+            die;
+        }
+
         foreach ($_POST as $key => $value) {
             // calling required function for all fields except is_published 
             // because it is a checkbox
@@ -154,6 +163,8 @@
                             ?>" 
                             id="tour" enctype="multipart/form-data" 
                             novalidate>
+                            <input type="hidden" name="csrf" 
+                            value="<?=esc_attr(csrf())?>" />
 
                             <?php if(!empty($_GET['tour_id'])) : ?>
                             <div class="form-group">

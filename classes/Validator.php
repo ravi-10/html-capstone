@@ -216,6 +216,22 @@ class Validator
 	}
 
 	/**
+	 * Function to valid datetime format
+	 * @param  String $field date
+	 * @return void
+	 */
+	public function dateTimeFormat($field)
+	{
+		// checks for YYYY-mm-dd H:i:s format
+		$pattern = '/^([0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9]) (2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])$/';
+
+		if(preg_match($pattern, $this->post[$field]) !== 1) {
+			$this->setError($field, 'Please enter a valid date in following 
+				structure eg: 2019-09-24 15:25:40');
+		}
+	}
+
+	/**
 	 * Function to validate that date is not from past
 	 * @param  String $field date
 	 * @return void
