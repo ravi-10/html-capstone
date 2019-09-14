@@ -59,10 +59,8 @@
 
         <div class="row">
             <div class="col">
-                <a href="manage_category.php">
-                    <button type="button" class="btn btn-primary mb-1">
-                        Add New Category
-                    </button>
+                <a href="manage_category.php" class="btn btn-primary mb-1">
+                    Add New Category
                 </a>
                 <div class="card spur-card">
                     <div class="card-header bg-secondary text-white">
@@ -96,12 +94,14 @@
                                             <?=esc($category['description'])?>
                                         </td>
                                         <td>
-                                            <a href="manage_category.php?category_id=<?=esc_attr($category['category_id'])?>">
-                                                <button type="button" class="btn btn-primary btn-sm mb-1">Edit</button>
+                                            <a href="manage_category.php?category_id=<?=esc_attr($category['category_id'])?>"
+                                                class="btn btn-primary btn-sm mb-1">
+                                                Edit
                                             </a>
                                             <a href="categories.php?delete_category=<?=esc_attr($category['category_id'])?>"
-                                            onclick="return confirm('Are you sure to delete?')">
-                                                <button type="button" class="btn btn-danger btn-sm mb-1">Delete</button>
+                                            onclick="return confirm('Are you sure to delete?')"
+                                            class="btn btn-danger btn-sm mb-1">
+                                                Delete
                                             </a>
                                         </td>
                                     </tr>

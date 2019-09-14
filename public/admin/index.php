@@ -8,6 +8,7 @@
     require __DIR__ . '/../../app/atg_config.php';
 
     use App\DatabaseLogger;
+    use App\DashboardModel;
 
     $title = 'ATG - Admin Dashboard';
     $heading = 'Dashboard';
@@ -20,6 +21,19 @@
         exit;
     }
 
+    $obj_dashboard = new DashboardModel;
+    $total_tours = $obj_dashboard->getTotal('tours');
+    $total_users = $obj_dashboard->getTotal('users');
+    $total_bookings = $obj_dashboard->getTotal('bookings');
+
+    $tour = $obj_dashboard->getTourAggregates();
+
+    $booking = $obj_dashboard->getBookingAggregates();
+
+    $admin = $obj_dashboard->getTotalTypeOfUser('admin');
+    $blogger = $obj_dashboard->getTotalTypeOfUser('blogger');
+    $customer = $obj_dashboard->getTotalTypeOfUser('customer');
+
     $obj_logger = new DatabaseLogger;
     $logs = $obj_logger->recentLogs();
 
@@ -30,7 +44,138 @@
         <h1 class="dash-title"><?=esc($heading)?></h1>
         
         <div class="row">
-            <div class="col">
+                <div class="col-lg-6">
+                    <div class="card spur-card">
+                        <div class="card-header bg-success text-white">
+                            <div class="spur-card-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="spur-card-title"> Overview </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="badge badge-secondary">
+                                Total Tours
+                            </span>
+                            <span class="badge badge-success">
+                                <?=esc($total_tours['total'])?>
+                            </span>
+                            <br />
+                            <span class="badge badge-secondary">
+                                Total Users
+                            </span>
+                            <span class="badge badge-success">
+                                <?=esc($total_users['total'])?>
+                            </span>
+                            <br />
+                            <span class="badge badge-secondary">
+                                Total Bookings
+                            </span>
+                            <span class="badge badge-success">
+                                <?=esc($total_bookings['total'])?>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card spur-card">
+                        <div class="card-header bg-primary text-white">
+                            <div class="spur-card-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="spur-card-title"> Tours </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="badge badge-secondary">
+                                Maximum Price
+                            </span>
+                            <span class="badge badge-primary">
+                                <?=esc(number_format($tour['max_price'], 2))?>
+                            </span>
+                            <br />
+                            <span class="badge badge-secondary">
+                                Minimum Price
+                            </span>
+                            <span class="badge badge-primary">
+                                <?=esc(number_format($tour['min_price'], 2))?>
+                            </span>
+                            <br />
+                            <span class="badge badge-secondary">
+                                Average Price
+                            </span>
+                            <span class="badge badge-primary">
+                                <?=esc(number_format($tour['avg_price'], 2))?>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card spur-card">
+                        <div class="card-header bg-info text-white">
+                            <div class="spur-card-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="spur-card-title"> Bookings </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="badge badge-secondary">
+                                Maximum Booking
+                            </span>
+                            <span class="badge badge-info">
+                                <?=esc(number_format($booking['max_total'], 2))?>
+                            </span>
+                            <br />
+                            <span class="badge badge-secondary">
+                                Minimum Booking
+                            </span>
+                            <span class="badge badge-info">
+                                <?=esc(number_format($booking['min_total'], 2))?>
+                            </span>
+                            <br />
+                            <span class="badge badge-secondary">
+                                Average Booking
+                            </span>
+                            <span class="badge badge-info">
+                                <?=esc(number_format($booking['avg_total'], 2))?>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card spur-card">
+                        <div class="card-header bg-danger text-white">
+                            <div class="spur-card-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="spur-card-title"> Users </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="badge badge-secondary">
+                                Admin
+                            </span>
+                            <span class="badge badge-danger">
+                                <?=esc($admin['total'])?>
+                            </span>
+                            <br />
+                            <span class="badge badge-secondary">
+                                Blogger
+                            </span>
+                            <span class="badge badge-danger">
+                                <?=esc($blogger['total'])?>
+                            </span>
+                            <br />
+                            <span class="badge badge-secondary">
+                                Customer
+                            </span>
+                            <span class="badge badge-danger">
+                                <?=esc($customer['total'])?>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card spur-card">
                     <div class="card-header bg-secondary text-white">
                         <div class="spur-card-icon">

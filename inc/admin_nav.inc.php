@@ -6,6 +6,7 @@
      */
 ?>
 <nav class="dash-nav-list">
+    <?php if($_SESSION['role'] == 'admin') : ?>
     <a href="index.php" class="dash-nav-item">
         <i class="fas fa-home"></i> Dashboard
     </a>
@@ -33,4 +34,11 @@
     <a href="users.php" class="dash-nav-item">
         <i class="fas fa-users"></i> Users
     </a>
+    <?php endif; ?>
+
+    <?php if($_SESSION['role'] == 'blogger') : ?>
+    <a href="blogs.php" class="dash-nav-item">
+        <i class="fas fa-book"></i> Blogs
+    </a>
+    <?php endif; ?>
 </nav>

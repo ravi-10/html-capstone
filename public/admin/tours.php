@@ -60,15 +60,11 @@
 
         <div class="row">
             <div class="col">
-                <a href="manage_tour.php">
-                    <button type="button" class="btn btn-primary mb-1">
-                        Add New Tour
-                    </button>
+                <a href="manage_tour.php" class="btn btn-primary mb-1">
+                    Add New Tour
                 </a>
-                <a href="archived_tours.php">
-                    <button type="button" class="btn btn-info mb-1">
-                        View Deleted Tours
-                    </button>
+                <a href="archived_tours.php" class="btn btn-info mb-1">
+                    View Deleted Tours
                 </a>
                 <div class="card spur-card">
                     <div class="card-header bg-secondary text-white">
@@ -139,12 +135,13 @@
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <a href="manage_tour.php?tour_id=<?=esc_attr($tour['tour_id'])?>">
-                                                <button type="button" class="btn btn-primary btn-sm mb-1">Edit</button>
+                                            <a href="manage_tour.php?tour_id=<?=esc_attr($tour['tour_id'])?>" class="btn btn-primary btn-sm mb-1">
+                                                Edit
                                             </a>
                                             <a href="tours.php?delete_tour=<?=esc_attr($tour['tour_id'])?>"
-                                            onclick="return confirm('Are you sure to delete?')">
-                                                <button type="button" class="btn btn-danger btn-sm mb-1">Delete</button>
+                                            onclick="return confirm('Are you sure to delete?')"
+                                            class="btn btn-danger btn-sm mb-1">
+                                                Delete
                                             </a>
                                         </td>
                                     </tr>

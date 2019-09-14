@@ -246,15 +246,7 @@
                                 endif;
                                 ?>
                                 <input type="file" class="form-control" 
-                                    id="featured_image" name="featured_image"
-                                    placeholder="Featured Image"
-                                    value="<?php
-                                    if(!empty($_GET['tour_id'])){
-                                        echo cleanBackend('featured_image', $tour['featured_image']);
-                                    } else {
-                                        echo clean('featured_image');
-                                    }
-                                    ?>">
+                                    id="featured_image" name="featured_image">
                                 <?php if(!empty($errors['featured_image'])) : ?>
                                     <div class="alert alert-danger" role="alert">
                                         <?=esc($errors['featured_image'])?>
@@ -283,15 +275,7 @@
                                 endif;
                                 ?>
                                 <input type="file" class="form-control" 
-                                    id="thumbnail_image" name="thumbnail_image"
-                                    placeholder="Thumbnail Image"
-                                    value="<?php
-                                    if(!empty($_GET['tour_id'])){
-                                        echo cleanBackend('thumbnail_image', $tour['thumbnail_image']);
-                                    } else {
-                                        echo clean('thumbnail_image');
-                                    }
-                                    ?>">
+                                    id="thumbnail_image" name="thumbnail_image">
                                 <?php if(!empty($errors['thumbnail_image'])) : ?>
                                     <div class="alert alert-danger" role="alert">
                                         <?=esc($errors['thumbnail_image'])?>

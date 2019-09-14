@@ -104,12 +104,14 @@
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <a href="manage_testimonial.php?testimonial_id=<?=esc_attr($testimonial['testimonial_id'])?>">
-                                                <button type="button" class="btn btn-primary btn-sm mb-1">Edit</button>
+                                            <a href="manage_testimonial.php?testimonial_id=<?=esc_attr($testimonial['testimonial_id'])?>"
+                                                class="btn btn-primary btn-sm mb-1">
+                                                Edit
                                             </a>
                                             <a href="testimonials.php?delete_testimonial=<?=esc_attr($testimonial['testimonial_id'])?>"
-                                            onclick="return confirm('Are you sure to delete?')">
-                                                <button type="button" class="btn btn-danger btn-sm mb-1">Delete</button>
+                                            onclick="return confirm('Are you sure to delete?')"
+                                            class="btn btn-danger btn-sm mb-1">
+                                                Delete
                                             </a>
                                         </td>
                                     </tr>

@@ -59,10 +59,8 @@
         
         <div class="row">
             <div class="col">
-                <a href="manage_faq.php">
-                    <button type="button" class="btn btn-primary mb-1">
-                        Add New FAQ
-                    </button>
+                <a href="manage_faq.php" class="btn btn-primary mb-1">
+                    Add New FAQ
                 </a>
                 <div class="card spur-card">
                     <div class="card-header bg-secondary text-white">
@@ -106,12 +104,13 @@
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <a href="manage_faq.php?faq_id=<?=esc_attr($faq['faq_id'])?>">
-                                                <button type="button" class="btn btn-primary btn-sm mb-1">Edit</button>
+                                            <a href="manage_faq.php?faq_id=<?=esc_attr($faq['faq_id'])?>" class="btn btn-primary btn-sm mb-1">
+                                                Edit
                                             </a>
                                             <a href="faqs.php?delete_faq=<?=esc_attr($faq['faq_id'])?>"
-                                            onclick="return confirm('Are you sure to delete?')">
-                                                <button type="button" class="btn btn-danger btn-sm mb-1">Delete</button>
+                                            onclick="return confirm('Are you sure to delete?')"
+                                            class="btn btn-danger btn-sm mb-1">
+                                                Delete
                                             </a>
                                         </td>
                                     </tr>

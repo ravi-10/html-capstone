@@ -96,12 +96,13 @@
                                             <?=esc($user['role'])?>
                                         </td>
                                         <td>
-                                            <a href="manage_user.php?user_id=<?=esc_attr($user['user_id'])?>">
-                                                <button type="button" class="btn btn-primary btn-sm mb-1">Edit</button>
+                                            <a href="manage_user.php?user_id=<?=esc_attr($user['user_id'])?>" class="btn btn-primary btn-sm mb-1">
+                                                Edit
                                             </a>
                                             <a href="users.php?delete_user=<?=esc_attr($user['user_id'])?>"
-                                            onclick="return confirm('Are you sure to delete?')">
-                                                <button type="button" class="btn btn-danger btn-sm mb-1">Delete</button>
+                                            onclick="return confirm('Are you sure to delete?')"
+                                            class="btn btn-danger btn-sm mb-1">
+                                                Delete
                                             </a>
                                         </td>
                                     </tr>

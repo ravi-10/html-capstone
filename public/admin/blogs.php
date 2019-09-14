@@ -60,10 +60,8 @@
 
         <div class="row">
             <div class="col">
-                <a href="manage_blog.php">
-                    <button type="button" class="btn btn-primary mb-1">
-                        Add New Blog
-                    </button>
+                <a href="manage_blog.php" class="btn btn-primary mb-1">
+                    Add New Blog
                 </a>
                 <div class="card spur-card">
                     <div class="card-header bg-secondary text-white">
@@ -134,12 +132,13 @@
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <a href="manage_blog.php?blog_id=<?=esc_attr($blog['blog_id'])?>">
-                                                <button type="button" class="btn btn-primary btn-sm mb-1">Edit</button>
+                                            <a href="manage_blog.php?blog_id=<?=esc_attr($blog['blog_id'])?>" class="btn btn-primary btn-sm mb-1">
+                                                Edit
                                             </a>
                                             <a href="blogs.php?delete_blog=<?=esc_attr($blog['blog_id'])?>"
-                                            onclick="return confirm('Are you sure to delete?')">
-                                                <button type="button" class="btn btn-danger btn-sm mb-1">Delete</button>
+                                            onclick="return confirm('Are you sure to delete?')"
+                                            class="btn btn-danger btn-sm mb-1">
+                                                Delete
                                             </a>
                                         </td>
                                     </tr>

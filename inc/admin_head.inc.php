@@ -14,7 +14,7 @@
         <link rel="stylesheet" 
                 href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" 
                 integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" 
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600%7cOpen+Sans:400,600,700" 
         rel="stylesheet">
         <link rel="stylesheet" href="css/spur.css">
         <link rel="stylesheet" href="css/admin.css">
@@ -78,7 +78,16 @@
                     <a href="#" class="menu-toggle">
                         <i class="fas fa-bars"></i>
                     </a>
-                    <?php if(empty($_GET)): ?>
+                    <?php 
+                        if(($title == 'ATG - Admin Tours') ||
+                            ($title == 'ATG - Admin Categories') ||
+                            ($title == 'ATG - Admin Blogs') ||
+                            ($title == 'ATG - Admin Itineraries') ||
+                            ($title == 'ATG - Admin Bookings') ||
+                            ($title == 'ATG - Admin FAQs') ||
+                            ($title == 'ATG - Admin Testimonials') ||
+                            ($title == 'ATG - Admin Users'))
+                        : ?>
                     <form class="searchbox" method="post" 
                                 action="<?=esc($_SERVER['PHP_SELF'])?>">
                         <button type="submit" class="searchbox-submit"> 

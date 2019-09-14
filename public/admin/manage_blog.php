@@ -184,7 +184,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="category">Author</label>
+                                <label for="author">Author</label>
                                 <select class="form-control" id="author" 
                                     name="author">
                                     <option value="">Select Author</option>
@@ -238,15 +238,7 @@
                                 endif;
                                 ?>
                                 <input type="file" class="form-control" 
-                                    id="featured_image" name="featured_image"
-                                    placeholder="Featured Image"
-                                    value="<?php
-                                    if(!empty($_GET['blog_id'])){
-                                        echo cleanBackend('featured_image', $blog['featured_image']);
-                                    } else {
-                                        echo clean('featured_image');
-                                    }
-                                    ?>">
+                                    id="featured_image" name="featured_image">
                                 <?php if(!empty($errors['featured_image'])) : ?>
                                     <div class="alert alert-danger" role="alert">
                                         <?=esc($errors['featured_image'])?>
@@ -275,15 +267,7 @@
                                 endif;
                                 ?>
                                 <input type="file" class="form-control" 
-                                    id="thumbnail_image" name="thumbnail_image"
-                                    placeholder="Thumbnail Image"
-                                    value="<?php
-                                    if(!empty($_GET['blog_id'])){
-                                        echo cleanBackend('thumbnail_image', $blog['thumbnail_image']);
-                                    } else {
-                                        echo clean('thumbnail_image');
-                                    }
-                                    ?>">
+                                    id="thumbnail_image" name="thumbnail_image">
                                 <?php if(!empty($errors['thumbnail_image'])) : ?>
                                     <div class="alert alert-danger" role="alert">
                                         <?=esc($errors['thumbnail_image'])?>
