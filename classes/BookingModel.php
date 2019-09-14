@@ -51,6 +51,25 @@ class BookingModel extends Model
 	}
 
 	/**
+	 * Return one result from booking
+	 * @param  INT $id id
+	 * @return Array of data
+	 */
+	public function one($id)
+	{
+		$query = "SELECT * from {$this->table}
+					WHERE {$this->key} = :id";
+
+		$params = array(':id' => $id);
+
+		$stmt = static::$dbh->prepare($query);
+
+		$stmt->execute($params);
+
+		return $stmt->fetch(\PDO::FETCH_ASSOC);
+	}
+
+	/**
 	 * Save a tour in database table and returns inserted id
 	 * @param  Array $tour_array form fields
 	 * @return Integer             inserted id
